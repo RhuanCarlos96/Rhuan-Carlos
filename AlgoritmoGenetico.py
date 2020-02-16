@@ -103,6 +103,80 @@ def Copia(elemento):
     return copia
 
 
+def Substring(individo1, individuo2):
+    individuo_filho = [-1] * len(individo1)
+    print('Individuo', individo1)
+    print('Individuo2', individuo2)
+    cont = 0
+    a = random.randint(0, len(individo1) - 1)
+    print('indice escolhido', a)
+
+    string = individo1[a:a + int(len(individo1) / 2)]
+
+    if len(string) == int(len(individuo_filho) / 2):
+        for i in range(len(string)):
+            individuo_filho[a + i] = string[i]
+
+        cont = a + int(len(individuo2) / 2)
+        k = 0
+        q_filho = cont
+        while k < int(len(individuo2) / 2):
+            if cont < len(individuo2):
+                if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
+                    individuo_filho[q_filho] = individuo2[cont]
+                    k += 1
+                    q_filho += 1
+                else:
+                    if q_filho == len(individuo_filho):
+                        q_filho = 0
+            else:
+                if cont == len(individuo2):
+                    cont = 0
+                    if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
+                        individuo_filho[q_filho] = individuo2[cont]
+                        k += 1
+                        if q_filho == len(individuo_filho):
+                            q_filho = 0
+                        else:
+                            q_filho += 1
+            cont += 1
+
+    else:
+        for i in range(len(string)):
+            individuo_filho[a + i] = string[i]
+
+        restante = int(len(individuo_filho) / 2) - len(string)
+
+        cont = 0
+        while cont < restante:
+            individuo_filho[cont] = individo1[cont]
+            cont += 1
+        k = 0
+        q_filho = cont
+        while k < int(len(individuo2) / 2):
+            if cont < len(individuo2):
+                if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
+                    individuo_filho[q_filho] = individuo2[cont]
+                    k += 1
+                    q_filho += 1
+                else:
+                    if q_filho == len(individuo_filho):
+                        q_filho = 0
+            else:
+                if cont == len(individuo2):
+                    cont = 0
+                    if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
+                        individuo_filho[q_filho] = individuo2[cont]
+                        k += 1
+                        if q_filho == len(individuo_filho):
+                            q_filho = 0
+                        else:
+                            q_filho += 1
+            cont += 1
+
+    print('Individuo Filho', individuo_filho)
+
+
 class Genetico(object):
 
     def __init__(self, nos, cluster, chaves):
@@ -121,7 +195,7 @@ class Genetico(object):
         # Definindo os possiveis cromossomos dada a uma sequência de clusters
         aux = []
 
-        for i in range(int(2*tamanho_inicial)):
+        for i in range(int(3)):
             random.shuffle(keys_cluster)
 
             for i in keys_cluster:
@@ -133,7 +207,6 @@ class Genetico(object):
             aux = []
 
     def Possiveis_Cromossomos_Inciais(self):
-        aux = []
         aux2 = []
         prossiveis_cromossomos_nos = []
 
@@ -156,7 +229,6 @@ class Genetico(object):
         return prossiveis_cromossomos_nos
 
     def Possiveis_Cromossomos_Entre_Geracoes(self):
-        aux = []
         aux2 = []
         prossiveis_cromossomos_nos = []
 
@@ -336,8 +408,6 @@ class Genetico(object):
             if self.__individuos_fitness[i] < melhor_fitness:
                 melhor_fitness = self.__individuos_fitness[i]
 
-        return melhor_fitness
-
     def Selecao_Torneio(self):
         selecionados = []
 
@@ -397,47 +467,47 @@ class Genetico(object):
             sorteio = random.uniform(0, 1)
 
             if sorteio < probabilidade_crossover:
-                # Determinandos as fronteiras existentes entre uma 'cidade' a outra
-                cidades_com_todas_as_fronteiras = {}
+                # # Determinandos as fronteiras existentes entre uma 'cidade' a outra
+                # cidades_com_todas_as_fronteiras = {}
+                #
+                # for i in range(len(cromossomo1)):
+                #     cidades_com_todas_as_fronteiras[cromossomo1[i]] = []
+                #
+                #     if i == 0:
+                #         cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i + 1])
+                #     elif i == len(cromossomo1) - 1:
+                #         cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i - 1])
+                #     else:
+                #         cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i + 1])
+                #         cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i - 1])
+                #
+                #     k = -1
+                #     for j in range(len(cromossomo2)):
+                #         if cromossomo1[i] == cromossomo2[j]:
+                #             k = j
+                #
+                #     if k == 0:
+                #         if cromossomo2[k + 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
+                #             cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k + 1])
+                #     elif k == len(cromossomo1) - 1:
+                #         if cromossomo2[k - 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
+                #             cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k - 1])
+                #     else:
+                #         if cromossomo2[k + 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
+                #             cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k + 1])
+                #         if cromossomo2[k - 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
+                #             cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k - 1])
+                #
+                # filho1 = Filho_CrossOver(Copia(cidades_com_todas_as_fronteiras))
+                # # filho2=Filho_CrossOver(Copia(cidades_com_todas_as_fronteiras))
+                #
+                # individuos_filho_cluster[o] = filho1
 
-                for i in range(len(cromossomo1)):
-                    cidades_com_todas_as_fronteiras[cromossomo1[i]] = []
-
-                    if i == 0:
-                        cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i + 1])
-                    elif i == len(cromossomo1) - 1:
-                        cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i - 1])
-                    else:
-                        cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i + 1])
-                        cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i - 1])
-
-                    k = -1
-                    for j in range(len(cromossomo2)):
-                        if cromossomo1[i] == cromossomo2[j]:
-                            k = j
-
-                    if k == 0:
-                        if cromossomo2[k + 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
-                            cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k + 1])
-                    elif k == len(cromossomo1) - 1:
-                        if cromossomo2[k - 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
-                            cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k - 1])
-                    else:
-                        if cromossomo2[k + 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
-                            cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k + 1])
-                        if cromossomo2[k - 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
-                            cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k - 1])
-
-                filho1 = Filho_CrossOver(Copia(cidades_com_todas_as_fronteiras))
-                # filho2=Filho_CrossOver(Copia(cidades_com_todas_as_fronteiras))
-
-                individuos_filho_cluster[o] = filho1
-                # individuos_filho_cluster[o+1] = filho2
+                Substring(cromossomo1, cromossomo2)
 
             else:
                 escolha = [pai1, pai2]
                 individuos_filho_cluster[o] = self.__individuos_clusters[random.choice(escolha)]
-                # individuos_filho_cluster[o+1] = cromossomo2
 
         return individuos_filho_cluster
 

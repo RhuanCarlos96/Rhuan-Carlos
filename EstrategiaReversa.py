@@ -9,7 +9,7 @@ def main():
     # arquivo.Lendo_Arquivos()
 
     with open(
-            "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoA\\L10-1.txt",
+            "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoE\\L1-1.txt",
             "r") as archive:
         tarefas, ferramentas, capacidade, matrix = opter.instancias(
             archive)  # optendo todos os valores de instâncias recolhidas em um determinado arquivo
@@ -35,38 +35,20 @@ def main():
 
     possiveis_cromossomos = genetico.Possiveis_Cromossomos_Inciais()
 
-    k = 0
-    while k < 100:
-        print('Geracao :', k)
-        if k == 0:
-            genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
-            genetico.Individuos_Cluster()
-            genetico.Individuos_Nos()
-
-        else:
-            possiveis_cromossomos = genetico.Possiveis_Cromossomos_Entre_Geracoes()
-            genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
-            genetico.Individuos_Nos()
-
-        melhor_fitness= genetico.Fitness()
-
-        if k == 0:
-            menor_troca = melhor_fitness
-
-            k = k + 1
-
-        else:
-            if melhor_fitness < menor_troca:
-                menor_troca = melhor_fitness
 
 
-        selecionados = genetico.Selecao_Torneio()
-        individuos_filhos_clusters = genetico.CrossOver(selecionados=selecionados, probabilidade_crossover=0.7)
-        genetico.Mutation_Swap(probabilidade_mutação=0.1, individuo_filho_cluster=individuos_filhos_clusters)
+    genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
+    genetico.Individuos_Cluster()
+    genetico.Individuos_Nos()
 
-        k += 1
 
-    print('Melhor fitness', menor_troca)
+
+    genetico.Fitness()
+
+    selecionados = genetico.Selecao_Torneio()
+    genetico.CrossOver(selecionados=selecionados, probabilidade_crossover=0.7)
+
+
 
 if __name__ == '__main__':
     main()
