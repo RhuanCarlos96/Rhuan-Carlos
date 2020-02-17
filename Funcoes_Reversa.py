@@ -142,17 +142,24 @@ def requerimentos_de_ferramentas(ferramentas, matrix):
 
 
 def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, tarefas_restantes, capacidade, tarefas):
+    # Iniciando o conjunto de tarefas Z a ser retornado com C capacidade com -1
     f_linha = [-1] * capacidade
-
+    print('\nZ : ', f_linha, '\n')
+    # Definindo o conjunto Ti / Tj , Tj / Ti , Ti e Tj e Ti U Tj, respectivamente :
     conjunto_diferenca_i_linha_menos_j_linha = set(ferramentas_ilinha) - set(ferramentas_jlinha)
+    print('Conjunto Ti/ Tj', conjunto_diferenca_i_linha_menos_j_linha)
     conjunto_diferenca_j_linha_menos_i_linha = set(ferramentas_jlinha) - set(ferramentas_ilinha)
-    conjunto_inteseccao = set(ferramentas_ilinha).intersection(set(ferramentas_jlinha))
+    print('Conjunto Tj/ Ti', conjunto_diferenca_j_linha_menos_i_linha)
+    conjunto_interseccao = set(ferramentas_ilinha).intersection(set(ferramentas_jlinha))
+    print('Conjunto Ti e Tj', conjunto_interseccao)
     conjunto_uniao = set(ferramentas_ilinha).union(set(ferramentas_jlinha))
+    print('Conjunto Tj U Ti', conjunto_uniao)
 
     # Identificando os indice e a popularidade de cada ferramenta do conjunto de diferença
     # e preenchendo f_linha a partir dos slots das ferramentas menos populares de j'-i' com o
     # conjunto Fi' - Fj'
 
+    print('\n1º passo - Preenchendo os slots relativos as tarefas menos populares de Tj / Ti com Ti/Tj : ')
     if conjunto_diferenca_j_linha_menos_i_linha != {} and conjunto_diferenca_i_linha_menos_j_linha != {}:
         aux = []
         aux2 = []
@@ -160,6 +167,9 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
             if ferramentas_jlinha[i] in conjunto_diferenca_j_linha_menos_i_linha:
                 aux.append(i)
                 aux2.append(requerimentos_de_ferramentas(ferramentas, matrix)[ferramentas_jlinha[i]])
+
+        print('\nPopulariedade de Tj/Ti : ', aux2)
+        print('Slots : ', aux, '\n')
 
         aux2 = np.argsort(aux2)
         aux3 = []
@@ -177,29 +187,27 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
             if f_linha[i] == -1:
                 aux.append(i)
 
-        k = 0
-        for i in conjunto_diferenca_i_linha_menos_j_linha:
-            if i not in f_linha and k < len(aux):
-                f_linha[aux[k]] = i
-                k += 1
+    print('Z :', f_linha)
 
     # Preenchendo com o conjunto interseccao de i' e j'
-    if conjunto_inteseccao:
+    print('\n2º passo - Adicionando a Z o conjunto intersecção de Ti e Tj :')
+    if conjunto_interseccao:
         k = 0
         aux = []
         for i in range(len(f_linha)):
             if f_linha[i] == -1:
                 aux.append(i)
 
-        for i in conjunto_inteseccao:
+        for i in conjunto_interseccao:
             if k < len(aux):
                 f_linha[aux[k]] = i
                 k += 1
-
+    print('Z : ',f_linha)
     # Preenchendo o restante do no com conjunto de ferramentas com maior interssecacao com a uniao de f_i e f_j.
     tarefas_restantes = list(tarefas_restantes)
     maior_inteseccao = []
 
+    print('\n3º passo - Preencnhendo os no com as ferramentas das ferramentas restantes com maior intersecção com Ti U Tj')
     for i in tarefas_restantes:
         f = set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [i]))
         maior_inteseccao.append(len(f.intersection(conjunto_uniao)))
@@ -235,6 +243,9 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
                 if f_linha[i] == -1:
                     aux.append(i)
         k += 1
+
+    print(' Z : ', f_linha)
+
     if aux:
         aux2 = []
         for i in conjunto_diferenca_j_linha_menos_i_linha:
@@ -254,7 +265,10 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
 
 
 def FirstNodes(S, matrix, tarefas, capacidade, ferramentas):
-    Tarefas_Maior_Distancia = []
+    print('\n')
+    print('Tarefas      Ferramentas')
+    for i in range(tarefas):
+        print(i, '          ', ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [i]))
 
     maior = []
     Tarefas_Maior_Distancia = []
@@ -271,6 +285,10 @@ def FirstNodes(S, matrix, tarefas, capacidade, ferramentas):
     # Completando i_linha com j_linha:
     ferramentas_ilinha = ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [i_linha])
     ferramentas_jlinha = ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [j_linha])
+
+    print('\n')
+    print('Tareafa i*', i_linha, ' : ', ferramentas_ilinha)
+    print('Tareafa j*', j_linha, ' : ', ferramentas_jlinha)
 
     tarefas_restantes = set(np.arange(tarefas)) - set(Tarefas_Maior_Distancia)
     # Preenchendo f_ilinha
@@ -421,7 +439,7 @@ def Uptade(S, ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, 
 
             LimD = int((len(P) - len(Q)) / cluster_vazios)
 
-            Distribuição_Media_Cluster = int(LimD /cluster_vazios)
+            Distribuição_Media_Cluster = int(LimD / len(list(cluster.keys())))
             print('LimD', LimD)
             print('Distribuiçao Media', Distribuição_Media_Cluster)
             chave = len(nos_do_clusters)

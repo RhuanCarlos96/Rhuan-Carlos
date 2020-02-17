@@ -9,7 +9,7 @@ def main():
     # arquivo.Lendo_Arquivos()
 
     with open(
-            "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoE\\L1-1.txt",
+            "/home/loop/Desktop/Teste_No_PC/Teste_No_PC/Teste_No_PC/ChavesEtAl_2012/ChavesEtAl_2012/GrupoA/L20-2.txt",
             "r") as archive:
         tarefas, ferramentas, capacidade, matrix = opter.instancias(
             archive)  # optendo todos os valores de instâncias recolhidas em um determinado arquivo
@@ -25,29 +25,28 @@ def main():
     nos, chaves, cluster = reducao.Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas,
                                                       jobs, t)
 
-
-    genetico = gene.Genetico(nos, cluster, chaves)
-
-    # Definindo a populacao inicial de clusters
-    genetico.Populacao_Inicial(tamanho_inicial=len(list(nos)))
-
-    # Definindo os possiveis cromossomos clusters
-
-    possiveis_cromossomos = genetico.Possiveis_Cromossomos_Inciais()
-
-
-
-    genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
-    genetico.Individuos_Cluster()
-    genetico.Individuos_Nos()
-
-
-
-    genetico.Fitness()
-
-    selecionados = genetico.Selecao_Torneio()
-    genetico.CrossOver(selecionados=selecionados, probabilidade_crossover=0.7)
-
+    # genetico = gene.Genetico(nos, cluster, chaves)
+    #
+    # # Definindo a populacao inicial de clusters
+    # genetico.Populacao_Inicial(tamanho_inicial=len(list(nos)))
+    #
+    # # Definindo os possiveis cromossomos clusters
+    #
+    # possiveis_cromossomos = genetico.Possiveis_Cromossomos_Inciais()
+    #
+    #
+    #
+    # genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
+    # genetico.Individuos_Cluster()
+    # genetico.Individuos_Nos()
+    #
+    #
+    #
+    # genetico.Fitness()
+    #
+    # selecionados = genetico.Selecao_Torneio()
+    # genetico.CrossOver(selecionados=selecionados, probabilidade_crossover=0.7)
+    #
 
 
 if __name__ == '__main__':

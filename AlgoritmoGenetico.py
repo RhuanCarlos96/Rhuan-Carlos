@@ -111,68 +111,132 @@ def Substring(individo1, individuo2):
     a = random.randint(0, len(individo1) - 1)
     print('indice escolhido', a)
 
-    string = individo1[a:a + int(len(individo1) / 2)]
+    if len(individuo_filho) % 2 == 0:
+        string = individo1[a:a + int(len(individo1) / 2)]
 
-    if len(string) == int(len(individuo_filho) / 2):
-        for i in range(len(string)):
-            individuo_filho[a + i] = string[i]
+        if len(string) == int(len(individuo_filho) / 2):
+            for i in range(len(string)):
+                individuo_filho[a + i] = string[i]
 
-        cont = a + int(len(individuo2) / 2)
-        k = 0
-        q_filho = cont
-        while k < int(len(individuo2) / 2):
-            if cont < len(individuo2):
-                if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
-                    individuo_filho[q_filho] = individuo2[cont]
-                    k += 1
-                    q_filho += 1
-                else:
-                    if q_filho == len(individuo_filho):
-                        q_filho = 0
-            else:
-                if cont == len(individuo2):
-                    cont = 0
+            cont = a + int(len(individuo2) / 2)
+            k = 0
+            q_filho = cont
+            while k < int(len(individuo2) / 2):
+                if cont < len(individuo2):
                     if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
                         individuo_filho[q_filho] = individuo2[cont]
                         k += 1
+                        q_filho += 1
+                    else:
                         if q_filho == len(individuo_filho):
                             q_filho = 0
-                        else:
-                            q_filho += 1
-            cont += 1
+                else:
+                    if cont == len(individuo2):
+                        cont = 0
+                        if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
+                            individuo_filho[q_filho] = individuo2[cont]
+                            k += 1
+                            if q_filho == len(individuo_filho):
+                                q_filho = 0
+                            else:
+                                q_filho += 1
+                cont += 1
 
+        else:
+            for i in range(len(string)):
+                individuo_filho[a + i] = string[i]
+
+            restante = int(len(individuo_filho) / 2) - len(string)
+
+            cont = 0
+            while cont < restante:
+                individuo_filho[cont] = individo1[cont]
+                cont += 1
+            k = 0
+            q_filho = cont
+            while k < int(len(individuo2) / 2):
+                if cont < len(individuo2):
+                    if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
+                        individuo_filho[q_filho] = individuo2[cont]
+                        k += 1
+                        q_filho += 1
+                    else:
+                        if q_filho == len(individuo_filho):
+                            q_filho = 0
+                else:
+                    if cont == len(individuo2):
+                        cont = 0
+                        if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
+                            individuo_filho[q_filho] = individuo2[cont]
+                            k += 1
+                            if q_filho == len(individuo_filho):
+                                q_filho = 0
+                            else:
+                                q_filho += 1
+                cont += 1
     else:
-        for i in range(len(string)):
-            individuo_filho[a + i] = string[i]
+        string = individo1[a:a + int(len(individo1) / 2)]
 
-        restante = int(len(individuo_filho) / 2) - len(string)
+        if len(string) == int(len(individuo_filho) / 2):
+            for i in range(len(string)):
+                individuo_filho[a + i] = string[i]
 
-        cont = 0
-        while cont < restante:
-            individuo_filho[cont] = individo1[cont]
-            cont += 1
-        k = 0
-        q_filho = cont
-        while k < int(len(individuo2) / 2):
-            if cont < len(individuo2):
-                if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
-                    individuo_filho[q_filho] = individuo2[cont]
-                    k += 1
-                    q_filho += 1
-                else:
-                    if q_filho == len(individuo_filho):
-                        q_filho = 0
-            else:
-                if cont == len(individuo2):
-                    cont = 0
+            cont = a + int(len(individuo2) / 2)
+            k = 0
+            q_filho = cont
+            while k < int(len(individuo2) / 2) + 1:
+                if cont < len(individuo2):
                     if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
                         individuo_filho[q_filho] = individuo2[cont]
                         k += 1
+                        q_filho += 1
+                    else:
                         if q_filho == len(individuo_filho):
                             q_filho = 0
-                        else:
-                            q_filho += 1
-            cont += 1
+                else:
+                    if cont == len(individuo2):
+                        cont = 0
+                        if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
+                            individuo_filho[q_filho] = individuo2[cont]
+                            k += 1
+                            if q_filho == len(individuo_filho):
+                                q_filho = 0
+                            else:
+                                q_filho += 1
+                cont += 1
+
+        else:
+            for i in range(len(string)):
+                individuo_filho[a + i] = string[i]
+
+            restante = int(len(individuo_filho) / 2) - len(string)
+
+            cont = 0
+            while cont < restante:
+                individuo_filho[cont] = individo1[cont]
+                cont += 1
+            k = 0
+            q_filho = cont
+            while k < int(len(individuo2) / 2) + 1:
+                if cont < len(individuo2):
+                    if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
+                        individuo_filho[q_filho] = individuo2[cont]
+                        k += 1
+                        q_filho += 1
+                    else:
+                        if q_filho == len(individuo_filho):
+                            q_filho = 0
+                else:
+                    if cont == len(individuo2):
+                        cont = 0
+                        if individuo2[cont] not in individuo_filho and q_filho < len(individuo_filho):
+                            individuo_filho[q_filho] = individuo2[cont]
+                            k += 1
+                            if q_filho == len(individuo_filho):
+                                q_filho = 0
+                            else:
+                                q_filho += 1
+                cont += 1
 
     print('Individuo Filho', individuo_filho)
 
@@ -195,7 +259,7 @@ class Genetico(object):
         # Definindo os possiveis cromossomos dada a uma sequência de clusters
         aux = []
 
-        for i in range(int(3)):
+        for i in range(5):
             random.shuffle(keys_cluster)
 
             for i in keys_cluster:
@@ -446,6 +510,7 @@ class Genetico(object):
 
     def CrossOver(self, selecionados, probabilidade_crossover):
 
+        print('Selecionados',selecionados)
         individuos_filho_cluster = {}
 
         for o in range(len(selecionados)):

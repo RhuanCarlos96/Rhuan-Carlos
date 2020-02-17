@@ -34,20 +34,16 @@ def instancias(archive):
     else:
         n_tarefas = int(primeira_linha[0])
 
-        print(n_tarefas)
 
         segunda_linha = archive.readline()
         segunda_linha = segunda_linha.rstrip("\n")
         segunda_linha = segunda_linha.split(" ")
         n_ferramentas = int(segunda_linha[0])
-        print(n_ferramentas)
 
         terceira_linha = archive.readline()
         terceira_linha = terceira_linha.rstrip("\n")
         terceira_linha = terceira_linha.split(" ")
         capacidade = int(terceira_linha[0])
-
-        print(capacidade)
 
         concatenado = np.array([])
 

@@ -10,10 +10,68 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4099e8-a08a-4d26-8925-e1d468d03128" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/EstrategiaReversa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EstrategiaReversa.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AlgoritmoGenetico.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlgoritmoGenetico.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CompletandoNos.py" beforeDir="false" afterPath="$PROJECT_DIR$/CompletandoNos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EstrategiaReversa.py" beforeDir="false" afterPath="$PROJECT_DIR$/EstrategiaReversa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Execucao.py" beforeDir="false" afterPath="$PROJECT_DIR$/Execucao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frequencia.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frequencia.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FuncaoLeitura.py" beforeDir="false" afterPath="$PROJECT_DIR$/FuncaoLeitura.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Funcoes_Reversa.py" beforeDir="false" afterPath="$PROJECT_DIR$/Funcoes_Reversa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grafos/Grafos_Objeto.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grafos/Grafos_Objeto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lendo_Arquivos.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lendo_Arquivos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reducao_de_Dominio_Reversa.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reducao_de_Dominio_Reversa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/certifi-2019.6.16.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/certifi-2019.6.16.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/chardet-3.0.4.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/chardet-3.0.4.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/cycler-0.10.0.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/cycler-0.10.0.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/decorator-4.4.0.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/decorator-4.4.0.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/easy-install.pth" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/easy-install.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/idna-2.8.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/idna-2.8.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kiwisolver-1.1.0.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kiwisolver-1.1.0.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/kiwisolver-1.1.0.dist-info/WHEEL" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/kiwisolver-1.1.0.dist-info/WHEEL" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib-3.1.1-py3.7-nspkg.pth" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib-3.1.1-py3.7-nspkg.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib-3.1.1.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib-3.1.1.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib-3.1.1.dist-info/WHEEL" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib-3.1.1.dist-info/WHEEL" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/_version.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/_version.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/mpl-data/matplotlibrc" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/mpl-data/matplotlibrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/networkx-2.3-py3.7.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/networkx-2.3-py3.7.egg-info/PKG-INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/networkx-2.3-py3.7.egg-info/installed-files.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/networkx-2.3-py3.7.egg-info/installed-files.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/numpy-1.16.4.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/numpy-1.16.4.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/numpy-1.16.4.dist-info/WHEEL" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/numpy-1.16.4.dist-info/WHEEL" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/__config__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/__config__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/include/numpy/__multiarray_api.h" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/include/numpy/__multiarray_api.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/include/numpy/__ufunc_api.h" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/include/numpy/__ufunc_api.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/include/numpy/_numpyconfig.h" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/include/numpy/_numpyconfig.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/include/numpy/multiarray_api.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/include/numpy/multiarray_api.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/include/numpy/ufunc_api.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/include/numpy/ufunc_api.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/lib/npy-pkg-config/mlib.ini" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/lib/npy-pkg-config/mlib.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/lib/npy-pkg-config/npymath.ini" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/lib/npy-pkg-config/npymath.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/distutils/__config__.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/distutils/__config__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/version.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/numpy/version.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/panda-0.3.1-py3.7.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/panda-0.3.1-py3.7.egg-info/PKG-INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/panda-0.3.1-py3.7.egg-info/installed-files.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/panda-0.3.1-py3.7.egg-info/installed-files.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-19.0.3-py3.7.egg/EGG-INFO/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip-19.0.3-py3.7.egg/EGG-INFO/PKG-INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pyparsing-2.4.2.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pyparsing-2.4.2.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/python_dateutil-2.8.0.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/python_dateutil-2.8.0.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/requests-2.22.0.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/requests-2.22.0.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/setuptools.pth" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/setuptools.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/six-1.12.0.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/six-1.12.0.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/urllib3-1.25.3.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/urllib3-1.25.3.dist-info/RECORD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/Activate.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/Activate.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/activate" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/activate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/activate.bat" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/activate.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/deactivate.bat" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/deactivate.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install-3.7-script.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/easy_install-3.7-script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install-script.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/easy_install-script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip-script.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pip-script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3-script.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pip3-script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.7-script.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/pip3.7-script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/pyvenv.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pyvenv.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/share/doc/networkx-2.3/pip-delete-this-directory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/share/doc/networkx-2.3/pip-delete-this-directory.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,11 +100,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -66,6 +126,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/EstrategiaReversa.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -87,6 +148,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/EstrategiaReversa.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -108,6 +170,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Lendo_Arquivos.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -153,94 +216,130 @@
       <workItem from="1568812760729" duration="11000" />
       <workItem from="1568813761552" duration="10000" />
       <workItem from="1568814238596" duration="25000" />
+      <workItem from="1581969873993" duration="1454000" />
     </task>
+    <task id="LOCAL-00001" summary="&quot;Estrategia_Reversa&quot;">
+      <created>1581893897123</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581893897123</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="&quot;Estrategia_Reversa&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Estrategia_Reversa&quot;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="667" y="159" width="642" height="787" key="#EstrategiaReversa" timestamp="1580313012355">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="667" y="159" width="642" height="787" key="#EstrategiaReversa/67.27.1853.1053@67.27.1853.1053" timestamp="1580313012355" />
-    <state x="667" y="159" width="642" height="787" key="#EstrategiaReversa_(1)" timestamp="1580313134453">
+    <state x="667" y="159" width="642" height="790" key="#EstrategiaReversa_(1)" timestamp="1581952139269">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
+    <state x="667" y="159" width="642" height="790" key="#EstrategiaReversa_(1)/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581952139269" />
     <state x="667" y="159" width="642" height="787" key="#EstrategiaReversa_(1)/67.27.1853.1053@67.27.1853.1053" timestamp="1580313134453" />
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581532332310">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1581532332310" />
-    <state x="261" y="0" key="CommitChangelistDialog2" timestamp="1581868092112">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="421" y="27" width="1084" height="912" key="CommitChangelistDialog2" timestamp="1581971407586">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="261" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1581868092112" />
-    <state x="523" y="196" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581724863390">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="261" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1581893891206" />
+    <state x="421" y="27" width="1084" height="912" key="CommitChangelistDialog2/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971407586" />
+    <state x="776" y="311" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581952423241">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="523" y="196" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1581724863390" />
+    <state x="776" y="311" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581952423241" />
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1580412267879" />
-    <state width="1345" height="434" key="GridCell.Tab.0.bottom" timestamp="1581893776557">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1807" height="294" key="GridCell.Tab.0.bottom" timestamp="1581970407289">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1345" height="434" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1581893776557" />
+    <state width="1345" height="434" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1581905084574" />
+    <state width="1343" height="224" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
+    <state width="1807" height="294" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581970407289" />
     <state width="905" height="321" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
-    <state width="1345" height="434" key="GridCell.Tab.0.center" timestamp="1581893776557">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1807" height="294" key="GridCell.Tab.0.center" timestamp="1581970407289">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1345" height="434" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1581893776557" />
+    <state width="1345" height="434" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1581905084574" />
+    <state width="1343" height="224" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
+    <state width="1807" height="294" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581970407289" />
     <state width="905" height="321" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
-    <state width="1345" height="434" key="GridCell.Tab.0.left" timestamp="1581893776557">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1807" height="294" key="GridCell.Tab.0.left" timestamp="1581970407289">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1345" height="434" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1581893776557" />
+    <state width="1345" height="434" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1581905084574" />
+    <state width="1343" height="224" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
+    <state width="1807" height="294" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581970407289" />
     <state width="905" height="321" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
-    <state width="1345" height="434" key="GridCell.Tab.0.right" timestamp="1581893776557">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1807" height="294" key="GridCell.Tab.0.right" timestamp="1581970407289">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="1345" height="434" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1581893776557" />
+    <state width="1345" height="434" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1581905084574" />
+    <state width="1343" height="224" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
+    <state width="1807" height="294" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581970407289" />
     <state width="905" height="321" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
-    <state width="1345" height="325" key="GridCell.Tab.1.bottom" timestamp="1580956188010">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1830" height="344" key="GridCell.Tab.1.bottom" timestamp="1581969796364">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1345" height="325" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580956188010" />
+    <state width="1830" height="344" key="GridCell.Tab.1.bottom/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581969796364" />
     <state width="1830" height="344" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1580494184193" />
-    <state width="1345" height="325" key="GridCell.Tab.1.center" timestamp="1580956188010">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1830" height="344" key="GridCell.Tab.1.center" timestamp="1581969796364">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1345" height="325" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1580956188010" />
+    <state width="1830" height="344" key="GridCell.Tab.1.center/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581969796364" />
     <state width="1830" height="344" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1580494184192" />
-    <state width="1345" height="325" key="GridCell.Tab.1.left" timestamp="1580956188010">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1830" height="344" key="GridCell.Tab.1.left" timestamp="1581969796364">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1345" height="325" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1580956188010" />
+    <state width="1830" height="344" key="GridCell.Tab.1.left/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581969796364" />
     <state width="1830" height="344" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1580494184192" />
-    <state width="1345" height="325" key="GridCell.Tab.1.right" timestamp="1580956188010">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1830" height="344" key="GridCell.Tab.1.right" timestamp="1581969796364">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state width="1345" height="325" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1580956188010" />
+    <state width="1830" height="344" key="GridCell.Tab.1.right/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581969796364" />
     <state width="1830" height="344" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1580494184192" />
-    <state x="184" y="6" key="SettingsEditor" timestamp="1581725182350">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="2055" y="38" key="SettingsEditor" timestamp="1581952762532">
+      <screen x="1920" y="0" width="1366" height="768" />
     </state>
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1581725182350" />
+    <state x="2055" y="38" key="SettingsEditor/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952762532" />
+    <state x="317" y="36" key="SettingsEditor/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581952429611" />
     <state x="317" y="36" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1580745055423" />
-    <state x="379" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1581867373077">
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2" timestamp="1581893909060">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1581893909060" />
+    <state x="581" y="297" key="com.intellij.ide.util.TipDialog" timestamp="1581969874153">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
     <state x="379" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1581867373077" />
+    <state x="581" y="297" key="com.intellij.ide.util.TipDialog/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581969874153" />
     <state x="581" y="297" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1580909831532" />
     <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581867434747">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1581867434747" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1579791339080">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="536" y="98" width="912" height="981" key="search.everywhere.popup" timestamp="1581956263617">
+      <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1579791339080" />
+    <state x="536" y="98" width="912" height="981" key="search.everywhere.popup/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581956263617" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/EstrategiaReversa$EstrategiaReversa__1_.coverage" NAME="EstrategiaReversa (1) Coverage Results" MODIFIED="1581970407270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

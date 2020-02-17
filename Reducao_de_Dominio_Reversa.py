@@ -1,4 +1,4 @@
-import itertools as inter
+from itertools import combinations as inter
 import Funcoes_Reversa as revers
 
 
@@ -35,12 +35,16 @@ def Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas, jobs, t):
     chaves_dos_nos = {}
     P = []
 
+    from time import time
+    now = time()
     nos_do_cluster, chaves_dos_nos, cluster = revers.Uptade(S, ferramentas, matrix,
                                                             cluster,
                                                             Q, nos_do_cluster,
                                                             chaves_dos_nos,
                                                             tarefas,
                                                             P)  # o conjunto de clusters que possuem ao menos um nó
+    print("tempo de execucao:   ",time() - now)
+
     cheios = []
     for i in cluster:
         if cluster[i] != []:
@@ -75,7 +79,7 @@ def Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas, jobs, t):
                                 aux = revers.ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [e])
                                 tools = revers.ferramentas_que_nao_estao_na_tarefa(z, [e], matrix, ferramentas)
 
-                                combinacoes = list(inter.combinations(tools, capacidade - len(aux)))
+                                combinacoes = list(inter(tools, capacidade - len(aux)))
 
                                 for c in combinacoes:
                                     aux2 = list(c)
