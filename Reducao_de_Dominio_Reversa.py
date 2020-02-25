@@ -35,15 +35,14 @@ def Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas, jobs, t):
     chaves_dos_nos = {}
     P = []
 
-    from time import time
-    now = time()
+
     nos_do_cluster, chaves_dos_nos, cluster = revers.Uptade(S, ferramentas, matrix,
                                                             cluster,
                                                             Q, nos_do_cluster,
                                                             chaves_dos_nos,
                                                             tarefas,
                                                             P)  # o conjunto de clusters que possuem ao menos um nó
-    print("tempo de execucao:   ",time() - now)
+
 
     cheios = []
     for i in cluster:

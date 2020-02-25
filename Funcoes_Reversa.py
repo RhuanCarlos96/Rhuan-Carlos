@@ -287,14 +287,18 @@ def FirstNodes(S, matrix, tarefas, capacidade, ferramentas):
     ferramentas_jlinha = ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [j_linha])
 
     print('\n')
-    print('Tareafa i*', i_linha, ' : ', ferramentas_ilinha)
-    print('Tareafa j*', j_linha, ' : ', ferramentas_jlinha)
+    print('Tarefa i*', i_linha, ' : ', ferramentas_ilinha)
+    print('Tarefa j*', j_linha, ' : ', ferramentas_jlinha)
 
     tarefas_restantes = set(np.arange(tarefas)) - set(Tarefas_Maior_Distancia)
     # Preenchendo f_ilinha
     Z = []
+
+    print('Completando i* através de j*')
     Z.append(Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, tarefas_restantes, capacidade,
                             tarefas))
+
+    print('\nCompletando j* através de i*')
     Z.append(Preechendo_Nos(matrix, ferramentas, ferramentas_jlinha, ferramentas_ilinha, tarefas_restantes, capacidade,
                             tarefas))
 
@@ -439,7 +443,7 @@ def Uptade(S, ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, 
 
             LimD = int((len(P) - len(Q)) / cluster_vazios)
 
-            Distribuição_Media_Cluster = int(LimD / len(list(cluster.keys())))
+            Distribuição_Media_Cluster = int(LimD / cluster_vazios)
             print('LimD', LimD)
             print('Distribuiçao Media', Distribuição_Media_Cluster)
             chave = len(nos_do_clusters)

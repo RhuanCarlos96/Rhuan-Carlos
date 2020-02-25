@@ -4,6 +4,38 @@ import copy
 import Frequencia as frequencia
 
 
+def Torneio(individuos_clusters, individuos_fitness):
+    selecionados = []
+
+    tamanho_individuos = len(list(individuos_clusters.keys()))
+
+    j = 0
+    for i in range(tamanho_individuos):
+        individuo1 = int(random.uniform(0, 1) * (tamanho_individuos - 1))
+        individuo2 = int(random.uniform(0, 1) * (tamanho_individuos - 1))
+        sorteio = random.uniform(0, 1)
+        k = 0.8
+
+        if sorteio < k:
+
+            if individuos_fitness[individuo1] < individuos_fitness[individuo2]:
+                pai = individuo1
+            else:
+                pai = individuo2
+
+        else:
+            if individuos_fitness[individuo1] < individuos_fitness[individuo2]:
+                pai = individuo1
+
+            else:
+                pai = individuo2
+
+        selecionados.append(pai)
+        j += 1
+
+    return selecionados
+
+
 def Individuos(cromossomo):
     individuos_grupos = {}
     individuos = 0
@@ -43,6 +75,43 @@ def Vazias(filho, cidades_keys, cidades):
         p += 1
 
     return menor_fronteira
+
+
+def Cidades_Vizinhas(cromossomo1, cromossomo2):
+    # Determinandos as fronteiras existentes entre uma 'cidade' a outra
+    cidades_com_todas_as_fronteiras = {}
+
+    for i in range(len(cromossomo1)):
+        cidades_com_todas_as_fronteiras[cromossomo1[i]] = []
+
+        if i == 0:
+            cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i + 1])
+        elif i == len(cromossomo1) - 1:
+            cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i - 1])
+        else:
+            cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i + 1])
+            cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i - 1])
+
+        k = -1
+        for j in range(len(cromossomo2)):
+            if cromossomo1[i] == cromossomo2[j]:
+                k = j
+
+        if k == 0:
+            if cromossomo2[k + 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
+                cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k + 1])
+        elif k == len(cromossomo1) - 1:
+            if cromossomo2[k - 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
+                cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k - 1])
+        else:
+            if cromossomo2[k + 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
+                cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k + 1])
+            if cromossomo2[k - 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
+                cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k - 1])
+
+    filho1 = Filho_CrossOver(Copia(cidades_com_todas_as_fronteiras))
+
+    return filho1
 
 
 def Filho_CrossOver(cidades):
@@ -105,11 +174,9 @@ def Copia(elemento):
 
 def Substring(individo1, individuo2):
     individuo_filho = [-1] * len(individo1)
-    print('Individuo', individo1)
-    print('Individuo2', individuo2)
-    cont = 0
+
     a = random.randint(0, len(individo1) - 1)
-    print('indice escolhido', a)
+
 
     if len(individuo_filho) % 2 == 0:
         string = individo1[a:a + int(len(individo1) / 2)]
@@ -240,6 +307,48 @@ def Substring(individo1, individuo2):
 
     print('Individuo Filho', individuo_filho)
 
+    return individuo_filho
+
+
+def Ranking_Linear(individuos_fitness):
+    # Este método me garante mais diversidade do que o método de seleção por torneio
+    organizados = {k: v for k, v in sorted(individuos_fitness.items(), key=lambda item: item[1])}
+
+    selecionados = []
+
+    ranking = {}
+
+    k = len(organizados)
+
+    for i in organizados:
+        ranking[i] = k
+        k -= 1
+
+    ranking = {k: v for k, v in sorted(ranking.items(), key=lambda item: item[1])}
+
+    zeta_negativo = 0.1
+    sum0 = 0
+    sum = []
+    zeta_positivo = 2 - zeta_negativo
+    indiviudos_j = []
+    for i in ranking:
+        probabilidade_i = (zeta_negativo / len(ranking)) +( (zeta_positivo - zeta_negativo) * (
+                (ranking[i] - 1) / (len(ranking) - 1)))
+        sum_i = sum0 + probabilidade_i
+        sum.append(sum_i)
+        sum0 = sum_i
+        indiviudos_j.append(i)
+
+    while len(selecionados) < len(ranking):
+        for i in range(len(sum)):
+            r = random.uniform(0, 1) * (i + 1)
+            if i != 0:
+                if r >= sum[i - 1] and r < sum[i]:
+                    selecionados.append(indiviudos_j[i])
+
+    print('Ranking', selecionados)
+
+    return selecionados
 
 class Genetico(object):
 
@@ -259,7 +368,7 @@ class Genetico(object):
         # Definindo os possiveis cromossomos dada a uma sequência de clusters
         aux = []
 
-        for i in range(5):
+        for i in range(10):
             random.shuffle(keys_cluster)
 
             for i in keys_cluster:
@@ -410,7 +519,6 @@ class Genetico(object):
             aux = []
             indice = []
             indice_intersseccao = []
-            aux2 = []
             aux3 = []
             aux4 = []
 
@@ -466,51 +574,23 @@ class Genetico(object):
                                        individuos_nos=self.__individuos_nos,
                                        individuos_clusters=self.__individuos_clusters)
 
-        melhor_fitness = self.__individuos_fitness[0]
+    def Selecao(self):
 
-        for i in self.__individuos_fitness:
-            if self.__individuos_fitness[i] < melhor_fitness:
-                melhor_fitness = self.__individuos_fitness[i]
+        # selecionados = Torneio(individuos_clusters=self.__individuos_clusters,
+        #                        individuos_fitness=self.__individuos_fitness)
+        #
+        # print('Torneio', selecionados)
 
-    def Selecao_Torneio(self):
-        selecionados = []
-
-        tamanho_individuos = len(list(self.__individuos_clusters.keys()))
-
-        j = 0
-        for i in range(tamanho_individuos):
-            pai = 0
-            individuo1 = int(random.uniform(0, 1) * (tamanho_individuos - 1))
-            individuo2 = int(random.uniform(0, 1) * (tamanho_individuos - 1))
-            sorteio = random.uniform(0, 1)
-            k = 0.8
-
-            if sorteio < k:
-
-                if self.__individuos_fitness[individuo1] < self.__individuos_fitness[individuo2]:
-                    pai = individuo1
-                else:
-                    pai = individuo2
-
-            else:
-                if self.__individuos_fitness[individuo1] < self.__individuos_fitness[individuo2]:
-                    pai = individuo1
-
-                else:
-                    pai = individuo2
-
-            selecionados.append(pai)
-            j += 1
-
-        nao_selecionados = list(set(self.__individuos_clusters.keys()) - set(selecionados))
-        self.frequencia.Nao_selecionados(nao_selecionados, self.__individuos_nos, self.__individuos_fitness)
-        self.frequencia.Selecionados_Geracoes(set(selecionados), self.__individuos_nos, self.__individuos_fitness)
-
+        selecionados = Ranking_Linear(individuos_fitness=self.__individuos_fitness)
+        # nao_selecionados = list(set(self.__individuos_clusters.keys()) - set(selecionados))
+        # self.frequencia.Nao_selecionados(nao_selecionados, self.__individuos_nos, self.__individuos_fitness)
+        # self.frequencia.Selecionados_Geracoes(set(selecionados), self.__individuos_nos, self.__individuos_fitness)
+        #
         return selecionados
 
     def CrossOver(self, selecionados, probabilidade_crossover):
 
-        print('Selecionados',selecionados)
+        print('Selecionados', selecionados)
         individuos_filho_cluster = {}
 
         for o in range(len(selecionados)):
@@ -532,43 +612,7 @@ class Genetico(object):
             sorteio = random.uniform(0, 1)
 
             if sorteio < probabilidade_crossover:
-                # # Determinandos as fronteiras existentes entre uma 'cidade' a outra
-                # cidades_com_todas_as_fronteiras = {}
-                #
-                # for i in range(len(cromossomo1)):
-                #     cidades_com_todas_as_fronteiras[cromossomo1[i]] = []
-                #
-                #     if i == 0:
-                #         cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i + 1])
-                #     elif i == len(cromossomo1) - 1:
-                #         cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i - 1])
-                #     else:
-                #         cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i + 1])
-                #         cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo1[i - 1])
-                #
-                #     k = -1
-                #     for j in range(len(cromossomo2)):
-                #         if cromossomo1[i] == cromossomo2[j]:
-                #             k = j
-                #
-                #     if k == 0:
-                #         if cromossomo2[k + 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
-                #             cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k + 1])
-                #     elif k == len(cromossomo1) - 1:
-                #         if cromossomo2[k - 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
-                #             cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k - 1])
-                #     else:
-                #         if cromossomo2[k + 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
-                #             cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k + 1])
-                #         if cromossomo2[k - 1] not in cidades_com_todas_as_fronteiras[cromossomo1[i]]:
-                #             cidades_com_todas_as_fronteiras[cromossomo1[i]].append(cromossomo2[k - 1])
-                #
-                # filho1 = Filho_CrossOver(Copia(cidades_com_todas_as_fronteiras))
-                # # filho2=Filho_CrossOver(Copia(cidades_com_todas_as_fronteiras))
-                #
-                # individuos_filho_cluster[o] = filho1
-
-                Substring(cromossomo1, cromossomo2)
+                individuos_filho_cluster[o] = Substring(cromossomo1, cromossomo2)
 
             else:
                 escolha = [pai1, pai2]
