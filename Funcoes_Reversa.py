@@ -441,9 +441,15 @@ def Uptade(S, ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, 
                 if cluster[i] == []:
                     cluster_vazios += 1
 
-            LimD = int((len(P) - len(Q)) / cluster_vazios)
+            cluster_cheios = len(cluster) - cluster_vazios
 
-            Distribuição_Media_Cluster = int(LimD / cluster_vazios)
+            if cluster_vazios > cluster_cheios:
+                LimD = int((len(P) - len(Q)) / cluster_vazios)
+                Distribuição_Media_Cluster = int(LimD / cluster_vazios)
+            else:
+                LimD = int((len(P) - len(Q)) / cluster_cheios)
+                Distribuição_Media_Cluster = int(LimD / cluster_cheios)
+
             print('LimD', LimD)
             print('Distribuiçao Media', Distribuição_Media_Cluster)
             chave = len(nos_do_clusters)

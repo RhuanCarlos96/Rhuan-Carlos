@@ -359,7 +359,8 @@ class Genetico(object):
         self.__individuos_fitness = {}
         self.__individuos_clusters = {}
         self.__individuos_nos = {}
-        self.frequencia = frequencia.Frequencia()
+        self.__frequencia = frequencia.Frequencia()
+        self.__selecionados = []
 
     def Populacao_Inicial(self, tamanho_inicial):
         keys_cluster = self.__entrada.Cluster().keys()
@@ -368,7 +369,7 @@ class Genetico(object):
         # Definindo os possiveis cromossomos dada a uma sequência de clusters
         aux = []
 
-        for i in range(10):
+        for i in range(5):
             random.shuffle(keys_cluster)
 
             for i in keys_cluster:
@@ -478,8 +479,6 @@ class Genetico(object):
         aux4 = []
 
         for i in cromossomos_interseccoes_sem_repeticoes:
-            aux2 = i
-
             for j in range(len(i)):
                 aux.append(len(self.__entrada.Inteseccao()[i[j]]))
 
@@ -526,22 +525,18 @@ class Genetico(object):
         # cromossomo de clusters seja representado por mais de uma sequência de cromossomos de nos.Tenho que definir um
         # no unico para a chave
 
-        aux = []
         aux2 = []
         cromossomo_nos = []
         self.__cromossomo_nos = []
         for p in range(len(cromossomo_de_nos_final)):
-
             for c in cromossomo_de_nos_final[p]:
                 aux = self.__entrada.Chaves()[c]
                 if len(aux) == 1:
                     aux2.append(aux[0])
-
                 else:
                     aux2.append(random.choice(aux))
 
             self.__cromossomo_nos.append(aux2)
-            aux = []
             aux2 = []
 
     # Calculando o fitness da função, porém primeiro eu separo os individuos em chaves:
@@ -570,7 +565,7 @@ class Genetico(object):
             self.__individuos_fitness[p] = fitness
             p += 1
 
-        self.frequencia.Piores_Fitness(individuos_fitness=self.__individuos_fitness,
+        self.__frequencia.Piores_Fitness(individuos_fitness=self.__individuos_fitness,
                                        individuos_nos=self.__individuos_nos,
                                        individuos_clusters=self.__individuos_clusters)
 
@@ -581,28 +576,27 @@ class Genetico(object):
         #
         # print('Torneio', selecionados)
 
-        selecionados = Ranking_Linear(individuos_fitness=self.__individuos_fitness)
+        self.__selecionados = Ranking_Linear(individuos_fitness=self.__individuos_fitness)
         # nao_selecionados = list(set(self.__individuos_clusters.keys()) - set(selecionados))
         # self.frequencia.Nao_selecionados(nao_selecionados, self.__individuos_nos, self.__individuos_fitness)
         # self.frequencia.Selecionados_Geracoes(set(selecionados), self.__individuos_nos, self.__individuos_fitness)
-        #
-        return selecionados
 
-    def CrossOver(self, selecionados, probabilidade_crossover):
 
-        print('Selecionados', selecionados)
+    def CrossOver(self, probabilidade_crossover):
+
+        print('Selecionados', self.__selecionados)
         individuos_filho_cluster = {}
 
-        for o in range(len(selecionados)):
+        for o in range(len(self.__selecionados)):
             # Determinando o primeiro pai de forma aleatória dos individuos selecionados
-            individuo1 = random.choice(selecionados)
+            individuo1 = random.choice(self.__selecionados)
             pai1 = individuo1
             # Determinando o segundo pai de forma aleatoria dos individuos selecionados
-            individuo2 = random.choice(selecionados)
+            individuo2 = random.choice(self.__selecionados)
             # Garantindo que os pais não serão os mesmos para que garanta um cruzamento entre individuo
             # com cromossomos diferentes.
             while individuo2 == individuo1:
-                individuo2 = random.choice(selecionados)
+                individuo2 = random.choice(self.__selecionados)
 
             pai2 = individuo2
 

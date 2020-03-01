@@ -9,7 +9,7 @@ def main():
     # arquivo.Lendo_Arquivos()
 
     with open(
-            "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoE\\L6-1.txt",
+            "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoA\\L20-2.txt",
             "r") as archive:
         tarefas, ferramentas, capacidade, matrix = opter.instancias(
             archive)  # optendo todos os valores de instâncias recolhidas em um determinado arquivo
@@ -39,8 +39,8 @@ def main():
 
     genetico.Fitness()
 
-    selecionados = genetico.Selecao()
-    genetico.CrossOver(selecionados=selecionados, probabilidade_crossover=0.7)
+    genetico.Selecao()
+    genetico.CrossOver(probabilidade_crossover=0.7)
 
 
 if __name__ == '__main__':
