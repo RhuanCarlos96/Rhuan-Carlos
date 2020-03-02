@@ -369,8 +369,6 @@ def Ranking_Exponecial(individuos_fitness):
     sum = []
     indiviudos_j = []
 
-    print(ranking)
-
     for i in ranking:
         probabilidade_i = ((c-1)/((c**len(individuos_fitness))-1))*(c**((len(individuos_fitness))-ranking[i]))
         sum_i = sum0 + probabilidade_i
@@ -378,7 +376,6 @@ def Ranking_Exponecial(individuos_fitness):
         sum0 = sum_i
         indiviudos_j.append(i)
 
-    print(sum)
 
     while len(selecionados) < len(ranking):
         for i in range(len(sum)):
@@ -390,7 +387,6 @@ def Ranking_Exponecial(individuos_fitness):
                 if r >= 0 and r < sum[i]:
                     selecionados.append(indiviudos_j[i])
 
-    print(selecionados)
 
     return selecionados
 
