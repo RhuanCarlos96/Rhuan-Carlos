@@ -9,7 +9,7 @@ def main():
     # arquivo.Lendo_Arquivos()
 
     with open(
-            "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoD\\L20-1.txt",
+            "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoA\\L2-1.txt",
             "r") as archive:
         tarefas, ferramentas, capacidade, matrix = opter.instancias(
             archive)  # optendo todos os valores de instâncias recolhidas em um determinado arquivo
@@ -34,7 +34,7 @@ def main():
     possiveis_cromossomos = genetico.Possiveis_Cromossomos_Inciais()
     i = 0
     print('Executando...')
-    while i < 3:
+    while i < 1:
         if i == 0:
             genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
             genetico.Individuos_Cluster()
@@ -46,7 +46,6 @@ def main():
             genetico.Individuos_Nos()
 
         genetico.Fitness()
-        print(genetico.GetFitness())
         genetico.Selecao()
         individuos_filhos_clusters = genetico.CrossOver(probabilidade_crossover=0.65)
         genetico.Mutation_Swap(probabilidade_mutação=0.1, individuo_filho_cluster=individuos_filhos_clusters)

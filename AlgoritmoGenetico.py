@@ -323,7 +323,7 @@ def Ranking_Linear(individuos_fitness):
 
     ranking = {k: v for k, v in sorted(ranking.items(), key=lambda item: item[1])}
 
-    zeta_negativo = 0.01
+    zeta_negativo = 0.1
     sum0 = 0
     sum = []
     zeta_positivo = 2 - zeta_negativo
@@ -348,6 +348,51 @@ def Ranking_Linear(individuos_fitness):
                     selecionados.append(indiviudos_j[i])
 
     return selecionados
+def Ranking_Exponecial(individuos_fitness):
+    # Este método me garante mais diversidade do que o método de seleção por torneio
+    organizados = {k: v for k, v in sorted(individuos_fitness.items(), key=lambda item: item[1])}
+
+    selecionados = []
+
+    ranking = {}
+
+    k = len(organizados)
+
+    for i in organizados:
+        ranking[i] = k
+        k -= 1
+
+    ranking = {k: v for k, v in sorted(ranking.items(), key=lambda item: item[1])}
+
+    c=0.97
+    sum0 = 0
+    sum = []
+    indiviudos_j = []
+
+    print(ranking)
+
+    for i in ranking:
+        probabilidade_i = ((c-1)/((c**len(individuos_fitness))-1))*(c**((len(individuos_fitness))-ranking[i]))
+        sum_i = sum0 + probabilidade_i
+        sum.append(sum_i)
+        sum0 = sum_i
+        indiviudos_j.append(i)
+
+    print(sum)
+
+    while len(selecionados) < len(ranking):
+        for i in range(len(sum)):
+            r = random.uniform(0, 1)
+            if i != 0:
+                if r >= sum[i - 1] and r < sum[i]:
+                    selecionados.append(indiviudos_j[i])
+            else:
+                if r >= 0 and r < sum[i]:
+                    selecionados.append(indiviudos_j[i])
+
+    print(selecionados)
+
+    return selecionados
 
 
 class Genetico(object):
@@ -369,7 +414,7 @@ class Genetico(object):
         # Definindo os possiveis cromossomos dada a uma sequência de clusters
         aux = []
 
-        for i in range(20):
+        for i in range(30):
             random.shuffle(keys_cluster)
 
             for i in keys_cluster:
@@ -573,7 +618,8 @@ class Genetico(object):
         #
         # print('Torneio', selecionados)
 
-        self.__selecionados = Ranking_Linear(individuos_fitness=self.__individuos_fitness)
+        # self.__selecionados = Ranking_Linear(individuos_fitness=self.__individuos_fitness)
+        self.__selecionados = Ranking_Exponecial(individuos_fitness=self.__individuos_fitness)
         # nao_selecionados = list(set(self.__individuos_clusters.keys()) - set(selecionados))
         # self.frequencia.Nao_selecionados(nao_selecionados, self.__individuos_nos, self.__individuos_fitness)
         # self.frequencia.Selecionados_Geracoes(set(selecionados), self.__individuos_nos, self.__individuos_fitness)
