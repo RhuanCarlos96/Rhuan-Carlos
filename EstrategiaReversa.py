@@ -9,7 +9,7 @@ def main():
     # arquivo.Lendo_Arquivos()
 
     with open(
-            "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoA\\L20-2.txt",
+            "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoD\\L20-1.txt",
             "r") as archive:
         tarefas, ferramentas, capacidade, matrix = opter.instancias(
             archive)  # optendo todos os valores de instâncias recolhidas em um determinado arquivo
@@ -32,15 +32,27 @@ def main():
     # Definindo os possiveis cromossomos clusters
 
     possiveis_cromossomos = genetico.Possiveis_Cromossomos_Inciais()
+    i = 0
+    print('Executando...')
+    while i < 3:
+        if i == 0:
+            genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
+            genetico.Individuos_Cluster()
+            genetico.Individuos_Nos()
 
-    genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
-    genetico.Individuos_Cluster()
-    genetico.Individuos_Nos()
+        else:
+            possiveis_cromossomos = genetico.Possiveis_Cromossomos_Entre_Geracoes()
+            genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
+            genetico.Individuos_Nos()
 
-    genetico.Fitness()
+        genetico.Fitness()
+        print(genetico.GetFitness())
+        genetico.Selecao()
+        individuos_filhos_clusters = genetico.CrossOver(probabilidade_crossover=0.65)
+        genetico.Mutation_Swap(probabilidade_mutação=0.1, individuo_filho_cluster=individuos_filhos_clusters)
+        i += 1
 
-    genetico.Selecao()
-    genetico.CrossOver(probabilidade_crossover=0.7)
+    print('Fim da execução!!')
 
 
 if __name__ == '__main__':

@@ -202,12 +202,13 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
             if k < len(aux):
                 f_linha[aux[k]] = i
                 k += 1
-    print('Z : ',f_linha)
+    print('Z : ', f_linha)
     # Preenchendo o restante do no com conjunto de ferramentas com maior interssecacao com a uniao de f_i e f_j.
     tarefas_restantes = list(tarefas_restantes)
     maior_inteseccao = []
 
-    print('\n3º passo - Preencnhendo os no com as ferramentas das ferramentas restantes com maior intersecção com Ti U Tj')
+    print(
+        '\n3º passo - Preencnhendo os no com as ferramentas das ferramentas restantes com maior intersecção com Ti U Tj')
     for i in tarefas_restantes:
         f = set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [i]))
         maior_inteseccao.append(len(f.intersection(conjunto_uniao)))
@@ -425,78 +426,122 @@ def Uptade(S, ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, 
 
         for q in Q:
             for s in cluster:
-                if len(set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [s])) &
-                       (set(q))) == len(set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [s]))):
+                if (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [s])) &
+                    (set(q))) == set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [s])):
                     if Calculando_a_Chave(q) not in cluster[s]:
                         cluster[s].append(Calculando_a_Chave(q))
 
     else:
         if P != []:
-            # Calculando o limite dinamico, ou seja, quando nos podem existir no espaço de solução no GTSP
-            indice = list(range(0, len(P)))
+            if len(P) > 100:
+                # Calculando o limite dinamico, ou seja, quando nos podem existir no espaço de solução no GTSP
+                indice = list(range(0, len(P)))
 
-            cluster_vazios = 0
+                cluster_vazios = 0
 
-            for i in cluster:
-                if cluster[i] == []:
-                    cluster_vazios += 1
+                for i in cluster:
+                    if cluster[i] == []:
+                        cluster_vazios += 1
 
-            cluster_cheios = len(cluster) - cluster_vazios
+                cluster_cheios = len(cluster) - cluster_vazios
 
-            if cluster_vazios > cluster_cheios:
-                LimD = int((len(P) - len(Q)) / cluster_vazios)
-                Distribuição_Media_Cluster = int(LimD / cluster_vazios)
-            else:
-                LimD = int((len(P) - len(Q)) / cluster_cheios)
-                Distribuição_Media_Cluster = int(LimD / cluster_cheios)
+                if cluster_vazios > cluster_cheios:
+                    LimD = int((len(P) - len(Q)) / cluster_vazios)
+                    Distribuição_Media_Cluster = int(LimD / cluster_vazios)
+                else:
+                    LimD = int((len(P) - len(Q)) / cluster_cheios)
+                    Distribuição_Media_Cluster = int(LimD / cluster_cheios)
 
-            print('LimD', LimD)
-            print('Distribuiçao Media', Distribuição_Media_Cluster)
-            chave = len(nos_do_clusters)
-            indice_intesseccao = []
-            cluster_intersseccoes = []
-            for p in range(len(P)):
-                for c in cluster:
-                    if (len(set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])) &
-                            (set(P[p]))) == len(
-                        set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])))):
-                        cluster_intersseccoes.append(c)
-
-                if len(cluster_intersseccoes) >= 2:
-                    indice_intesseccao.append(p)
-                    for k in cluster_intersseccoes:
-                        if (len(set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [k])) &
-                                (set(P[p]))) == len(
-                            set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [k])))):
-                            if (Calculando_a_Chave(P[p]) not in cluster[k]) and (
-                                    len(cluster[k]) < Distribuição_Media_Cluster):
-                                cluster[k].append(Calculando_a_Chave(P[p]))
-                                if Calculando_a_Chave(P[p]) not in list(chaves_dos_nos.keys()):
-                                    nos_do_clusters[chave] = P[p]
-                                    chaves_dos_nos[Calculando_a_Chave(P[p])] = []
-                                    chaves_dos_nos[Calculando_a_Chave(P[p])].append(chave)
-                                    chave += 1
-
+                print('LimD', LimD)
+                print('Distribuiçao Media', Distribuição_Media_Cluster)
+                chave = len(nos_do_clusters)
+                indice_intesseccao = []
                 cluster_intersseccoes = []
+                for p in range(len(P)):
+                    for c in cluster:
+                        if (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])) &
+                            (set(P[p]))) == set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])):
+                            cluster_intersseccoes.append(c)
 
-            indice = list(set(indice) - set(indice_intesseccao))
-            random.shuffle(indice)
-            P_novo = []
-            chave = len(nos_do_clusters)
-            for i in indice:
-                P_novo.append(P[i])
-            for p in P_novo:
-                for c in cluster:
-                    if (len(set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])) &
-                            (set(p))) == len(
-                        set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])))):
-                        if (Calculando_a_Chave(p) not in cluster[c]) and (len(cluster[c]) < Distribuição_Media_Cluster):
-                            cluster[c].append(Calculando_a_Chave(p))
-                            if p not in list(chaves_dos_nos.keys()):
-                                nos_do_clusters[chave] = Decodificando_Chave(p)
-                                chaves_dos_nos[Calculando_a_Chave(p)] = []
-                                chaves_dos_nos[Calculando_a_Chave(p)].append(chave)
-                                chave += 1
+                    if len(cluster_intersseccoes) >= 2:
+                        indice_intesseccao.append(p)
+                        for k in cluster_intersseccoes:
+                            if (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [k])) &
+                                (set(P[p]))) == set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [k])):
+                                if (Calculando_a_Chave(P[p]) not in cluster[k]) and (
+                                        len(cluster[k]) < Distribuição_Media_Cluster):
+                                    cluster[k].append(Calculando_a_Chave(P[p]))
+                                    if Calculando_a_Chave(P[p]) not in list(chaves_dos_nos.keys()):
+                                        nos_do_clusters[chave] = P[p]
+                                        chaves_dos_nos[Calculando_a_Chave(P[p])] = []
+                                        chaves_dos_nos[Calculando_a_Chave(P[p])].append(chave)
+                                        chave += 1
+
+                    cluster_intersseccoes = []
+
+                indice = list(set(indice) - set(indice_intesseccao))
+                random.shuffle(indice)
+                P_novo = []
+                chave = len(nos_do_clusters)
+                for i in indice:
+                    P_novo.append(P[i])
+                for p in P_novo:
+                    for c in cluster:
+                        if (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])) &
+                            (set(p))) == set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])):
+                            if (Calculando_a_Chave(p) not in cluster[c]) and (
+                                    len(cluster[c]) < Distribuição_Media_Cluster):
+                                cluster[c].append(Calculando_a_Chave(p))
+                                if p not in list(chaves_dos_nos.keys()):
+                                    nos_do_clusters[chave] = Decodificando_Chave(p)
+                                    chaves_dos_nos[Calculando_a_Chave(p)] = []
+                                    chaves_dos_nos[Calculando_a_Chave(p)].append(chave)
+                                    chave += 1
+            else:
+                # Calculando o limite dinamico, ou seja, quando nos podem existir no espaço de solução no GTSP
+                indice = list(range(0, len(P)))
+                chave = len(nos_do_clusters)
+                indice_intesseccao = []
+                cluster_intersseccoes = []
+                for p in range(len(P)):
+                    for c in cluster:
+                        if (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])) &
+                            (set(P[p]))) == (
+                                set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c]))):
+                            cluster_intersseccoes.append(c)
+
+                    if len(cluster_intersseccoes) >= 2:
+                        indice_intesseccao.append(p)
+                        for k in cluster_intersseccoes:
+                            if (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [k])) &
+                                (set(P[p]))) == (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [k]))):
+                                if (Calculando_a_Chave(P[p]) not in cluster[k]):
+                                    cluster[k].append(Calculando_a_Chave(P[p]))
+                                    if Calculando_a_Chave(P[p]) not in list(chaves_dos_nos.keys()):
+                                        nos_do_clusters[chave] = P[p]
+                                        chaves_dos_nos[Calculando_a_Chave(P[p])] = []
+                                        chaves_dos_nos[Calculando_a_Chave(P[p])].append(chave)
+                                        chave += 1
+
+                    cluster_intersseccoes = []
+
+                indice = list(set(indice) - set(indice_intesseccao))
+                random.shuffle(indice)
+                P_novo = []
+                chave = len(nos_do_clusters)
+                for i in indice:
+                    P_novo.append(P[i])
+                for p in P_novo:
+                    for c in cluster:
+                        if (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])) &
+                            (set(p))) == (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c]))):
+                            if (Calculando_a_Chave(p) not in cluster[c]):
+                                cluster[c].append(Calculando_a_Chave(p))
+                                if p not in list(chaves_dos_nos.keys()):
+                                    nos_do_clusters[chave] = Decodificando_Chave(p)
+                                    chaves_dos_nos[Calculando_a_Chave(p)] = []
+                                    chaves_dos_nos[Calculando_a_Chave(p)].append(chave)
+                                    chave += 1
 
     return nos_do_clusters, chaves_dos_nos, cluster
 

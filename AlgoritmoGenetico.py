@@ -177,7 +177,6 @@ def Substring(individo1, individuo2):
 
     a = random.randint(0, len(individo1) - 1)
 
-
     if len(individuo_filho) % 2 == 0:
         string = individo1[a:a + int(len(individo1) / 2)]
 
@@ -305,8 +304,6 @@ def Substring(individo1, individuo2):
                                 q_filho += 1
                 cont += 1
 
-    print('Individuo Filho', individuo_filho)
-
     return individuo_filho
 
 
@@ -326,13 +323,14 @@ def Ranking_Linear(individuos_fitness):
 
     ranking = {k: v for k, v in sorted(ranking.items(), key=lambda item: item[1])}
 
-    zeta_negativo = 0.1
+    zeta_negativo = 0.01
     sum0 = 0
     sum = []
     zeta_positivo = 2 - zeta_negativo
     indiviudos_j = []
+
     for i in ranking:
-        probabilidade_i = (zeta_negativo / len(ranking)) +( (zeta_positivo - zeta_negativo) * (
+        probabilidade_i = (zeta_negativo / len(ranking)) + ((zeta_positivo - zeta_negativo) * (
                 (ranking[i] - 1) / (len(ranking) - 1)))
         sum_i = sum0 + probabilidade_i
         sum.append(sum_i)
@@ -341,14 +339,16 @@ def Ranking_Linear(individuos_fitness):
 
     while len(selecionados) < len(ranking):
         for i in range(len(sum)):
-            r = random.uniform(0, 1) * (i + 1)
+            r = random.uniform(0, sum[len(sum) - 1])
             if i != 0:
                 if r >= sum[i - 1] and r < sum[i]:
                     selecionados.append(indiviudos_j[i])
-
-    print('Ranking', selecionados)
+            else:
+                if r >= 0 and r < sum[i]:
+                    selecionados.append(indiviudos_j[i])
 
     return selecionados
+
 
 class Genetico(object):
 
@@ -369,7 +369,7 @@ class Genetico(object):
         # Definindo os possiveis cromossomos dada a uma sequência de clusters
         aux = []
 
-        for i in range(5):
+        for i in range(20):
             random.shuffle(keys_cluster)
 
             for i in keys_cluster:
@@ -397,8 +397,6 @@ class Genetico(object):
 
             prossiveis_cromossomos_nos.append(aux2)
             aux2 = []
-
-        print('\n')
 
         return prossiveis_cromossomos_nos
 
@@ -465,7 +463,6 @@ class Genetico(object):
             indice = []
             aux = []
             indice_intersseccao = []
-            aux2 = []
 
         # 1.2 - Retirar nos que fazem referencia a mais de um cluster para um mesmo individuo de cluster:
         indice = []
@@ -566,8 +563,8 @@ class Genetico(object):
             p += 1
 
         self.__frequencia.Piores_Fitness(individuos_fitness=self.__individuos_fitness,
-                                       individuos_nos=self.__individuos_nos,
-                                       individuos_clusters=self.__individuos_clusters)
+                                         individuos_nos=self.__individuos_nos,
+                                         individuos_clusters=self.__individuos_clusters)
 
     def Selecao(self):
 
@@ -581,10 +578,8 @@ class Genetico(object):
         # self.frequencia.Nao_selecionados(nao_selecionados, self.__individuos_nos, self.__individuos_fitness)
         # self.frequencia.Selecionados_Geracoes(set(selecionados), self.__individuos_nos, self.__individuos_fitness)
 
-
     def CrossOver(self, probabilidade_crossover):
 
-        print('Selecionados', self.__selecionados)
         individuos_filho_cluster = {}
 
         for o in range(len(self.__selecionados)):
@@ -636,7 +631,6 @@ class Genetico(object):
         self.__individuos_clusters = individuo_filho_cluster
 
     def Get_Individuos_Clusters(self):
-
         for i in self.__individuos_clusters:
             print(self.__individuos_clusters[i])
 
@@ -645,3 +639,6 @@ class Genetico(object):
 
     def GetInterseccao(self):
         print(self.__entrada.Inteseccao())
+
+    def GetFitness(self):
+        return self.__individuos_fitness
