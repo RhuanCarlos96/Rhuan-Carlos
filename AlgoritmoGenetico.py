@@ -428,10 +428,10 @@ class Genetico(object):
         # Gerando os possiveis soluções de nos de modo aleatorio
         for cromossomo in self.__cromossomo_cluster:
             for i in cromossomo:
-                aux = self.__entrada.Cluster()[i]
-                a = random.choice(aux)
+                #aux = self.__entrada.Cluster()[i]
+                a = random.choice(self.__entrada.Cluster()[i])
                 if a in aux2:
-                    a = random.choice(aux)
+                    a = random.choice(self.__entrada.Cluster()[i])
                     aux2.append(a)  # escolhendo aleatoriamente um no de acordo com a chave
                 else:
                     aux2.append(a)
@@ -465,11 +465,11 @@ class Genetico(object):
 
         # 1)Como existe interseccções entre os clusters devemos verificar os nos que participam mais de um cluster e eliminar
         # os outros que pertencem a unico cluster, na qual este no pode representar este nos na distribuição de clusters.
-        # Outro modo é permitir uma unica interessecção se o nó representa unicamente um cluster que os demais nos não
+        # Outro modo é permitir uma unica interessecção se o nó representa dois ou mais cluster que os demais nos não
         # fazem interessecção
 
         # 1.1)Primeiro eliminar nos que pertencem as mesmas intersecções, se houver
-        #   1.1.1 Determinando os indices na qual este nos pertencendes se localizam:
+        #   1.1.1 Determinando os indices na qual este nos se localizam:
 
         indice = []
         aux = []
@@ -477,7 +477,6 @@ class Genetico(object):
         cromossomos_interseccoes_sem_repeticoes = []
         for i in prossiveis_cromossomos_nos:
             aux2 = i
-
             for j in range(len(i)):
                 aux.append(self.__entrada.Inteseccao()[i[j]])
                 for k in range(len(i)):
