@@ -348,6 +348,8 @@ def Ranking_Linear(individuos_fitness):
                     selecionados.append(indiviudos_j[i])
 
     return selecionados
+
+
 def Ranking_Exponecial(individuos_fitness):
     # Este método me garante mais diversidade do que o método de seleção por torneio
     organizados = {k: v for k, v in sorted(individuos_fitness.items(), key=lambda item: item[1])}
@@ -364,18 +366,18 @@ def Ranking_Exponecial(individuos_fitness):
 
     ranking = {k: v for k, v in sorted(ranking.items(), key=lambda item: item[1])}
 
-    c=0.97
+    c = 0.97
     sum0 = 0
     sum = []
     indiviudos_j = []
 
     for i in ranking:
-        probabilidade_i = ((c-1)/((c**len(individuos_fitness))-1))*(c**((len(individuos_fitness))-ranking[i]))
+        probabilidade_i = ((c - 1) / ((c ** len(individuos_fitness)) - 1)) * (
+                c ** ((len(individuos_fitness)) - ranking[i]))
         sum_i = sum0 + probabilidade_i
         sum.append(sum_i)
         sum0 = sum_i
         indiviudos_j.append(i)
-
 
     while len(selecionados) < len(ranking):
         for i in range(len(sum)):
@@ -387,8 +389,61 @@ def Ranking_Exponecial(individuos_fitness):
                 if r >= 0 and r < sum[i]:
                     selecionados.append(indiviudos_j[i])
 
-
     return selecionados
+
+
+def Lista_Intersseccao(possivel, entrada):
+    aux = []
+    for j in possivel:
+        aux.append(entrada.Inteseccao()[j])
+
+    return aux
+
+
+def Intersseccao_Repetidas(lista_intersseccao):
+    intersseccao_repetidas = []
+    for i in range(len(lista_intersseccao) - 1):
+        if lista_intersseccao[i] == lista_intersseccao[i + 1]:
+            intersseccao_repetidas.append(i + 1)
+
+    return intersseccao_repetidas
+
+
+def Eliminar_Repetidos(copia, repetidas):
+    nova_copia = Copia(copia)
+
+    for i in repetidas:
+        copia.remove(nova_copia[i])
+
+    return copia
+
+
+def Unitarios_a_ser_Excluidos(lista_intersseccao):
+    interssecoes_tamanho_maior_2 = []
+    for i in range(len(lista_intersseccao)):
+        if len(lista_intersseccao[i]) >= 2:
+            interssecoes_tamanho_maior_2.append(i)
+    excluir_unitarios = []
+    for i in interssecoes_tamanho_maior_2:
+        if i == 0:
+            if set(lista_intersseccao[i + 1]).issubset(set(lista_intersseccao[i])) and len(lista_intersseccao[i]) > len(
+                    lista_intersseccao[i + 1]):
+                excluir_unitarios.append(i + 1)
+        else:
+            if i != len(lista_intersseccao) - 1:
+                if set(lista_intersseccao[i + 1]).issubset(set(lista_intersseccao[i])) and len(
+                        lista_intersseccao[i]) > len(lista_intersseccao[i + 1]):
+                    excluir_unitarios.append(i + 1)
+                if set(lista_intersseccao[i - 1]).issubset(set(lista_intersseccao[i])) and len(
+                        lista_intersseccao[i]) > len(lista_intersseccao[i - 1]):
+                    excluir_unitarios.append(i - 1)
+            else:
+                if set(lista_intersseccao[i - 1]).issubset(set(lista_intersseccao[i])) and len(
+                        lista_intersseccao[i]) > len(lista_intersseccao[i - 1]):
+                    excluir_unitarios.append(i - 1)
+
+
+    return set(excluir_unitarios)
 
 
 class Genetico(object):
@@ -410,7 +465,7 @@ class Genetico(object):
         # Definindo os possiveis cromossomos dada a uma sequência de clusters
         aux = []
 
-        for i in range(30):
+        for i in range(10):
             random.shuffle(keys_cluster)
 
             for i in keys_cluster:
@@ -428,7 +483,6 @@ class Genetico(object):
         # Gerando os possiveis soluções de nos de modo aleatorio
         for cromossomo in self.__cromossomo_cluster:
             for i in cromossomo:
-                #aux = self.__entrada.Cluster()[i]
                 a = random.choice(self.__entrada.Cluster()[i])
                 if a in aux2:
                     a = random.choice(self.__entrada.Cluster()[i])
@@ -448,10 +502,9 @@ class Genetico(object):
         # Gerando os possiveis soluções de nos de modo aleatorio
         for individuo in self.__individuos_clusters:
             for i in self.__individuos_clusters[individuo]:
-                aux = self.__entrada.Cluster()[i]
-                a = random.choice(aux)
+                a = random.choice(self.__entrada.Cluster()[i])
                 if a in aux2:
-                    a = random.choice(aux)
+                    a = random.choice(self.__entrada.Cluster()[i])
                     aux2.append(a)  # escolhendo aleatoriamente um no de acordo com a chave
                 else:
                     aux2.append(a)
@@ -462,7 +515,7 @@ class Genetico(object):
         return prossiveis_cromossomos_nos
 
     def Tratando_os_Cromossomos(self, prossiveis_cromossomos_nos):
-
+        print('Tratando os cromossomos :')
         # 1)Como existe interseccções entre os clusters devemos verificar os nos que participam mais de um cluster e eliminar
         # os outros que pertencem a unico cluster, na qual este no pode representar este nos na distribuição de clusters.
         # Outro modo é permitir uma unica interessecção se o nó representa dois ou mais cluster que os demais nos não
@@ -471,110 +524,146 @@ class Genetico(object):
         # 1.1)Primeiro eliminar nos que pertencem as mesmas intersecções, se houver
         #   1.1.1 Determinando os indices na qual este nos se localizam:
 
-        indice = []
-        aux = []
-        indice_intersseccao = []
-        cromossomos_interseccoes_sem_repeticoes = []
-        for i in prossiveis_cromossomos_nos:
-            aux2 = i
-            for j in range(len(i)):
-                aux.append(self.__entrada.Inteseccao()[i[j]])
-                for k in range(len(i)):
-                    if k != j:
-                        if self.__entrada.Inteseccao()[i[j]] == self.__entrada.Inteseccao()[i[k]]:
-                            if indice == []:
-                                indice.append(i[k])
-                                indice_intersseccao.append(self.__entrada.Inteseccao()[i[k]])
-                            else:
-                                if self.__entrada.Inteseccao()[i[k]] not in indice_intersseccao:
-                                    indice.append(i[k])
-                                    indice_intersseccao.append(self.__entrada.Inteseccao()[i[k]])
+        k = 0
+        for possivel in prossiveis_cromossomos_nos:
+            copia_possivel = Copia(possivel)
+            lista_intersseccao = Lista_Intersseccao(possivel, self.__entrada)
+            intersseccao_repetidas = Intersseccao_Repetidas(lista_intersseccao)
 
-            #   1.1.2 - Eliminando estes nos
+            if intersseccao_repetidas:
+                copia_possivel = Eliminar_Repetidos(copia_possivel, intersseccao_repetidas)
+                lista_intersseccao = Eliminar_Repetidos(lista_intersseccao, intersseccao_repetidas)
 
-            if indice != []:
-                for v in indice:
-                    aux2.remove(v)
+            print('Intersseccao', lista_intersseccao)
+            cromossomo = self.__cromossomo_cluster[k]
+            print('Individuo', cromossomo)
 
-                cromossomos_interseccoes_sem_repeticoes.append(aux2)
-            else:
-                cromossomos_interseccoes_sem_repeticoes.append(aux2)
+            # Determinar as maiores intersseccoes possui subconjuntos e se atendem a sequencia de tarefas:
+            # Maiores interseccoes:
+            unitarios = Unitarios_a_ser_Excluidos(lista_intersseccao)
 
-            indice = []
-            aux = []
-            indice_intersseccao = []
+            if unitarios:
+                lista_intersseccao = Eliminar_Repetidos(lista_intersseccao,unitarios)
+                copia_possivel = Eliminar_Repetidos(copia_possivel, unitarios)
 
-        # 1.2 - Retirar nos que fazem referencia a mais de um cluster para um mesmo individuo de cluster:
-        indice = []
-        aux = []
-        aux3 = []
-        cromossomo_de_nos_final = []
-        indice_intersseccao = []
-        keys_cluster = list(self.__entrada.Cluster().keys())
+            print('Intersseccao', lista_intersseccao, '\n')
 
-        c = set()
-        aux4 = []
+            intersseccao_repetidas = Intersseccao_Repetidas(lista_intersseccao)
+            if intersseccao_repetidas:
+                copia_possivel = Eliminar_Repetidos(copia_possivel, intersseccao_repetidas)
+                lista_intersseccao = Eliminar_Repetidos(lista_intersseccao, intersseccao_repetidas)
 
-        for i in cromossomos_interseccoes_sem_repeticoes:
-            for j in range(len(i)):
-                aux.append(len(self.__entrada.Inteseccao()[i[j]]))
+            print('Intersseccao', lista_intersseccao,'\n')
 
-            a = max(aux)
+            ##Excluir interssecoes que nao sunconjunto um do outro porém é um no que pode realizar tanto a tarefa(gene)
+            ##da seguinte
 
-            for j in range(len(i)):
-                if a == len(self.__entrada.Inteseccao()[i[j]]):
-                    indice.append(i[j])
-                    indice_intersseccao.append(self.__entrada.Inteseccao()[i[j]])
 
-            for b in indice_intersseccao:
-                if aux3 == []:
-                    c = set(keys_cluster) - set(b)
-                    aux3.append(list(c))
+            k += 1
 
-                else:
-                    c = c - set(b)
-                    aux3.append(list(c))
-
-            c = set(aux3[len(aux3) - 1])
-            tamanho_de_c = len(c)
-            for j in range(len(i)):
-                if i[j] not in indice:
-                    if c != {}:
-                        c = c - set(self.__entrada.Inteseccao()[i[j]])
-                        if len(c) != tamanho_de_c:
-                            indice.append(i[j])
-                            indice_intersseccao.append(self.__entrada.Inteseccao()[i[j]])
-                            tamanho_de_c = len(c)
-
-            for j in i:
-                if j in indice:
-                    aux4.append(j)
-
-            cromossomo_de_nos_final.append(aux4)
-
-            aux = []
-            indice = []
-            indice_intersseccao = []
-            aux3 = []
-            aux4 = []
-
-        # 2) Como existe nos que são representados pela mesma chave, então, existe a possibilidade de um
-        # cromossomo de clusters seja representado por mais de uma sequência de cromossomos de nos.Tenho que definir um
-        # no unico para a chave
-
-        aux2 = []
-        cromossomo_nos = []
-        self.__cromossomo_nos = []
-        for p in range(len(cromossomo_de_nos_final)):
-            for c in cromossomo_de_nos_final[p]:
-                aux = self.__entrada.Chaves()[c]
-                if len(aux) == 1:
-                    aux2.append(aux[0])
-                else:
-                    aux2.append(random.choice(aux))
-
-            self.__cromossomo_nos.append(aux2)
-            aux2 = []
+        # for i in prossiveis_cromossomos_nos:
+        #     print(i)
+        #
+        # for i in prossiveis_cromossomos_nos:
+        #     aux2 = i
+        #     for j in range(len(i)):
+        #         aux.append(self.__entrada.Inteseccao()[i[j]])
+        #         for k in range(len(i)):
+        #             if k != j:
+        #                 if self.__entrada.Inteseccao()[i[j]] == self.__entrada.Inteseccao()[i[k]]:
+        #                     if no == []:
+        #                         no.append(i[k])
+        #                         indice_intersseccao.append(self.__entrada.Inteseccao()[i[k]])
+        #
+        #                     else:
+        #                         if self.__entrada.Inteseccao()[i[k]] not in indice_intersseccao:
+        #                             no.append(i[k])
+        #                             indice_intersseccao.append(self.__entrada.Inteseccao()[i[k]])
+        #
+        #     #   1.1.2 - Eliminando estes nos
+        #
+        #     if no != []:
+        #         for v in no:
+        #             aux2.remove(v)
+        #         cromossomos_interseccoes_sem_repeticoes.append(aux2)
+        #     else:
+        #         cromossomos_interseccoes_sem_repeticoes.append(aux2)
+        #
+        #     no = []
+        #     aux = []
+        #     indice_intersseccao = []
+        #
+        # # 1.2 - Retirar nos que fazem referencia a mais de um cluster para um mesmo individuo de cluster:
+        # no = []
+        # aux = []
+        # aux3 = []
+        # cromossomo_de_nos_final = []
+        # indice_intersseccao = []
+        # keys_cluster = list(self.__entrada.Cluster().keys())
+        #
+        # c = set()
+        # aux4 = []
+        #
+        # for i in cromossomos_interseccoes_sem_repeticoes:
+        #     for j in range(len(i)):
+        #         aux.append(len(self.__entrada.Inteseccao()[i[j]]))
+        #
+        #     a = max(aux)
+        #
+        #     for j in range(len(i)):
+        #         if a == len(self.__entrada.Inteseccao()[i[j]]):
+        #             no.append(i[j])
+        #             indice_intersseccao.append(self.__entrada.Inteseccao()[i[j]])
+        #
+        #     for b in indice_intersseccao:
+        #         if aux3 == []:
+        #             c = set(keys_cluster) - set(b)
+        #             aux3.append(list(c))
+        #
+        #         else:
+        #             c = c - set(b)
+        #             aux3.append(list(c))
+        #
+        #     c = set(aux3[len(aux3) - 1])
+        #     tamanho_de_c = len(c)
+        #     for j in range(len(i)):
+        #         if i[j] not in no:
+        #             if c != {}:
+        #                 c = c - set(self.__entrada.Inteseccao()[i[j]])
+        #                 if len(c) != tamanho_de_c:
+        #                     no.append(i[j])
+        #                     indice_intersseccao.append(self.__entrada.Inteseccao()[i[j]])
+        #                     tamanho_de_c = len(c)
+        #
+        #     for j in i:
+        #         if j in no:
+        #             aux4.append(j)
+        #
+        #     cromossomo_de_nos_final.append(aux4)
+        #
+        #     aux = []
+        #     no = []
+        #     indice_intersseccao = []
+        #     aux3 = []
+        #     aux4 = []
+        #
+        # # 2) Como existe nos que são representados pela mesma chave, então, existe a possibilidade de um
+        # # cromossomo de clusters seja representado por mais de uma sequência de cromossomos de nos.Tenho que definir um
+        # # no unico para a chave
+        #
+        # aux2 = []
+        # cromossomo_nos = []
+        # self.__cromossomo_nos = []
+        # for p in range(len(cromossomo_de_nos_final)):
+        #     for c in cromossomo_de_nos_final[p]:
+        #         aux = self.__entrada.Chaves()[c]
+        #         if len(aux) == 1:
+        #             aux2.append(aux[0])
+        #         else:
+        #             aux2.append(random.choice(aux))
+        #
+        #     self.__cromossomo_nos.append(aux2)
+        #     aux2 = []
 
     # Calculando o fitness da função, porém primeiro eu separo os individuos em chaves:
 

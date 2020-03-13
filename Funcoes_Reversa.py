@@ -45,7 +45,7 @@ def Best1(matrix, ferramentas, d, j_linha, j, conjunto_de_T):
     value = False
     v = set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [j]))
 
-    if j_linha == 0:
+    if j_linha == -1:
         if len(v - conjunto_de_T) > d:
             value = True
 
@@ -75,6 +75,7 @@ def CrucialJobs_EstrategiaReversa(matrix, tarefas, capacidade, ferramentas, jobs
         conjunto_de_T = conjunto_de_T.union(set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [i])))
 
     if len(conjunto_de_T) == ferramentas:
+        print('Tarefas Cruciais', s)
         return s
 
     else:
@@ -85,7 +86,7 @@ def CrucialJobs_EstrategiaReversa(matrix, tarefas, capacidade, ferramentas, jobs
         while len(conjunto_de_T) != ferramentas:
 
             d = -2
-            j_linha = 0
+            j_linha = -1
 
             for j in V:
 
@@ -100,6 +101,7 @@ def CrucialJobs_EstrategiaReversa(matrix, tarefas, capacidade, ferramentas, jobs
             conjunto_de_T = conjunto_de_T.union(
                 set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [j_linha])))
 
+        print('Tarefas Cruciais', s)
         return s
 
 
@@ -144,7 +146,6 @@ def requerimentos_de_ferramentas(ferramentas, matrix):
 def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, tarefas_restantes, capacidade, tarefas):
     # Iniciando o conjunto de tarefas Z a ser retornado com C capacidade com -1
     f_linha = [-1] * capacidade
-    print('\nZ : ', f_linha, '\n')
     # Definindo o conjunto Ti / Tj , Tj / Ti , Ti e Tj e Ti U Tj, respectivamente :
     conjunto_diferenca_i_linha_menos_j_linha = set(ferramentas_ilinha) - set(ferramentas_jlinha)
     print('Conjunto Ti/ Tj', conjunto_diferenca_i_linha_menos_j_linha)
@@ -245,23 +246,41 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
                     aux.append(i)
         k += 1
 
-    print(' Z : ', f_linha)
-
+    print(' Z : ', set(f_linha))
+    # Complentando os nos quando houver necessidade
     if aux:
         aux2 = []
-        for i in conjunto_diferenca_j_linha_menos_i_linha:
+        for i in ferramentas_ilinha:
             aux2.append(
                 requerimentos_de_ferramentas(ferramentas, matrix)[i])
 
         aux2 = np.argsort(aux2)
-
+        aux2 = aux2[::-1][:len(aux2)]
         k = 0
-        conjunto_diferenca_j_linha_menos_i_linha = list(conjunto_diferenca_j_linha_menos_i_linha)
+        indices = []
         for i in range(len(aux2)):
-            if k < len(aux) and conjunto_diferenca_j_linha_menos_i_linha[aux2[i]] not in f_linha:
-                f_linha[aux[k]] = conjunto_diferenca_j_linha_menos_i_linha[aux2[i]]
+            if k < len(aux) and ferramentas_ilinha[aux2[i]] not in f_linha:
+                f_linha[aux[k]] = ferramentas_ilinha[aux2[i]]
+                indices.append(aux[k])
                 k += 1
+        aux = list(set(aux) - set(indices))
+        while -1 in f_linha:
+            T = range(0,capacidade)
+            aux2 = []
+            for i in T:
+                aux2.append(
+                    requerimentos_de_ferramentas(ferramentas, matrix)[i])
 
+            aux2 = np.argsort(aux2)
+            aux2 = aux2[::-1][:len(aux2)]
+            k = 0
+            for i in range(len(aux2)):
+                if k < len(aux) and T[aux2[i]] not in f_linha:
+                    f_linha[aux[k]] = T[aux2[i]]
+                    indices.append(aux[k])
+                    k += 1
+
+    print(' Z : ', set(f_linha))
     return f_linha
 
 
@@ -291,7 +310,7 @@ def FirstNodes(S, matrix, tarefas, capacidade, ferramentas):
     print('Tarefa i*', i_linha, ' : ', ferramentas_ilinha)
     print('Tarefa j*', j_linha, ' : ', ferramentas_jlinha)
 
-    tarefas_restantes = set(np.arange(tarefas)) - set(Tarefas_Maior_Distancia)
+    tarefas_restantes = set(S) - set(Tarefas_Maior_Distancia)
     # Preenchendo f_ilinha
     Z = []
 
@@ -433,7 +452,7 @@ def Uptade(S, ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, 
 
     else:
         if P != []:
-            if len(P) > 100:
+            if len(P) > 300:
                 # Calculando o limite dinamico, ou seja, quando nos podem existir no espaço de solução no GTSP
                 indice = list(range(0, len(P)))
 
@@ -445,12 +464,12 @@ def Uptade(S, ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, 
 
                 cluster_cheios = len(cluster) - cluster_vazios
 
-                if cluster_vazios > cluster_cheios:
+                if cluster_vazios < cluster_cheios:
                     LimD = int((len(P) - len(Q)) / cluster_vazios)
-                    Distribuição_Media_Cluster = int(LimD / cluster_vazios)
+                    Distribuição_Media_Cluster = int(LimD / len(cluster))
                 else:
                     LimD = int((len(P) - len(Q)) / cluster_cheios)
-                    Distribuição_Media_Cluster = int(LimD / cluster_cheios)
+                    Distribuição_Media_Cluster = int(LimD / len(cluster))
 
                 print('LimD', LimD)
                 print('Distribuiçao Media', Distribuição_Media_Cluster)
