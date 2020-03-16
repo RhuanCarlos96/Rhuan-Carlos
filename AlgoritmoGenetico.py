@@ -337,14 +337,16 @@ def Ranking_Linear(individuos_fitness):
         sum0 = sum_i
         indiviudos_j.append(i)
 
-    while len(selecionados) < len(ranking):
+    myMax = max(sum)
+    norm = [float(i) / myMax for i in sum]
+    while len(selecionados) < len(individuos_fitness):
         for i in range(len(sum)):
-            r = random.uniform(0, sum[len(sum) - 1])
+            r = random.uniform(0, 1)
             if i != 0:
-                if r >= sum[i - 1] and r < sum[i]:
+                if r >= norm[i - 1] and r < norm[i] and len(selecionados) < len(individuos_fitness):
                     selecionados.append(indiviudos_j[i])
             else:
-                if r >= 0 and r < sum[i]:
+                if r >= 0 and r < norm[i] and len(selecionados) < len(individuos_fitness):
                     selecionados.append(indiviudos_j[i])
 
     return selecionados
@@ -379,14 +381,14 @@ def Ranking_Exponecial(individuos_fitness):
         sum0 = sum_i
         indiviudos_j.append(i)
 
-    while len(selecionados) < len(ranking):
+    while len(selecionados) < len(individuos_fitness):
         for i in range(len(sum)):
             r = random.uniform(0, 1)
             if i != 0:
-                if r >= sum[i - 1] and r < sum[i]:
+                if r >= sum[i - 1] and r < sum[i] and len(selecionados) < len(individuos_fitness):
                     selecionados.append(indiviudos_j[i])
             else:
-                if r >= 0 and r < sum[i]:
+                if r >= 0 and r < sum[i] and len(selecionados) < len(individuos_fitness):
                     selecionados.append(indiviudos_j[i])
 
     return selecionados
@@ -410,12 +412,13 @@ def Intersseccao_Repetidas(lista_intersseccao):
 
 
 def Eliminar_Repetidos(copia, repetidas):
-    nova_copia = Copia(copia)
+    nova_copia = []
 
-    for i in repetidas:
-        copia.remove(nova_copia[i])
+    for i in range(len(copia)):
+        if i not in repetidas:
+            nova_copia.append(copia[i])
 
-    return copia
+    return nova_copia
 
 
 def Unitarios_a_ser_Excluidos(lista_intersseccao):
@@ -426,24 +429,24 @@ def Unitarios_a_ser_Excluidos(lista_intersseccao):
     excluir_unitarios = []
     for i in interssecoes_tamanho_maior_2:
         if i == 0:
-            if set(lista_intersseccao[i + 1]).issubset(set(lista_intersseccao[i])) and len(lista_intersseccao[i]) > len(
-                    lista_intersseccao[i + 1]):
+            if (set(lista_intersseccao[i + 1]).issubset(set(lista_intersseccao[i]))) and len(
+                    lista_intersseccao[i]) > len(
+                lista_intersseccao[i + 1]):
                 excluir_unitarios.append(i + 1)
         else:
             if i != len(lista_intersseccao) - 1:
-                if set(lista_intersseccao[i + 1]).issubset(set(lista_intersseccao[i])) and len(
-                        lista_intersseccao[i]) > len(lista_intersseccao[i + 1]):
+                if (set(lista_intersseccao[i + 1]).issubset(set(lista_intersseccao[i]))) and (len(
+                        lista_intersseccao[i]) > len(lista_intersseccao[i + 1])):
                     excluir_unitarios.append(i + 1)
-                if set(lista_intersseccao[i - 1]).issubset(set(lista_intersseccao[i])) and len(
+                if (set(lista_intersseccao[i - 1]).issubset(set(lista_intersseccao[i]))) and len(
                         lista_intersseccao[i]) > len(lista_intersseccao[i - 1]):
                     excluir_unitarios.append(i - 1)
             else:
-                if set(lista_intersseccao[i - 1]).issubset(set(lista_intersseccao[i])) and len(
+                if (set(lista_intersseccao[i - 1]).issubset(set(lista_intersseccao[i]))) and len(
                         lista_intersseccao[i]) > len(lista_intersseccao[i - 1]):
                     excluir_unitarios.append(i - 1)
 
-
-    return set(excluir_unitarios)
+    return excluir_unitarios
 
 
 class Genetico(object):
@@ -457,6 +460,7 @@ class Genetico(object):
         self.__individuos_nos = {}
         self.__frequencia = frequencia.Frequencia()
         self.__selecionados = []
+        self.__individuos_filhos = {}
 
     def Populacao_Inicial(self, tamanho_inicial):
         keys_cluster = self.__entrada.Cluster().keys()
@@ -465,7 +469,7 @@ class Genetico(object):
         # Definindo os possiveis cromossomos dada a uma sequência de clusters
         aux = []
 
-        for i in range(10):
+        for i in range(30):
             random.shuffle(keys_cluster)
 
             for i in keys_cluster:
@@ -498,7 +502,6 @@ class Genetico(object):
     def Possiveis_Cromossomos_Entre_Geracoes(self):
         aux2 = []
         prossiveis_cromossomos_nos = []
-
         # Gerando os possiveis soluções de nos de modo aleatorio
         for individuo in self.__individuos_clusters:
             for i in self.__individuos_clusters[individuo]:
@@ -515,7 +518,6 @@ class Genetico(object):
         return prossiveis_cromossomos_nos
 
     def Tratando_os_Cromossomos(self, prossiveis_cromossomos_nos):
-        print('Tratando os cromossomos :')
         # 1)Como existe interseccções entre os clusters devemos verificar os nos que participam mais de um cluster e eliminar
         # os outros que pertencem a unico cluster, na qual este no pode representar este nos na distribuição de clusters.
         # Outro modo é permitir uma unica interessecção se o nó representa dois ou mais cluster que os demais nos não
@@ -525,42 +527,49 @@ class Genetico(object):
         #   1.1.1 Determinando os indices na qual este nos se localizam:
 
         k = 0
+        self.__cromossomo_nos = []
         for possivel in prossiveis_cromossomos_nos:
             copia_possivel = Copia(possivel)
             lista_intersseccao = Lista_Intersseccao(possivel, self.__entrada)
-            intersseccao_repetidas = Intersseccao_Repetidas(lista_intersseccao)
-
-            if intersseccao_repetidas:
-                copia_possivel = Eliminar_Repetidos(copia_possivel, intersseccao_repetidas)
-                lista_intersseccao = Eliminar_Repetidos(lista_intersseccao, intersseccao_repetidas)
-
-            print('Intersseccao', lista_intersseccao)
             cromossomo = self.__cromossomo_cluster[k]
-            print('Individuo', cromossomo)
+            aux3 = []
+            c = 0
+            j = 0
+            while j < len(cromossomo) - 1:
+                if cromossomo[c + 1] in set(lista_intersseccao[j]).intersection(
+                        set(lista_intersseccao[j + 1])) and j not in aux3:
+                    aux3.append(j + 1)
 
-            # Determinar as maiores intersseccoes possui subconjuntos e se atendem a sequencia de tarefas:
-            # Maiores interseccoes:
+                c += 1
+                j += 1
+
+            if aux3:
+                lista_intersseccao = Eliminar_Repetidos(lista_intersseccao, set(aux3))
+                copia_possivel = Eliminar_Repetidos(copia_possivel, set(aux3))
+
+            intersseccao_repetidas = Intersseccao_Repetidas(lista_intersseccao)
+            if intersseccao_repetidas:
+                copia_possivel = Eliminar_Repetidos(copia_possivel, set(intersseccao_repetidas))
+                lista_intersseccao = Eliminar_Repetidos(lista_intersseccao, set(intersseccao_repetidas))
+
+                # Determinar as maiores intersseccoes possui subconjuntos e se atendem a sequencia de tarefas:
+                # Maiores interseccoes:
             unitarios = Unitarios_a_ser_Excluidos(lista_intersseccao)
 
             if unitarios:
-                lista_intersseccao = Eliminar_Repetidos(lista_intersseccao,unitarios)
-                copia_possivel = Eliminar_Repetidos(copia_possivel, unitarios)
+                lista_intersseccao = Eliminar_Repetidos(lista_intersseccao, set(unitarios))
+                copia_possivel = Eliminar_Repetidos(copia_possivel, set(unitarios))
 
-            print('Intersseccao', lista_intersseccao, '\n')
-
-            intersseccao_repetidas = Intersseccao_Repetidas(lista_intersseccao)
-            if intersseccao_repetidas:
-                copia_possivel = Eliminar_Repetidos(copia_possivel, intersseccao_repetidas)
-                lista_intersseccao = Eliminar_Repetidos(lista_intersseccao, intersseccao_repetidas)
-
-            print('Intersseccao', lista_intersseccao,'\n')
 
             ##Excluir interssecoes que nao sunconjunto um do outro porém é um no que pode realizar tanto a tarefa(gene)
             ##da seguinte
+            aux2 = []
+            for i in copia_possivel:
+                for j in self.__entrada.Chaves()[i]:
+                    aux2.append(j)
 
-
+            self.__cromossomo_nos.append(aux2)
             k += 1
-
         # for i in prossiveis_cromossomos_nos:
         #     print(i)
         #
@@ -678,19 +687,17 @@ class Genetico(object):
     def Fitness(self):
         matriz_adjacencia = self.__entrada.Matriz_Adjacencia()
         p = 0
-
         for k in self.__individuos_nos:
             fitness = 0
             aux = self.__individuos_nos[k]
-            aux2 = []
 
             for i in range(len(aux) - 1):
-                aux2.append(matriz_adjacencia[aux[i]][aux[i + 1]])
                 fitness = fitness + matriz_adjacencia[aux[i]][aux[i + 1]]
 
             self.__individuos_fitness[p] = fitness
             p += 1
-
+        organizados = {k: v for k, v in sorted(self.__individuos_fitness.items(), key=lambda item: item[1])}
+        print('Menor troca', organizados[list(organizados.keys())[0]])
         self.__frequencia.Piores_Fitness(individuos_fitness=self.__individuos_fitness,
                                          individuos_nos=self.__individuos_nos,
                                          individuos_clusters=self.__individuos_clusters)
@@ -703,15 +710,13 @@ class Genetico(object):
         # print('Torneio', selecionados)
 
         # self.__selecionados = Ranking_Linear(individuos_fitness=self.__individuos_fitness)
-        self.__selecionados = Ranking_Exponecial(individuos_fitness=self.__individuos_fitness)
+        self.__selecionados = Ranking_Linear(individuos_fitness=self.__individuos_fitness)
         # nao_selecionados = list(set(self.__individuos_clusters.keys()) - set(selecionados))
         # self.frequencia.Nao_selecionados(nao_selecionados, self.__individuos_nos, self.__individuos_fitness)
         # self.frequencia.Selecionados_Geracoes(set(selecionados), self.__individuos_nos, self.__individuos_fitness)
 
     def CrossOver(self, probabilidade_crossover):
-
-        individuos_filho_cluster = {}
-
+        self.__individuos_filhos = {}
         for o in range(len(self.__selecionados)):
             # Determinando o primeiro pai de forma aleatória dos individuos selecionados
             individuo1 = random.choice(self.__selecionados)
@@ -724,27 +729,24 @@ class Genetico(object):
                 individuo2 = random.choice(self.__selecionados)
 
             pai2 = individuo2
-
             cromossomo1 = self.__individuos_clusters[pai1]
             cromossomo2 = self.__individuos_clusters[pai2]
 
             sorteio = random.uniform(0, 1)
 
             if sorteio < probabilidade_crossover:
-                individuos_filho_cluster[o] = Substring(cromossomo1, cromossomo2)
+                self.__individuos_filhos[o] = Substring(cromossomo1, cromossomo2)
 
             else:
                 escolha = [pai1, pai2]
-                individuos_filho_cluster[o] = self.__individuos_clusters[random.choice(escolha)]
+                self.__individuos_filhos[o] = self.__individuos_clusters[random.choice(escolha)]
 
-        return individuos_filho_cluster
-
-    def Mutation_Swap(self, probabilidade_mutação, individuo_filho_cluster):
-        individuos = list(individuo_filho_cluster.keys())
+    def Mutation_Swap(self, probabilidade_mutação):
+        individuos = list(self.__individuos_filhos.keys())
         for i in individuos:
             sorteio = random.uniform(0, 1)
             if sorteio < probabilidade_mutação:
-                cromossomo = individuo_filho_cluster[i]
+                cromossomo = self.__individuos_filhos[i]
                 posicao1 = int(random.uniform(0, 1) * (len(cromossomo) - 1))
 
                 posicao2 = int(random.uniform(0, 1) * (len(cromossomo) - 1))
@@ -756,9 +758,10 @@ class Genetico(object):
                 cromossomo[posicao1] = cromossomo[posicao2]
                 cromossomo[posicao2] = aux
 
-                individuo_filho_cluster[i] = cromossomo
+                self.__individuos_filhos[i] = cromossomo
 
-        self.__individuos_clusters = individuo_filho_cluster
+        self.__individuos_clusters = {}
+        self.__individuos_clusters = self.__individuos_filhos
 
     def Get_Individuos_Clusters(self):
         for i in self.__individuos_clusters:

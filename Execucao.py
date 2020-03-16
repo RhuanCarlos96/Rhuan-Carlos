@@ -12,10 +12,8 @@ def Execucao(tarefas, ferramentas, matrix, capacidade):
     # print('Conjunto de tarefas ', jobs)
     # print('Conjunto de ferramentas: ', t)
 
-    retorno = reducao.Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas,
-                                                                         jobs, t)
-
-    return len(retorno[0])
+    nos, chaves, cluster = reducao.Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas,
+                                                      jobs, t)
 
     antes = tempo.time()
     now = antes
