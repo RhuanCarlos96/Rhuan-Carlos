@@ -1,5 +1,6 @@
 import AlgoritmoGenetico as gene
 import time
+import numpy as np
 
 
 def Running_Genetic(nos, cluster, chaves):
@@ -11,10 +12,14 @@ def Running_Genetic(nos, cluster, chaves):
     # Definindo os possiveis cromossomos clusters
 
     possiveis_cromossomos = genetico.Possiveis_Cromossomos_Inciais()
+    k = 0
     before = time.time()
     now = before
-    k = 0
-    while now - before < 4 * 60:
+    menor = []
+    tempo = []
+    resultado = []
+    resultado_n =[]
+    while now - before < 30 * 60:
         print('Geração:', k + 1)
         if k == 0:
             genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
@@ -26,9 +31,14 @@ def Running_Genetic(nos, cluster, chaves):
             genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
             genetico.Individuos_Nos()
 
-        genetico.Fitness()
+        menor_troca, tempo_do_menor = genetico.Fitness(before)
+        menor.append(menor_troca)
+        tempo.append(tempo_do_menor)
         genetico.Selecao()
-        genetico.CrossOver(probabilidade_crossover=0.76)
+        genetico.CrossOver(probabilidade_crossover=0.75)
         genetico.Mutation_Swap(probabilidade_mutação=0.1)
         k += 1
         now = time.time()
+
+    organizar = np.argsort(menor)
+    return menor[organizar[0]], tempo[organizar[0]]

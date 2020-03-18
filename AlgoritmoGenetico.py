@@ -2,6 +2,7 @@ from Grafos import Grafos_Objeto as grafo
 import random
 import copy
 import Frequencia as frequencia
+import time
 
 
 def Torneio(individuos_clusters, individuos_fitness):
@@ -469,7 +470,7 @@ class Genetico(object):
         # Definindo os possiveis cromossomos dada a uma sequência de clusters
         aux = []
 
-        for i in range(30):
+        for i in range(100):
             random.shuffle(keys_cluster)
 
             for i in keys_cluster:
@@ -496,6 +497,7 @@ class Genetico(object):
 
             prossiveis_cromossomos_nos.append(aux2)
             aux2 = []
+            self.__individuos_clusters = self.__cromossomo_cluster
 
         return prossiveis_cromossomos_nos
 
@@ -531,7 +533,7 @@ class Genetico(object):
         for possivel in prossiveis_cromossomos_nos:
             copia_possivel = Copia(possivel)
             lista_intersseccao = Lista_Intersseccao(possivel, self.__entrada)
-            cromossomo = self.__cromossomo_cluster[k]
+            cromossomo = self.__individuos_clusters[k]
             aux3 = []
             c = 0
             j = 0
@@ -559,7 +561,6 @@ class Genetico(object):
             if unitarios:
                 lista_intersseccao = Eliminar_Repetidos(lista_intersseccao, set(unitarios))
                 copia_possivel = Eliminar_Repetidos(copia_possivel, set(unitarios))
-
 
             ##Excluir interssecoes que nao sunconjunto um do outro porém é um no que pode realizar tanto a tarefa(gene)
             ##da seguinte
@@ -684,7 +685,7 @@ class Genetico(object):
         # Individuos nos
         self.__individuos_nos = Individuos(self.__cromossomo_nos)
 
-    def Fitness(self):
+    def Fitness(self, before):
         matriz_adjacencia = self.__entrada.Matriz_Adjacencia()
         p = 0
         for k in self.__individuos_nos:
@@ -696,11 +697,15 @@ class Genetico(object):
 
             self.__individuos_fitness[p] = fitness
             p += 1
+
         organizados = {k: v for k, v in sorted(self.__individuos_fitness.items(), key=lambda item: item[1])}
-        print('Menor troca', organizados[list(organizados.keys())[0]])
+        menor = self.__individuos_fitness[list(organizados.keys())[0]]
+        tempo = time.time() - before
         self.__frequencia.Piores_Fitness(individuos_fitness=self.__individuos_fitness,
                                          individuos_nos=self.__individuos_nos,
                                          individuos_clusters=self.__individuos_clusters)
+
+        return menor, tempo
 
     def Selecao(self):
 
