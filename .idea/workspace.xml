@@ -10,13 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed4099e8-a08a-4d26-8925-e1d468d03128" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Executando_Estrategia_Reversa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AlgoritmoGenetico.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlgoritmoGenetico.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EstrategiaReversa.py" beforeDir="false" afterPath="$PROJECT_DIR$/EstrategiaReversa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Execucao.py" beforeDir="false" afterPath="$PROJECT_DIR$/Execucao.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Executando_Genetico.py" beforeDir="false" afterPath="$PROJECT_DIR$/Executando_Genetico.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrupoA.py" beforeDir="false" afterPath="$PROJECT_DIR$/GrupoA.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Funcoes_Reversa.py" beforeDir="false" afterPath="$PROJECT_DIR$/Funcoes_Reversa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lendo_Arquivos.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lendo_Arquivos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584387324718</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="&quot; Algoritmo Genetico alterado. Alterações aconteceram nos Algortimos Genéticos e criação de mais uma função Executando_Estrategia_Reversa&quot;">
+      <created>1584563009132</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1584563009132</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,7 +254,8 @@
     <MESSAGE value="&quot;Estrategia_Reversa&quot;" />
     <MESSAGE value="&quot; Algoritmo Genetico alterado. Alterações: Tratamento_de_Nos&quot;" />
     <MESSAGE value="&quot; Algoritmo Genetico alterado. Alterações aconteceram nos Algortimos Genéticos e a maioria das suas variavéis são provadas&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot; Algoritmo Genetico alterado. Alterações aconteceram nos Algortimos Genéticos e a maioria das suas variavéis são provadas&quot;" />
+    <MESSAGE value="&quot; Algoritmo Genetico alterado. Alterações aconteceram nos Algortimos Genéticos e criação de mais uma função Executando_Estrategia_Reversa&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot; Algoritmo Genetico alterado. Alterações aconteceram nos Algortimos Genéticos e criação de mais uma função Executando_Estrategia_Reversa&quot;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="667" y="159" width="642" height="787" key="#EstrategiaReversa" timestamp="1580313012355">
@@ -263,10 +271,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1581532332310" />
-    <state x="261" y="0" width="1084" height="912" key="CommitChangelistDialog2" timestamp="1584387320135">
+    <state x="189" y="0" width="1084" height="912" key="CommitChangelistDialog2" timestamp="1584563005054">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="261" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1584387320135" />
+    <state x="189" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1584563005054" />
     <state x="421" y="27" width="1084" height="912" key="CommitChangelistDialog2/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971537955" />
     <state x="776" y="311" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581952423241">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -338,16 +346,16 @@
     </state>
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1583166216299" />
     <state x="440" y="167" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971574738" />
-    <state x="379" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1584560994792">
+    <state x="379" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1584654419454">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1584560994792" />
+    <state x="379" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1584654419454" />
     <state x="581" y="297" key="com.intellij.ide.util.TipDialog/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581969874153" />
     <state x="581" y="297" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1580909831532" />
-    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583041096868">
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584677625022">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1583041096868" />
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1584677625022" />
     <state x="536" y="98" width="912" height="981" key="search.everywhere.popup" timestamp="1581956263617">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

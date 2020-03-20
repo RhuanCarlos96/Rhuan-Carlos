@@ -7,6 +7,7 @@ import Executando_Genetico
 import numpy
 import statistics
 
+
 def Execucao(tarefas, ferramentas, matrix, capacidade):
     tamanho, nos, chaves, cluster = Executando_Estrategia_Reversa.Running_Estrategia_Reversa(tarefas, ferramentas,
                                                                                              matrix, capacidade)
@@ -21,8 +22,8 @@ def Execucao(tarefas, ferramentas, matrix, capacidade):
 
     organizado = numpy.argsort(melhor_solucao)
 
-    return tamanho, melhor_solucao[organizado[0]], tempo[organizado[0]], statistics.mean(melhor_solucao), statistics.pstdev(melhor_solucao)
-
+    return tamanho, melhor_solucao[organizado[0]], melhor_tempo[organizado[0]], statistics.mean(
+        melhor_solucao), statistics.pstdev(melhor_solucao)
 
     # while now - antes <= 1 * 60:
     #

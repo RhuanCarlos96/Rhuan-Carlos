@@ -17,10 +17,8 @@ def Running_Genetic(nos, cluster, chaves):
     now = before
     menor = []
     tempo = []
-    resultado = []
-    resultado_n =[]
-    while now - before < 30 * 60:
-        print('Geração:', k + 1)
+
+    while now - before < 1 * 60:
         if k == 0:
             genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
             genetico.Individuos_Cluster()

@@ -701,9 +701,9 @@ class Genetico(object):
         organizados = {k: v for k, v in sorted(self.__individuos_fitness.items(), key=lambda item: item[1])}
         menor = self.__individuos_fitness[list(organizados.keys())[0]]
         tempo = time.time() - before
-        self.__frequencia.Piores_Fitness(individuos_fitness=self.__individuos_fitness,
-                                         individuos_nos=self.__individuos_nos,
-                                         individuos_clusters=self.__individuos_clusters)
+        # self.__frequencia.Piores_Fitness(individuos_fitness=self.__individuos_fitness,
+        #                                  individuos_nos=self.__individuos_nos,
+        #                                  individuos_clusters=self.__individuos_clusters)
 
         return menor, tempo
 
