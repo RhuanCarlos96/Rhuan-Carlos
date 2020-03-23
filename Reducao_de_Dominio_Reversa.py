@@ -84,9 +84,7 @@ def Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas, jobs, t):
                                     aux2 = list(c)
                                     P.append(aux + aux2)
 
-        print('Numero de nos ate entao gerados', len(Q))
         P = Elimina_Repetidos(P)
-        print('Numero maximo a serem gerados ', len(P))
         nos_do_cluster, chaves_dos_nos, cluster = revers.Uptade(S, ferramentas, matrix,
                                                                 cluster,
                                                                 Q, nos_do_cluster,

@@ -125,37 +125,37 @@ def GrupoE(folder):
                                                   capacidade=capacidade)}, ignore_index=True)
 
 
-    if list(df1) != []:
-        df1.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste1_E.csv', index=None,
+        if list(df1) != []:
+            df1.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste1_E.csv', index=None,
                   header=True)
-        print(df1)
 
-    if list(df2) != []:
-        df2.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste2_E.csv', index=None,
+
+        if list(df2) != []:
+            df2.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste2_E.csv', index=None,
                    header=True)
-        print(df2)
 
-    if list(df3) != []:
-        df3.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste3_E.csv', index=None,
+
+        if list(df3) != []:
+            df3.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste3_E.csv', index=None,
                   header=True)
 
-    if list(df4) != []:
-        df4.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste4_E.csv', index=None,
+        if list(df4) != []:
+            df4.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste4_E.csv', index=None,
                   header=True)
 
-    if list(df5) != []:
-        df5.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste5_E.csv', index=None,
+        if list(df5) != []:
+            df5.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste5_E.csv', index=None,
                   header=True)
 
-    if list(df6) != []:
-        df6.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste6_E.csv', index=None,
+        if list(df6) != []:
+            df6.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste6_E.csv', index=None,
                   header=True)
 
-    if list(df7) != []:
-        df7.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste7_E.csv', index=None,
+        if list(df7) != []:
+            df7.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste7_E.csv', index=None,
                   header=True)
 
-    if list(df8) != []:
-        df8.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste8_E.csv', index=None,
+        if list(df8) != []:
+            df8.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoE//teste8_E.csv', index=None,
                   header=True)
 

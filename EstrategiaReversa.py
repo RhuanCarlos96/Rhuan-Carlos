@@ -8,7 +8,6 @@ import Lendo_Arquivos as arquivo
 
 
 def main():
-    arquivo.Lendo_Arquivos()
 
     # with open(
     #         "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoD\\L20-3.txt",

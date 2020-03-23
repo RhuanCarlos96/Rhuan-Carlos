@@ -3,11 +3,13 @@ import glob
 import FuncaoLeitura as opter
 import Execucao as executar
 import os
+import csv
 
 
 def GrupoA(folder):
     print('Grupo A')
     df1 = DataFrame()
+    p = 0
     df2 = DataFrame()
     df3 = DataFrame()
     df4 = DataFrame()
@@ -31,7 +33,7 @@ def GrupoA(folder):
                 df1 = df1.append({'J': tarefas, 'T': ferramentas, 'C': capacidade, 'Tamanho da população': tamanho,
                                   'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
                                   'Desvio Padrao': desvio_padrao}, ignore_index=True)
-
+                p+=1
             else:
                 df1 = df1.append({'Tamanho da população': tamanho,
                                   'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
@@ -130,49 +132,44 @@ def GrupoA(folder):
                                   'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
                                   'Desvio Padrao': desvio_padrao}, ignore_index=True)
 
-    if list(df1) != []:
-        df1.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste1_A.csv', index=None,
-                   header=True)
-        print('Grupo 1 finalizado!!')
+        if list(df1) != []:
+            df1.to_csv('C:\\Users\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste1_A.csv', index=None,
+                     header=True)
 
-    if list(df2) != []:
-        df2.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste2_A.csv', index=None,
+        if list(df2) != []:
+            df2.to_csv('C:\\Users\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste2_A.csv', index=None,
                    header=True)
-        print('Grupo 2 finalizado!!')
 
-    if list(df3) != []:
-        df3.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste3_A.csv', index=None,
+
+        if list(df3) != []:
+            df3.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste3_A.csv', index=None,
                    header=True)
-        print('Grupo 3 finalizado!!')
 
-    if list(df4) != []:
-        df4.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste4_A.csv', index=None,
+
+        if list(df4) != []:
+            df4.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste4_A.csv', index=None,
+                       header=True)
+
+
+        if list(df5) != []:
+            df5.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste5_A.csv', index=None,
                    header=True)
-        print('Grupo 4 finalizado!!')
+            print('Grupo 5 finalizado!!')
 
-    if list(df5) != []:
-        df5.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste5_A.csv', index=None,
+        if list(df6) != []:
+            df6.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste6_A.csv', index=None,
                    header=True)
-        print('Grupo 5 finalizado!!')
 
-    if list(df6) != []:
-        df6.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste6_A.csv', index=None,
+        if list(df7) != []:
+            df7.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste7_A.csv', index=None,
                    header=True)
-        print('Grupo 6 finalizado!!')
 
-    if list(df7) != []:
-        df7.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste7_A.csv', index=None,
+
+        if list(df8) != []:
+            df8.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste8_A.csv', index=None,
                    header=True)
-        print('Grupo 7 finalizado!!')
 
-    if list(df8) != []:
-        df8.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste8_A.csv', index=None,
+
+        if list(df9) != []:
+            df9.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste9_A.csv', index=None,
                    header=True)
-        print('Grupo 8 finalizado!!')
-
-    if list(df9) != []:
-        df9.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste9_A.csv', index=None,
-                   header=True)
-        print('Grupo 9 finalizado!!')
-
-        print(df9)
