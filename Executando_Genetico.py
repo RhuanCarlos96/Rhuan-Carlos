@@ -7,7 +7,7 @@ def Running_Genetic(nos, cluster, chaves):
     genetico = gene.Genetico(nos, cluster, chaves)
 
     # Definindo a populacao inicial de clusters
-    genetico.Populacao_Inicial(tamanho_inicial=len(list(nos)))
+    genetico.Populacao_Inicial()
 
     # Definindo os possiveis cromossomos clusters
 

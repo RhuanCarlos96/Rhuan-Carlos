@@ -1,175 +1,233 @@
-from pandas import DataFrame
+import pandas as pd
 import glob
 import FuncaoLeitura as opter
 import Execucao as executar
 import os
-import csv
+import Verifcar
 
 
 def GrupoA(folder):
     print('Grupo A')
-    df1 = DataFrame()
-    p = 0
-    df2 = DataFrame()
-    df3 = DataFrame()
-    df4 = DataFrame()
-    df5 = DataFrame()
-    df6 = DataFrame()
-    df7 = DataFrame()
-    df8 = DataFrame()
-    df9 = DataFrame()
+    # instancias_lidas = open("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\instancias_lidas_GrupoA.txt",
+    #                         'r')
+    # arquivo = []
+    # if instancias_lidas:
+    #     for i in instancias_lidas:
+    #         arquivo.append(str(i))
+    #     k = 0
+    #     for i in arquivo:
+    #         if i == '\n':
+    #             k += 1
+    #     if k == len(arquivo):
+    #         arquivo = []
+    # instancias_lidas.close()
+    arquivo = "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\instancias_lidas_GrupoA.txt"
+    grupo = "\\GrupoA\\"
+    if os.stat(arquivo).st_size == 0:
+        print('entrei')
+        df1 = pd.DataFrame()
+
+        df2 = pd.DataFrame()
+
+        df3 = pd.DataFrame()
+
+        df4 = pd.DataFrame()
+
+        df5 = pd.DataFrame()
+
+        df6 = pd.DataFrame()
+
+        df7 = pd.DataFrame()
+
+        df8 = pd.DataFrame()
+
+        df9 = pd.DataFrame()
+
+        df1 = df1.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
+
+        df2 = df2.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
+
+        df3 = df3.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
+
+        df4 = df4.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
+
+        df5 = df5.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
+
+        df6 = df6.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
+
+        df7 = df7.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
+
+        df8 = df8.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
+
+        df9 = df9.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
+
+        df1.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste1_A.csv", index=None,
+                   header=True)
+
+        df2.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste2_A.csv", index=None,
+                   header=True)
+
+        df3.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste3_A.csv", index=None,
+                   header=True)
+
+        df4.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste4_A.csv", index=None,
+                   header=True)
+
+        df5.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste5_A.csv", index=None,
+                   header=True)
+
+        df6.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste6_A.csv", index=None,
+                   header=True)
+
+        df7.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste7_A.csv", index=None,
+                   header=True)
+
+        df8.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste8_A.csv", index=None,
+                   header=True)
+
+        df9.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste9_A.csv", index=None,
+                   header=True)
+
+
+    else:
+        print('entrei2')
+        df1 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste1_A.csv")
+        df2 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste2_A.csv")
+        df3 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste3_A.csv")
+        df4 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste4_A.csv")
+        df5 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste5_A.csv")
+        df6 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste6_A.csv")
+        df7 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste7_A.csv")
+        df8 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste8_A.csv")
+        df9 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste9_A.csv")
 
     for filename in glob.glob(os.path.join(folder, '*.txt')):
-        with open(filename, 'r') as f:
-            tarefas, ferramentas, capacidade, matrix = opter.instancias(
-                f)  # optendo todos os valores de instâncias recolhidas em um determinado arquivo
+        if Verifcar.Veficar_Grupo(filename, arquivo, grupo):
+            with open(filename, 'r') as f:
+                tarefas, ferramentas, capacidade, matrix = opter.instancias(
+                    f)  # optendo todos os valores de instâncias recolhidas em um determinado arquivo
 
-        tamanho, melhor_solucao, melhor_tempo, media, desvio_padrao = executar.Execucao(tarefas=tarefas,
-                                                                                        ferramentas=ferramentas,
-                                                                                        matrix=matrix,
-                                                                                        capacidade=capacidade)
-        if (tarefas == 8) and (ferramentas == 15) and (capacidade == 5):
-            if list(df1) == []:
-                df1 = df1.append({'J': tarefas, 'T': ferramentas, 'C': capacidade, 'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
-                p+=1
-            else:
-                df1 = df1.append({'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
+            tamanho, melhor_solucao, melhor_tempo, media, desvio_padrao, media_de_tempo = executar.Execucao(
+                tarefas=tarefas,
+                ferramentas=ferramentas,
+                matrix=matrix,
+                capacidade=capacidade)
+            if (tarefas == 8) and (ferramentas == 15) and (capacidade == 5):
+                if list(df1) != []:
+                    df1 = df1.append(
+                        {' |J| ': tarefas, ' |T| ': ferramentas, ' |C| ': capacidade, ' TP': tamanho,
+                         ' NT ': melhor_solucao, ' Tempo ': melhor_tempo, ' Media ': media,
+                         'Media de Tempo': media_de_tempo,
+                         ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
 
-        if tarefas == 8 and ferramentas == 15 and capacidade == 10:
-            if list(df2) == []:
+                    df1.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste1_A.csv", index=None,
+                               header=True)
 
-                df2 = df2.append({'J': tarefas, 'T': ferramentas, 'C': capacidade, 'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
+            if tarefas == 8 and ferramentas == 15 and capacidade == 10:
+                if list(df2) != []:
+                    df2 = df2.append(
+                        {' |J| ': tarefas, ' |T| ': ferramentas, ' |C| ': capacidade, ' TP ': tamanho,
+                         ' NT ': melhor_solucao, ' Tempo ': melhor_tempo, ' Media ': media,
+                         'Media de Tempo': media_de_tempo,
+                         ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
+                    df2.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste2_A.csv", index=None,
+                               header=True)
 
-            else:
-                df2 = df2.append({'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
+            if tarefas == 8 and ferramentas == 20 and capacidade == 5:
+                if list(df3) != []:
+                    df3 = df3.append(
+                        {' |J| ': tarefas, ' |T| ': ferramentas, ' |C| ': capacidade, ' TP ': tamanho,
+                         ' NT ': melhor_solucao, ' Tempo ': melhor_tempo, ' Media ': media,
+                         'Media de Tempo': media_de_tempo,
+                         ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
+                    df3.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste3_A.csv", index=None,
+                               header=True)
 
-        if tarefas == 8 and ferramentas == 20 and capacidade == 5:
-            if list(df3) == []:
+            if tarefas == 8 and ferramentas == 20 and capacidade == 10:
+                if list(df4) != []:
+                    df4 = df4.append({'|J|': tarefas, '|T|': ferramentas, '|C|': capacidade, 'TP': tamanho,
+                                      'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
+                                      'Media de Tempo': media_de_tempo,
+                                      'Desvio Padrao': desvio_padrao}, ignore_index=True)
+                    df4.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste4_A.csv", index=None,
+                               header=True)
 
-                df3 = df3.append({'J': tarefas, 'T': ferramentas, 'C': capacidade, 'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
+            if tarefas == 8 and ferramentas == 20 and capacidade == 15:
+                if list(df5) != []:
+                    df5 = df5.append({'|J|': tarefas, '|T|': ferramentas, '|C|': capacidade, 'TP': tamanho,
+                                      'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
+                                      'Media de Tempo': media_de_tempo,
+                                      'Desvio Padrao': desvio_padrao}, ignore_index=True)
+                    df5.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste5_A.csv", index=None,
+                               header=True)
 
-            else:
-                df3 = df3.append({'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
+            if tarefas == 8 and ferramentas == 25 and capacidade == 5:
+                if list(df6) != []:
+                    df6 = df6.append({'|J|': tarefas, '|T|': ferramentas, '|C|': capacidade, 'TP': tamanho,
+                                      'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
+                                      'Media de Tempo': media_de_tempo,
+                                      'Desvio Padrao': desvio_padrao}, ignore_index=True)
+                    df6.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste6_A.csv", index=None,
+                               header=True)
 
-        if tarefas == 8 and ferramentas == 20 and capacidade == 10:
-            if list(df4) == []:
+            if tarefas == 8 and ferramentas == 25 and capacidade == 10:
+                if list(df7) != []:
+                    df7 = df7.append({'|J|': tarefas, '|T|': ferramentas, '|C|': capacidade, 'TP': tamanho,
+                                      'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
+                                      'Desvio Padrao': desvio_padrao}, ignore_index=True)
+                    df7.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste7_A.csv", index=None,
+                               header=True)
 
-                df4 = df4.append({'J': tarefas, 'T': ferramentas, 'C': capacidade, 'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
-            else:
-                df4 = df4.append({'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
+            if tarefas == 8 and ferramentas == 25 and capacidade == 15:
+                if list(df8) != []:
+                    df8 = df8.append({'|J|': tarefas, '|T|': ferramentas, '|C|': capacidade, 'TP': tamanho,
+                                      'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
+                                      'Desvio Padrao': desvio_padrao}, ignore_index=True)
+                    df8.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste8_A.csv", index=None,
+                               header=True)
 
-        if tarefas == 8 and ferramentas == 20 and capacidade == 15:
-            if list(df5) == []:
+            if tarefas == 8 and ferramentas == 25 and capacidade == 20:
+                if list(df9) != []:
+                    df9 = df9.append({'|J|': tarefas, '|T|': ferramentas, '|C|': capacidade, 'TP': tamanho,
+                                      'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
+                                      'Desvio Padrao': desvio_padrao}, ignore_index=True)
+                    df9.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste9_A.csv", index=None,
+                               header=True)
 
-                df5 = df5.append({'J': tarefas, 'T': ferramentas, 'C': capacidade, 'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
-
-            else:
-                df5 = df5.append({'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
-
-        if tarefas == 8 and ferramentas == 25 and capacidade == 5:
-            if list(df6) == []:
-
-                df6 = df6.append({'J': tarefas, 'T': ferramentas, 'C': capacidade, 'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
-
-            else:
-                df6 = df6.append({'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
-
-        if tarefas == 8 and ferramentas == 25 and capacidade == 10:
-            if list(df7) == []:
-
-                df7 = df7.append({'J': tarefas, 'T': ferramentas, 'C': capacidade, 'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
-            else:
-                df7 = df7.append({'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
-
-        if tarefas == 8 and ferramentas == 25 and capacidade == 15:
-            if list(df8) == []:
-
-                df8 = df8.append({'J': tarefas, 'T': ferramentas, 'C': capacidade, 'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
-
-            else:
-                df8 = df8.append({'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
-
-        if tarefas == 8 and ferramentas == 25 and capacidade == 20:
-            if list(df9) == []:
-
-                df9 = df9.append({'J': tarefas, 'T': ferramentas, 'C': capacidade, 'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
-            else:
-                df9 = df9.append({'Tamanho da população': tamanho,
-                                  'NT': melhor_solucao, 'Tempo': melhor_tempo, 'Media': media,
-                                  'Desvio Padrao': desvio_padrao}, ignore_index=True)
-
-        if list(df1) != []:
-            df1.to_csv('C:\\Users\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste1_A.csv', index=None,
-                     header=True)
-
-        if list(df2) != []:
-            df2.to_csv('C:\\Users\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste2_A.csv', index=None,
-                   header=True)
-
-
-        if list(df3) != []:
-            df3.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste3_A.csv', index=None,
-                   header=True)
-
-
-        if list(df4) != []:
-            df4.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste4_A.csv', index=None,
-                       header=True)
-
-
-        if list(df5) != []:
-            df5.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste5_A.csv', index=None,
-                   header=True)
-            print('Grupo 5 finalizado!!')
-
-        if list(df6) != []:
-            df6.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste6_A.csv', index=None,
-                   header=True)
-
-        if list(df7) != []:
-            df7.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste7_A.csv', index=None,
-                   header=True)
-
-
-        if list(df8) != []:
-            df8.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste8_A.csv', index=None,
-                   header=True)
-
-
-        if list(df9) != []:
-            df9.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//Grupo A//teste9_A.csv', index=None,
-                   header=True)
+            Verifcar.Atualizar(filename,arquivo)

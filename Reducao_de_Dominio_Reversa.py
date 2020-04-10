@@ -50,7 +50,7 @@ def Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas, jobs, t):
             cheios.append(i)
 
     if len(cheios) == tarefas:
-        return nos_do_cluster, chaves_dos_nos, cluster
+        return nos_do_cluster, chaves_dos_nos, cluster,S
 
     else:
         U = set(jobs) - set(cheios)  # conjunto de tarefas
@@ -92,4 +92,4 @@ def Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas, jobs, t):
                                                                 tarefas,
                                                                 P)  # o conjunto de clusters que possuem ao menos um nó
 
-        return nos_do_cluster, chaves_dos_nos, cluster
+        return nos_do_cluster, chaves_dos_nos, cluster,S

@@ -8,7 +8,7 @@ def Running_Estrategia_Reversa(tarefas, ferramentas, matrix, capacidade):
     # print('Conjunto de tarefas ', jobs)
     # print('Conjunto de ferramentas: ', t)
 
-    nos, chaves, cluster = reducao.Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas,
-                                                      jobs, t)
+    nos, chaves, cluster, S = reducao.Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas,
+                                                         jobs, t)
 
     return len(nos), nos, chaves, cluster

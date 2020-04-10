@@ -463,14 +463,14 @@ class Genetico(object):
         self.__selecionados = []
         self.__individuos_filhos = {}
 
-    def Populacao_Inicial(self, tamanho_inicial):
+    def Populacao_Inicial(self):
         keys_cluster = self.__entrada.Cluster().keys()
         keys_cluster = list(keys_cluster)
 
         # Definindo os possiveis cromossomos dada a uma sequência de clusters
         aux = []
 
-        for i in range(100):
+        for i in range(150):
             random.shuffle(keys_cluster)
 
             for i in keys_cluster:
@@ -480,6 +480,12 @@ class Genetico(object):
                 self.__cromossomo_cluster.append(aux)
 
             aux = []
+
+        k = 0
+        self.__individuos_clusters = {}
+        for crommossomo in self.__cromossomo_cluster:
+            self.__individuos_clusters[k] = crommossomo
+            k += 1
 
     def Possiveis_Cromossomos_Inciais(self):
         aux2 = []
@@ -497,7 +503,6 @@ class Genetico(object):
 
             prossiveis_cromossomos_nos.append(aux2)
             aux2 = []
-            self.__individuos_clusters = self.__cromossomo_cluster
 
         return prossiveis_cromossomos_nos
 
@@ -701,9 +706,9 @@ class Genetico(object):
         organizados = {k: v for k, v in sorted(self.__individuos_fitness.items(), key=lambda item: item[1])}
         menor = self.__individuos_fitness[list(organizados.keys())[0]]
         tempo = time.time() - before
-        # self.__frequencia.Piores_Fitness(individuos_fitness=self.__individuos_fitness,
-        #                                  individuos_nos=self.__individuos_nos,
-        #                                  individuos_clusters=self.__individuos_clusters)
+        self.__frequencia.Piores_Fitness(individuos_fitness=self.__individuos_fitness,
+                                         individuos_nos=self.__individuos_nos,
+                                         individuos_clusters=self.__individuos_clusters)
 
         return menor, tempo
 
@@ -773,7 +778,7 @@ class Genetico(object):
             print(self.__individuos_clusters[i])
 
     def GetFrequencia(self):
-        return self.frequencia
+        return self.__frequencia
 
     def GetInterseccao(self):
         print(self.__entrada.Inteseccao())
