@@ -6,23 +6,23 @@ import Lendo_Arquivos as arquivo
 import time
 
 def main():
-    with open(
-            "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoE\\L2-6.txt",
-            "r") as archive:
-        tarefas, ferramentas, capacidade, matrix = opter.instancias(
-            archive)  # optendo todos os valores de instâncias recolhidas em um determinado arquivo
-
-        print('A maquina possui:\n*tarefas:', tarefas, '\n*ferramentas:', ferramentas, '\n*capacidade:', capacidade)
-
-    jobs = np.arange(0, tarefas)  # conjunto de tarefas
-    t = np.arange(0, ferramentas)  # conjunto de ferramentas
-    print('Conjunto de tarefas ', jobs)
-    print('Conjunto de ferramentas: ', t)
+    # with open(
+    #         "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoE\\L2-6.txt",
+    #         "r") as archive:
+    #     tarefas, ferramentas, capacidade, matrix = opter.instancias(
+    #         archive)  # optendo todos os valores de instâncias recolhidas em um determinado arquivo
     #
-    nos, chaves, cluster, S = reducao.Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas,
-                                                         jobs, t)
-
-    print('S : ',S)
+    #     print('A maquina possui:\n*tarefas:', tarefas, '\n*ferramentas:', ferramentas, '\n*capacidade:', capacidade)
+    #
+    # jobs = np.arange(0, tarefas)  # conjunto de tarefas
+    # t = np.arange(0, ferramentas)  # conjunto de ferramentas
+    # print('Conjunto de tarefas ', jobs)
+    # print('Conjunto de ferramentas: ', t)
+    # #
+    # nos, chaves, cluster, S = reducao.Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas,
+    #                                                      jobs, t)
+    #
+    # print('S : ',S)
     print('Executando...\n')
 
     # pares_ja_uilizados = []

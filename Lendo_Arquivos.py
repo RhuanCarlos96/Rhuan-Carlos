@@ -21,7 +21,7 @@ def Lendo_Arquivos():
 
     # Para teste em Windowns
     folder_path = [
-        "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoA"
+        "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoE"
     ]
 
     for folder in folder_path:
@@ -41,8 +41,8 @@ def Lendo_Arquivos():
         # if folder == '//home//loop//Desktop//Teste_No_PC//Teste_No_PC//ChavesEtAl_2012//ChavesEtAl_2012//GrupoE':
         #     GrupoE.GrupoE(folder)
 
-        if folder == "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoA":
-            GrupoA.GrupoA(folder)
+        if folder == "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoE":
+            GrupoE.GrupoE(folder)
 
         # if folder == "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\ChavesEtAl_2012\\ChavesEtAl_2012\\GrupoB":
         #     GrupoB.GrupoB(folder)

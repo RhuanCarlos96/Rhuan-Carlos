@@ -8,7 +8,7 @@ import Verifcar
 
 def GrupoB(folder):
     print('Grupo B')
-    arquivo = "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\instancias_lidas_GrupoB.txt"
+    arquivo = "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoB\\instancias_lidas_GrupoB.txt"
     grupo = "\\GrupoB\\"
     if os.stat(arquivo).st_size == 0:
         print('entrei')
@@ -143,7 +143,7 @@ def GrupoB(folder):
                          'Media de Tempo': media_de_tempo,
                          ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
 
-                    df1.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste1_B.csv", index=None,
+                    df1.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoB\\teste1_B.csv", index=None,
                                header=True)
 
             if tarefas == 9 and ferramentas == 15 and capacidade == 10:
@@ -154,7 +154,7 @@ def GrupoB(folder):
                          'Media de Tempo': media_de_tempo,
                          ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
 
-                    df2.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste2_B.csv", index=None,
+                    df2.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoB\\teste2_B.csv", index=None,
                                header=True)
 
             if tarefas == 9 and ferramentas == 20 and capacidade == 5:
@@ -165,7 +165,7 @@ def GrupoB(folder):
                          'Media de Tempo': media_de_tempo,
                          ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
 
-                    df3.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste3_B.csv", index=None,
+                    df3.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoB\\teste3_B.csv", index=None,
                                header=True)
             if tarefas == 9 and ferramentas == 20 and capacidade == 10:
                 if list(df4) != []:
@@ -175,7 +175,7 @@ def GrupoB(folder):
                          'Media de Tempo': media_de_tempo,
                          ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
 
-                    df4.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste4_B.csv", index=None,
+                    df4.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoB\\teste4_B.csv", index=None,
                                header=True)
 
             if tarefas == 9 and ferramentas == 20 and capacidade == 15:
@@ -186,7 +186,7 @@ def GrupoB(folder):
                          'Media de Tempo': media_de_tempo,
                          ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
 
-                    df5.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste5_B.csv", index=None,
+                    df5.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoB\\teste5_B.csv", index=None,
                                header=True)
 
             if tarefas == 9 and ferramentas == 25 and capacidade == 5:
@@ -197,7 +197,7 @@ def GrupoB(folder):
                          'Media de Tempo': media_de_tempo,
                          ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
 
-                    df6.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste6_B.csv", index=None,
+                    df6.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoB\\teste6_B.csv", index=None,
                                header=True)
 
             if tarefas == 9 and ferramentas == 25 and capacidade == 10:
@@ -208,7 +208,7 @@ def GrupoB(folder):
                          'Media de Tempo': media_de_tempo,
                          ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
 
-                    df7.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste7_B.csv", index=None,
+                    df7.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoB\\teste7_B.csv", index=None,
                                header=True)
 
             if tarefas == 9 and ferramentas == 25 and capacidade == 15:
@@ -219,7 +219,7 @@ def GrupoB(folder):
                          'Media de Tempo': media_de_tempo,
                          ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
 
-                    df8.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste8_B.csv", index=None,
+                    df8.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoB\\teste8_B.csv", index=None,
                                header=True)
             if tarefas == 9 and ferramentas == 25 and capacidade == 20:
                 if list(df9) != []:
@@ -229,7 +229,7 @@ def GrupoB(folder):
                          'Media de Tempo': media_de_tempo,
                          ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
 
-                    df9.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoA\\teste9_B.csv", index=None,
+                    df9.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoB\\teste9_B.csv", index=None,
                                header=True)
 
             Verifcar.Atualizar(filename,arquivo=arquivo)

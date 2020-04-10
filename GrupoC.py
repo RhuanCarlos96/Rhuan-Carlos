@@ -1,177 +1,235 @@
-from pandas import DataFrame
+import pandas as pd
 import glob
 import FuncaoLeitura as opter
 import Execucao as executar
 import os
+import Verifcar
+
 
 def GrupoC(folder):
+    arquivo = "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\instancias_lidas_GrupoC.txt"
+    grupo = "\\GrupoC\\"
+    if os.stat(arquivo).st_size == 0:
+        print('entrei')
+        df1 = pd.DataFrame()
 
-    df1 = DataFrame()
-    df2 = DataFrame()
-    df3 = DataFrame()
-    df4 = DataFrame()
-    df5 = DataFrame()
-    df6 = DataFrame()
-    df7 = DataFrame()
-    df8 = DataFrame()
-    df9 = DataFrame()
+        df2 = pd.DataFrame()
 
-    for filename in glob.glob(os.path.join(folder, '*.txt')):
-        with open(filename, 'r') as f:
-            tarefas, ferramentas, capacidade, matrix = opter.instancias(
-                f)  # optendo todos os valores de instâncias recolhidas em um determinado arquivo
+        df3 = pd.DataFrame()
 
-        if (tarefas == 15) and (ferramentas == 15) and (capacidade == 5):
-            if list(df1) == []:
-                df1 = df1.append({'J': tarefas, 'T': ferramentas, 'C': capacidade,
-                                'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas, matrix=matrix,
-                                                             capacidade=capacidade)},
-                               ignore_index=True)
+        df4 = pd.DataFrame()
 
-            else:
-                df1 = df1.append({'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas, matrix=matrix,
-                                                             capacidade=capacidade)}, ignore_index=True)
+        df5 = pd.DataFrame()
 
-        if tarefas == 15 and ferramentas == 15 and capacidade == 10:
-            if list(df2) == []:
+        df6 = pd.DataFrame()
 
-                df2 = df2.append({'J': tarefas, 'T': ferramentas, 'C': capacidade,
-                                  'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas, matrix=matrix,
-                                                               capacidade=capacidade)},
-                                 ignore_index=True)
+        df7 = pd.DataFrame()
 
-            else:
-                df2 = df2.append({'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas, matrix=matrix,
-                                                               capacidade=capacidade)}, ignore_index=True)
+        df8 = pd.DataFrame()
 
-        if tarefas == 15 and ferramentas == 20 and capacidade == 5:
-            if list(df3) == []:
+        df9 = pd.DataFrame()
 
-                df3 = df3.append({'J': tarefas, 'T': ferramentas, 'C': capacidade,
-                                  'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas, matrix=matrix,
-                                                               capacidade=capacidade)},
-                                 ignore_index=True)
+        df1 = df1.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
 
-            else:
-                df3 = df3.append({'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas, matrix=matrix,
-                                                               capacidade=capacidade)}, ignore_index=True)
+        df2 = df2.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
 
-        if tarefas == 15 and ferramentas == 20 and capacidade == 10:
-            if list(df4) == []:
+        df3 = df3.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
 
-                df4 = df4.append({'J': tarefas, 'T': ferramentas, 'C': capacidade,
-                                  'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas,
-                                                               matrix=matrix,
-                                                               capacidade=capacidade)},
-                                 ignore_index=True)
+        df4 = df4.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
 
-            else:
-                df4 = df4.append(
-                    {'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas, matrix=matrix,
-                                                  capacidade=capacidade)}, ignore_index=True)
+        df5 = df5.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
 
-        if tarefas == 15 and ferramentas == 20 and capacidade == 15:
-            if list(df5) == []:
+        df6 = df6.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
 
-                df5 = df5.append({'J': tarefas, 'T': ferramentas, 'C': capacidade,
-                                  'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas,
-                                                               matrix=matrix,
-                                                               capacidade=capacidade)},
-                                 ignore_index=True)
+        df7 = df7.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
 
-            else:
-                df5 = df5.append(
-                    {'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas, matrix=matrix,
-                                                  capacidade=capacidade)}, ignore_index=True)
+        df8 = df8.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
 
-        if tarefas == 15 and ferramentas == 25 and capacidade == 5:
-            if list(df6) == []:
+        df9 = df9.append(
+            {' |J| ': ' ', ' |T| ': ' ', ' |C| ': ' ', ' TP': ' ',
+             ' NT ': ' ', ' Tempo ': ' ', ' Media ': ' ',
+             'Media de Tempo': ' ',
+             ' Desvio Padrao ': ' '}, ignore_index=True)
 
-                df6 = df6.append({'J': tarefas, 'T': ferramentas, 'C': capacidade,
-                                  'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas,
-                                                               matrix=matrix,
-                                                               capacidade=capacidade)},
-                                 ignore_index=True)
+        df1.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste1_C.csv", index=None,
+                   header=True)
 
-            else:
-                df6 = df6.append(
-                    {'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas, matrix=matrix,
-                                                  capacidade=capacidade)}, ignore_index=True)
+        df2.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste2_C.csv", index=None,
+                   header=True)
 
-        if tarefas == 15 and ferramentas == 25 and capacidade == 10:
-            if list(df7) == []:
+        df3.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste3_C.csv", index=None,
+                   header=True)
 
-                df7 = df7.append({'J': tarefas, 'T': ferramentas, 'C': capacidade,
-                                  'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas,
-                                                               matrix=matrix,
-                                                               capacidade=capacidade)}, ignore_index=True)
+        df4.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste4_C.csv", index=None,
+                   header=True)
 
-            else:
-                df7 = df7.append(
-                    {'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas, matrix=matrix,
-                                                  capacidade=capacidade)}, ignore_index=True)
+        df5.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste5_C.csv", index=None,
+                   header=True)
 
-        if tarefas == 15 and ferramentas == 25 and capacidade == 15:
-            if list(df8) == []:
+        df6.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste6_C.csv", index=None,
+                   header=True)
 
-                df8 = df8.append({'J': tarefas, 'T': ferramentas, 'C': capacidade,
-                                  'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas,
-                                                               matrix=matrix,
-                                                               capacidade=capacidade)}, ignore_index=True)
+        df7.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste7_C.csv", index=None,
+                   header=True)
 
-            else:
-                df8 = df8.append(
-                    {'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas, matrix=matrix,
-                                                  capacidade=capacidade)}, ignore_index=True)
+        df8.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste8_C.csv", index=None,
+                   header=True)
 
-        if tarefas == 15 and ferramentas == 25 and capacidade == 20:
-            if list(df9) == []:
-
-                df9 = df9.append({'J': tarefas, 'T': ferramentas, 'C': capacidade,
-                                  'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas,
-                                                               matrix=matrix,
-                                                               capacidade=capacidade)},
-                                 ignore_index=True)
-
-            else:
-                df9 = df9.append(
-                    {'Tamanho': executar.Execucao(tarefas=tarefas, ferramentas=ferramentas, matrix=matrix,
-                                                  capacidade=capacidade)}, ignore_index=True)
-
-        if list(df1) != []:
-            df1.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoC//teste1_C.csv', index=None,
-                  header=True)
-
-
-        if list(df2) != []:
-            df2.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoC//teste2_C.csv', index=None,
+        df9.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste9_C.csv", index=None,
                    header=True)
 
 
-        if list(df3) != []:
-            df3.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoC//teste3_C.csv', index=None,
-                  header=True)
+    else:
+        print('entrei2')
+        df1 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste1_C.csv")
+        df2 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste2_C.csv")
+        df3 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste3_C.csv")
+        df4 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste4_C.csv")
+        df5 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste5_C.csv")
+        df6 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste6_C.csv")
+        df7 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste7_C.csv")
+        df8 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste8_C.csv")
+        df9 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste9_C.csv")
 
-        if list(df4) != []:
-            df4.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoC//teste4_C.csv', index=None,
-                  header=True)
+    for filename in glob.glob(os.path.join(folder, '*.txt')):
+        if Verifcar.Veficar_Grupo(filename=filename, arquivo=arquivo, grupo=grupo):
+            with open(filename, 'r') as f:
+                tarefas, ferramentas, capacidade, matrix = opter.instancias(
+                    f)  # optendo todos os valores de instâncias recolhidas em um determinado arquivo
 
-        if list(df5) != []:
-            df5.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoC//teste5_C.csv', index=None,
-                  header=True)
+            tamanho, melhor_solucao, melhor_tempo, media, desvio_padrao, media_de_tempo = executar.Execucao(
+                tarefas=tarefas,
+                ferramentas=ferramentas,
+                matrix=matrix,
+                capacidade=capacidade)
 
-        if list(df6) != []:
-            df6.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoC//teste6_C.csv', index=None,
-                  header=True)
+            if (tarefas == 15) and (ferramentas == 15) and (capacidade == 5):
+                if list(df1) != []:
+                    df1 = df1.append(
+                        {' |J| ': tarefas, ' |T| ': ferramentas, ' |C| ': capacidade, ' TP': tamanho,
+                         ' NT ': melhor_solucao, ' Tempo ': melhor_tempo, ' Media ': media,
+                         'Media de Tempo': media_de_tempo,
+                         ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
 
-        if list(df7) != []:
-            df7.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoC//teste7_C.csv', index=None,
-                  header=True)
+                    df1.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste1_C.csv", index=None,
+                               header=True)
 
-        if list(df8) != []:
-            df8.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoC//teste8_C.csv', index=None,
-                  header=True)
+            if tarefas == 15 and ferramentas == 15 and capacidade == 10:
+                if list(df2) != []:
+                    df2 = df2.append(
+                        {' |J| ': tarefas, ' |T| ': ferramentas, ' |C| ': capacidade, ' TP': tamanho,
+                         ' NT ': melhor_solucao, ' Tempo ': melhor_tempo, ' Media ': media,
+                         'Media de Tempo': media_de_tempo,
+                         ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
 
-        if list(df9) != []:
-            df9.to_csv('//home//loop//Desktop//Teste_No_PC//Resultados//GrupoC//teste9_C.csv', index=None,
-                  header=True)
+                    df2.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste2_C.csv", index=None,
+                               header=True)
+
+            if tarefas == 15 and ferramentas == 20 and capacidade == 5:
+                if list(df3) != []:
+                    df3 = df3.append(
+                        {' |J| ': tarefas, ' |T| ': ferramentas, ' |C| ': capacidade, ' TP': tamanho,
+                         ' NT ': melhor_solucao, ' Tempo ': melhor_tempo, ' Media ': media,
+                         'Media de Tempo': media_de_tempo,
+                         ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
+
+                    df3.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste3_C.csv", index=None,
+                               header=True)
+            if tarefas == 15 and ferramentas == 20 and capacidade == 10:
+                if list(df4) != []:
+                    df4 = df4.append(
+                        {' |J| ': tarefas, ' |T| ': ferramentas, ' |C| ': capacidade, ' TP': tamanho,
+                         ' NT ': melhor_solucao, ' Tempo ': melhor_tempo, ' Media ': media,
+                         'Media de Tempo': media_de_tempo,
+                         ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
+
+                    df4.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste4_C.csv", index=None,
+                               header=True)
+            if tarefas == 15 and ferramentas == 20 and capacidade == 15:
+                if list(df5) != []:
+                    df5 = df5.append(
+                        {' |J| ': tarefas, ' |T| ': ferramentas, ' |C| ': capacidade, ' TP': tamanho,
+                         ' NT ': melhor_solucao, ' Tempo ': melhor_tempo, ' Media ': media,
+                         'Media de Tempo': media_de_tempo,
+                         ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
+
+                    df5.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste5_C.csv", index=None,
+                               header=True)
+
+            if tarefas == 15 and ferramentas == 25 and capacidade == 5:
+                if list(df6) != []:
+                    df6 = df6.append(
+                        {' |J| ': tarefas, ' |T| ': ferramentas, ' |C| ': capacidade, ' TP': tamanho,
+                         ' NT ': melhor_solucao, ' Tempo ': melhor_tempo, ' Media ': media,
+                         'Media de Tempo': media_de_tempo,
+                         ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
+
+                    df6.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste6_C.csv", index=None,
+                               header=True)
+
+            if tarefas == 15 and ferramentas == 25 and capacidade == 10:
+                if list(df7) != []:
+                    df7 = df7.append(
+                        {' |J| ': tarefas, ' |T| ': ferramentas, ' |C| ': capacidade, ' TP': tamanho,
+                         ' NT ': melhor_solucao, ' Tempo ': melhor_tempo, ' Media ': media,
+                         'Media de Tempo': media_de_tempo,
+                         ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
+
+                    df7.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste7_C.csv", index=None,
+                               header=True)
+
+            if tarefas == 15 and ferramentas == 25 and capacidade == 15:
+                if list(df8) != []:
+                    df8 = df8.append(
+                        {' |J| ': tarefas, ' |T| ': ferramentas, ' |C| ': capacidade, ' TP': tamanho,
+                         ' NT ': melhor_solucao, ' Tempo ': melhor_tempo, ' Media ': media,
+                         'Media de Tempo': media_de_tempo,
+                         ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
+
+                    df8.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste8_C.csv", index=None,
+                               header=True)
+
+            if tarefas == 15 and ferramentas == 25 and capacidade == 20:
+                if list(df9) != []:
+                    df9 = df9.append(
+                        {' |J| ': tarefas, ' |T| ': ferramentas, ' |C| ': capacidade, ' TP': tamanho,
+                         ' NT ': melhor_solucao, ' Tempo ': melhor_tempo, ' Media ': media,
+                         'Media de Tempo': media_de_tempo,
+                         ' Desvio Padrao ': desvio_padrao}, ignore_index=True)
+
+                    df9.to_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoC\\teste9_C.csv", index=None,
+                               header=True)
+
+            Verifcar.Atualizar(filename=filename, arquivo=arquivo)
