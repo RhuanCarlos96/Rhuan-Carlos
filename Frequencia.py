@@ -168,18 +168,24 @@ class Frequencia(object):
 
         return matriz_de_frequencia_cluster
 
-    def Clusters_Piores(self, matriz_final, cluster, matrix, capacidade, ferramentas,pares_ja_utilizados):
-
+    def Clusters_Piores(self, matriz_final, cluster, matrix, capacidade, ferramentas, pares_ja_utilizados):
 
         maior = matriz_final[0][0]
         for i in range(len(cluster)):
             for j in range(len(cluster)):
-                if matriz_final[i][j] >= maior and len(rv.ferramentas_da_tarefas_do_conjunto_s(matrix,ferramentas,[i])) != capacidade\
-                    and len(rv.ferramentas_da_tarefas_do_conjunto_s(matrix,ferramentas,[j])) != capacidade and pares_ja_utilizados not in pares_ja_utilizados:
-                    maior = matriz_final[i][j]
-                    pares_clusters = []
-                    pares_clusters.append(i)
-                    pares_clusters.append(j)
-
+                if matriz_final[i][j] >= maior and len(
+                        rv.ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [i])) != capacidade \
+                        and len(rv.ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [j])) != capacidade:
+                    if pares_ja_utilizados != []:
+                        if str([i, j]) != str([pares_ja_utilizados[0], pares_ja_utilizados[1]]):
+                            maior = matriz_final[i][j]
+                            pares_clusters = []
+                            pares_clusters.append(i)
+                            pares_clusters.append(j)
+                    else:
+                        maior = matriz_final[i][j]
+                        pares_clusters = []
+                        pares_clusters.append(i)
+                        pares_clusters.append(j)
 
         return pares_clusters

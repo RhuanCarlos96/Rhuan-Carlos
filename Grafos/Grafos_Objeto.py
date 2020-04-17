@@ -47,11 +47,11 @@ class Grafos(object):
                 interseccao[list(self.__chaves.keys())[i]] = []
                 for j in range(len(self.__cluster)):
                     if list(self.__chaves.keys())[i] in self.__cluster[j]:
-                        interseccao[rv.Calculando_a_Chave(self.__nos[i])].append(j)
+                        interseccao[list(self.__chaves.keys())[i]].append(j)
             else:
                 for j in range(len(self.__cluster)):
                     if list(self.__chaves.keys())[i] in self.__cluster[j]:
-                        interseccao[rv.Calculando_a_Chave(self.__nos[i])].append(j)
+                        interseccao[list(self.__chaves.keys())[i]].append(j)
 
         return interseccao
 
@@ -66,3 +66,4 @@ class Grafos(object):
     def Chaves(self):
         chaves = self.__chaves
         return chaves
+

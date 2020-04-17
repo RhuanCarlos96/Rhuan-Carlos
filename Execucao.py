@@ -1,7 +1,3 @@
-import numpy as np
-import time as tempo
-import CompletandoNos as completando
-import Executando_Genetico
 import Executando_Estrategia_Reversa
 import Executando_Genetico
 import numpy

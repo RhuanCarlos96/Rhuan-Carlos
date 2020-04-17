@@ -9,14 +9,17 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed4099e8-a08a-4d26-8925-e1d468d03128" name="Default Changelist" comment="&quot;Arquivo Verificar.py para verificar se linha do arquivo e igual ao arquivo selecionado e também atualiza o arquivo&quot;">
+    <list default="true" id="ed4099e8-a08a-4d26-8925-e1d468d03128" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Execucao_com_realimentação.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoritmoGenetico.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlgoritmoGenetico.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CompletandoNos.py" beforeDir="false" afterPath="$PROJECT_DIR$/CompletandoNos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EstrategiaReversa.py" beforeDir="false" afterPath="$PROJECT_DIR$/EstrategiaReversa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrupoB.py" beforeDir="false" afterPath="$PROJECT_DIR$/GrupoB.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrupoC.py" beforeDir="false" afterPath="$PROJECT_DIR$/GrupoC.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrupoD.py" beforeDir="false" afterPath="$PROJECT_DIR$/GrupoD.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrupoE.py" beforeDir="false" afterPath="$PROJECT_DIR$/GrupoE.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lendo_Arquivos.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lendo_Arquivos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Execucao.py" beforeDir="false" afterPath="$PROJECT_DIR$/Execucao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Executando_Genetico.py" beforeDir="false" afterPath="$PROJECT_DIR$/Executando_Genetico.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frequencia.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frequencia.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Funcoes_Reversa.py" beforeDir="false" afterPath="$PROJECT_DIR$/Funcoes_Reversa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Grafos/Grafos_Objeto.py" beforeDir="false" afterPath="$PROJECT_DIR$/Grafos/Grafos_Objeto.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +46,6 @@
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -135,18 +137,6 @@
         <item itemvalue="Python.EstrategiaReversa" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -264,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586528451372</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="&quot;Atualizaram as funçoes Grupo&quot;">
+      <created>1586556442267</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1586556442267</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,7 +274,8 @@
     <MESSAGE value="&quot; Algoritmo Genetico alterado. Alterações aconteceram nos Algortimos Genéticos e a maioria das suas variavéis são provadas&quot;" />
     <MESSAGE value="&quot; Algoritmo Genetico alterado. Alterações aconteceram nos Algortimos Genéticos e criação de mais uma função Executando_Estrategia_Reversa&quot;" />
     <MESSAGE value="&quot;Arquivo Verificar.py para verificar se linha do arquivo e igual ao arquivo selecionado e também atualiza o arquivo&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Arquivo Verificar.py para verificar se linha do arquivo e igual ao arquivo selecionado e também atualiza o arquivo&quot;" />
+    <MESSAGE value="&quot;Atualizaram as funçoes Grupo&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Atualizaram as funçoes Grupo&quot;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="667" y="159" width="642" height="787" key="#EstrategiaReversa" timestamp="1580313012355">
@@ -293,10 +291,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1581532332310" />
-    <state x="84" y="0" width="1084" height="912" key="CommitChangelistDialog2" timestamp="1586529602909">
+    <state x="84" y="0" width="1084" height="912" key="CommitChangelistDialog2" timestamp="1586556438756">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="84" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1586529602909" />
+    <state x="84" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1586556438756" />
     <state x="421" y="27" width="1084" height="912" key="CommitChangelistDialog2/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971537955" />
     <state x="776" y="311" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581952423241">
       <screen x="67" y="27" width="1853" height="1053" />
@@ -304,31 +302,31 @@
     <state x="523" y="196" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1581724863390" />
     <state x="776" y="311" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581952423241" />
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1580412267879" />
-    <state width="1345" height="455" key="GridCell.Tab.0.bottom" timestamp="1586538609961">
+    <state width="1345" height="113" key="GridCell.Tab.0.bottom" timestamp="1587144842519">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="455" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586538609961" />
+    <state width="1345" height="113" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587144842519" />
     <state width="1343" height="224" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
     <state width="1807" height="370" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971666575" />
     <state width="905" height="321" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
-    <state width="1345" height="455" key="GridCell.Tab.0.center" timestamp="1586538609961">
+    <state width="1345" height="113" key="GridCell.Tab.0.center" timestamp="1587144842519">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="455" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586538609961" />
+    <state width="1345" height="113" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587144842519" />
     <state width="1343" height="224" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
     <state width="1807" height="370" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971666575" />
     <state width="905" height="321" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
-    <state width="1345" height="455" key="GridCell.Tab.0.left" timestamp="1586538609961">
+    <state width="1345" height="113" key="GridCell.Tab.0.left" timestamp="1587144842519">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="455" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586538609961" />
+    <state width="1345" height="113" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587144842519" />
     <state width="1343" height="224" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
     <state width="1807" height="370" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971666575" />
     <state width="905" height="321" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
-    <state width="1345" height="455" key="GridCell.Tab.0.right" timestamp="1586538609961">
+    <state width="1345" height="113" key="GridCell.Tab.0.right" timestamp="1587144842519">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="455" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586538609961" />
+    <state width="1345" height="113" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587144842519" />
     <state width="1343" height="224" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
     <state width="1807" height="370" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971666575" />
     <state width="905" height="321" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
@@ -368,20 +366,24 @@
     </state>
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1583166216299" />
     <state x="440" y="167" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971574738" />
-    <state x="379" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1586556408511">
+    <state x="379" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1586962760935">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1586556408511" />
+    <state x="379" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1586962760935" />
     <state x="581" y="297" key="com.intellij.ide.util.TipDialog/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581969874153" />
     <state x="581" y="297" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1580909831532" />
-    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584677625022">
+    <state x="289" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587076376278">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1584677625022" />
-    <state x="536" y="98" width="912" height="981" key="search.everywhere.popup" timestamp="1581956263617">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="289" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1587076376278" />
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587146325746">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1579791339080" />
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587146325746" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586737003075">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586737003075" />
     <state x="536" y="98" width="912" height="981" key="search.everywhere.popup/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581956263617" />
   </component>
 </project>

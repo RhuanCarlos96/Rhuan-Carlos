@@ -265,7 +265,7 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
                 k += 1
         aux = list(set(aux) - set(indices))
         while -1 in f_linha:
-            T = range(0,capacidade)
+            T = range(0, capacidade)
             aux2 = []
             for i in T:
                 aux2.append(
@@ -471,8 +471,6 @@ def Uptade(S, ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, 
                     LimD = int((len(P) - len(Q)) / cluster_cheios)
                     Distribuição_Media_Cluster = int(LimD / len(cluster))
 
-                # print('LimD', LimD)
-                # print('Distribuiçao Media', Distribuição_Media_Cluster)
                 chave = len(nos_do_clusters)
                 indice_intesseccao = []
                 cluster_intersseccoes = []
@@ -486,7 +484,9 @@ def Uptade(S, ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, 
                         indice_intesseccao.append(p)
                         for k in cluster_intersseccoes:
                             if (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [k])) &
-                                (set(P[p]))) == set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [k])):
+                                (set(P[p]))) == set(
+                                ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [k])) and len(
+                                nos_do_clusters) < 1000:
                                 if (Calculando_a_Chave(P[p]) not in cluster[k]) and (
                                         len(cluster[k]) < Distribuição_Media_Cluster):
                                     cluster[k].append(Calculando_a_Chave(P[p]))
@@ -507,7 +507,8 @@ def Uptade(S, ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, 
                 for p in P_novo:
                     for c in cluster:
                         if (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])) &
-                            (set(p))) == set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])):
+                            (set(p))) == set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])) and len(
+                            nos_do_clusters) < 1000:
                             if (Calculando_a_Chave(p) not in cluster[c]) and (
                                     len(cluster[c]) < Distribuição_Media_Cluster):
                                 cluster[c].append(Calculando_a_Chave(p))
