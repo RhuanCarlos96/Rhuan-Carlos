@@ -242,20 +242,16 @@ def Completando_Clusters_Eliminando_Indiviais(pares_clusters, cluster, nos, chav
 
         cluster_intersseccoes = []
 
-    print('Tamanho dos nos', len(nos))
-    print('Tamanho dos nos',len(chaves))
     nos_finais = {}
     chaves_finais = {}
 
-    chave = 0
+    n = 0
 
     for i in nos:
-        nos_finais[chave] = nos[i]
+        nos_finais[n] = nos[i]
         chaves_finais[Funcoes_Reversa.Calculando_a_Chave(nos[i])] = []
-        chaves_finais[Funcoes_Reversa.Calculando_a_Chave(nos[i])].append(chave)
-        chave += 1
+        chaves_finais[Funcoes_Reversa.Calculando_a_Chave(nos[i])].append(n)
+        n += 1
 
-    print('Tamanho dos nos', len(nos_finais))
-    print('Tamanho dos nos', len(chaves_finais))
 
     return nos_finais, chaves_finais, cluster
