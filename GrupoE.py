@@ -114,6 +114,7 @@ def GrupoE(folder):
         df8 = pd.read_csv("C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoE\\teste8_E.csv")
 
     for filename in glob.glob(os.path.join(folder, '*.txt')):
+        print(filename)
         if Verifcar.Veficar_Grupo(filename,arquivo,grupo):
             with open(filename, 'r') as f:
                 tarefas, ferramentas, capacidade, matrix = opter.instancias(

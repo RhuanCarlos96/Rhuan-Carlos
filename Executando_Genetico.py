@@ -63,7 +63,7 @@ def Runnig_Genetic_with_Realimentation(nos, chaves, cluster, matrix, capacidade,
         menor = []
         tempo = []
 
-        while now - before < 5 * 60:
+        while now - before < 3 :
             if k == 0:
                 genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
                 genetico.Individuos_Cluster()
@@ -91,7 +91,6 @@ def Runnig_Genetic_with_Realimentation(nos, chaves, cluster, matrix, capacidade,
             nos=nos, chaves=chaves, matrix=matrix,
             ferramentas=ferramentas, capacidade=capacidade)
 
-        print('Primeira realimentação')
         j += 1
 
     organizar = np.argsort(menor)

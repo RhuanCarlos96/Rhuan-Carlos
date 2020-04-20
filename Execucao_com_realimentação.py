@@ -12,7 +12,7 @@ def Execucao(tarefas, ferramentas, matrix, capacidade):
     melhor_tempo = []
 
     for i in range(2):
-        menor, tempo = Executando_Genetico.Running_Genetic(nos=nos, cluster=cluster, chaves=chaves)
+        menor, tempo = Executando_Genetico.Runnig_Genetic_with_Realimentation(nos=nos, cluster=cluster, chaves=chaves,matrix=matrix,capacidade=capacidade,ferramentas=ferramentas)
         melhor_solucao.append(menor)
         melhor_tempo.append(tempo)
 
