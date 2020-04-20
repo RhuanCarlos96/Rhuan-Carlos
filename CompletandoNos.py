@@ -59,9 +59,9 @@ def Gerando_Novo_Nos(par_de_cluster, capacidade, matrix, ferramentas, cluster, n
     ferramentas_i = Funcoes_Reversa.ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [tarefa_i])
     ferramentas_j = Funcoes_Reversa.ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [tarefa_j])
 
-    # print('Ferramentas i', ferramentas_i)
-    #
-    # print('Ferramentas j', ferramentas_j)
+    print('Ferramentas i', ferramentas_i)
+
+    print('Ferramentas j', ferramentas_j)
 
     populariedade = Funcoes_Reversa.requerimentos_de_ferramentas(ferramentas=ferramentas, matrix=matrix)
     populariedade = numpy.argsort(populariedade)
@@ -139,12 +139,15 @@ def Novo_Nos(combinacao, aux, tamanho, tamanho_do_no):
 
 def Opcoes_de_Completar(diferenca, ferramentas, capacidade, populariedade, tamanho, tamanho_do_cluster):
     if len(diferenca) > capacidade - len(ferramentas):
+        print('entrei')
         combinacao = itertools.combinations(diferenca, capacidade - len(ferramentas))
         novo_nos = Novo_Nos(list(combinacao), ferramentas, tamanho, tamanho_do_cluster)
     else:
         if len(diferenca) == capacidade - len(ferramentas):
+            print('entrei1')
             novo_nos = ferramentas + diferenca
         else:
+            print('entrei2')
             aux = ferramentas + diferenca
             restantes = set(populariedade) - set(aux)
             combinacao = itertools.combinations(restantes, capacidade - len(aux))
@@ -242,16 +245,21 @@ def Completando_Clusters_Eliminando_Indiviais(pares_clusters, cluster, nos, chav
 
         cluster_intersseccoes = []
 
-    nos_finais = {}
-    chaves_finais = {}
+        nos_finais = {}
+        chaves_finais = {}
 
-    n = 0
+        n = 0
 
-    for i in nos:
-        nos_finais[n] = nos[i]
-        chaves_finais[Funcoes_Reversa.Calculando_a_Chave(nos[i])] = []
-        chaves_finais[Funcoes_Reversa.Calculando_a_Chave(nos[i])].append(n)
-        n += 1
+        for i in nos:
+            nos_finais[n] = nos[i]
+            chaves_finais[Funcoes_Reversa.Calculando_a_Chave(nos[i])] = []
+            chaves_finais[Funcoes_Reversa.Calculando_a_Chave(nos[i])].append(n)
+            n += 1
 
+        nos = nos_finais
+        chaves = chaves_finais
+
+    print(len(nos))
+    print(len(chaves))
 
     return nos_finais, chaves_finais, cluster
