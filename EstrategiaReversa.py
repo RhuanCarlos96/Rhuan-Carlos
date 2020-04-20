@@ -22,8 +22,7 @@ def main():
     j = 0
     print(len(nos))
     print(len(chaves))
-    menor = []
-    tempo = []
+
     while j < 3:
         genetico = gene.Genetico(nos, cluster, chaves)
 
