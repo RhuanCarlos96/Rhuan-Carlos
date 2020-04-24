@@ -36,6 +36,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ed4099e8-a08a-4d26-8925-e1d468d03128" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlgoritmoGenetico.py" beforeDir="false" afterPath="$PROJECT_DIR$/AlgoritmoGenetico.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CompletandoNos.py" beforeDir="false" afterPath="$PROJECT_DIR$/CompletandoNos.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EstrategiaReversa.py" beforeDir="false" afterPath="$PROJECT_DIR$/EstrategiaReversa.py" afterDir="false" />
     </list>
@@ -312,7 +313,21 @@
       <option name="project" value="LOCAL" />
       <updated>1587396942301</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="&quot;Atualizei as funçoes de realimentação que é capaz tanto de aumentar ou diminuir a quantidade de nos &quot;">
+      <created>1587405047797</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1587405047797</updated>
+    </task>
+    <task id="LOCAL-00021" summary="&quot;Atualizei as funçoes de realimentação que é capaz tanto de aumentar ou diminuir a quantidade de nos &quot;">
+      <created>1587405081429</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1587405081429</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,6 +355,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -366,46 +382,46 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="137" y="19" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1581532332310" />
-    <state x="84" y="0" width="1084" height="912" key="CommitChangelistDialog2" timestamp="1587396940937">
+    <state x="84" y="0" width="1084" height="912" key="CommitChangelistDialog2" timestamp="1587405080550">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="84" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587396940937" />
+    <state x="84" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587405080550" />
     <state x="421" y="27" width="1084" height="912" key="CommitChangelistDialog2/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971537955" />
     <state x="129" y="55" key="DiffContextDialog" timestamp="1587396965212">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="129" y="55" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1587396965212" />
-    <state x="776" y="311" width="424" height="484" key="FileChooserDialogImpl" timestamp="1581952423241">
-      <screen x="67" y="27" width="1853" height="1053" />
-    </state>
-    <state x="523" y="196" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1581724863390" />
-    <state x="776" y="311" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581952423241" />
-    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1580412267879" />
-    <state width="1345" height="35" key="GridCell.Tab.0.bottom" timestamp="1587403007691">
+    <state x="523" y="196" width="424" height="484" key="FileChooserDialogImpl" timestamp="1587514388340">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="35" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587403007691" />
+    <state x="523" y="196" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587514388340" />
+    <state x="776" y="311" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581952423241" />
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1580412267879" />
+    <state width="1345" height="422" key="GridCell.Tab.0.bottom" timestamp="1587698611669">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="422" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587698611669" />
     <state width="1343" height="224" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
     <state width="1807" height="370" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971666575" />
     <state width="905" height="321" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
-    <state width="1345" height="35" key="GridCell.Tab.0.center" timestamp="1587403007691">
+    <state width="1345" height="422" key="GridCell.Tab.0.center" timestamp="1587698611669">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="35" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587403007691" />
+    <state width="1345" height="422" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587698611669" />
     <state width="1343" height="224" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
     <state width="1807" height="370" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971666575" />
     <state width="905" height="321" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
-    <state width="1345" height="35" key="GridCell.Tab.0.left" timestamp="1587403007691">
+    <state width="1345" height="422" key="GridCell.Tab.0.left" timestamp="1587698611669">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="35" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587403007691" />
+    <state width="1345" height="422" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587698611669" />
     <state width="1343" height="224" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
     <state width="1807" height="370" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971666575" />
     <state width="905" height="321" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
-    <state width="1345" height="35" key="GridCell.Tab.0.right" timestamp="1587403007691">
+    <state width="1345" height="422" key="GridCell.Tab.0.right" timestamp="1587698611669">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="35" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587403007691" />
+    <state width="1345" height="422" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587698611669" />
     <state width="1343" height="224" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
     <state width="1807" height="370" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971666575" />
     <state width="905" height="321" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
@@ -440,10 +456,10 @@
     <state x="2055" y="38" key="SettingsEditor/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952762532" />
     <state x="317" y="36" key="SettingsEditor/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581952429611" />
     <state x="317" y="36" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1580745055423" />
-    <state x="275" y="97" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1587397193787">
+    <state x="275" y="97" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1587405052263">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587397193787" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1587405052263" />
     <state x="440" y="167" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971574738" />
     <state x="379" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1586962760935">
       <screen x="0" y="0" width="1366" height="728" />
@@ -455,10 +471,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="289" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1366.728@0.0.1366.728" timestamp="1587076376278" />
-    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587146325746">
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587405058357">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587146325746" />
+    <state x="492" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587405058357" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586737003075">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

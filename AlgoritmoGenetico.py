@@ -615,8 +615,8 @@ class Genetico(object):
         #
         # print('Torneio', selecionados)
 
-        # self.__selecionados = Ranking_Linear(individuos_fitness=self.__individuos_fitness)
         self.__selecionados = Ranking_Linear(individuos_fitness=self.__individuos_fitness)
+        #self.__selecionados = Ranking_Exponecial(individuos_fitness=self.__individuos_fitness)
         # nao_selecionados = list(set(self.__individuos_clusters.keys()) - set(selecionados))
         # self.frequencia.Nao_selecionados(nao_selecionados, self.__individuos_nos, self.__individuos_fitness)
         # self.frequencia.Selecionados_Geracoes(set(selecionados), self.__individuos_nos, self.__individuos_fitness)
@@ -684,3 +684,6 @@ class Genetico(object):
 
     def GetFitness(self):
         return self.__individuos_fitness
+
+    def GetGrafo(self):
+        return self.__entrada

@@ -26,32 +26,44 @@ def Sem_Intersseccao(nos, cluster, chaves, par_de_cluster, grafo):
     return sem_interseccao
 
 
-def Escolhendo_No_Isolado(nos, cluster, chaves, par_de_cluster, grafo, novas_chaves):
+def nos_isolados(cluster, grafo):
     sem_interseccao_nos = []
     sem_interseccao = []
-    for c in par_de_cluster:
-        for k in cluster[c]:
-            if k in list(grafo.Inteseccao().keys()):
-                if len(grafo.Inteseccao()[k]) == 1:
-                    sem_interseccao_nos.append(chaves[k][0])
 
-        escolhido = random.choice(sem_interseccao_nos)
-        while escolhido in novas_chaves:
-            escolhido = random.choice(sem_interseccao_nos)
+    for k in range(len(cluster)):
+        for c in cluster[k]:
+            if c in list(grafo.Inteseccao().keys()):
+                if len(grafo.Inteseccao()[c]) == 1:
+                    sem_interseccao_nos.append(c)
 
-        sem_interseccao.append(escolhido)
-
+        sem_interseccao.append(sem_interseccao_nos)
         sem_interseccao_nos = []
 
     return sem_interseccao
+
+
+def nos_nao_isolados(cluster, grafo):
+    com_interseccao_nos = []
+    com_interseccao = []
+
+    for k in range(len(cluster)):
+        for c in cluster[k]:
+            if c in list(grafo.Inteseccao().keys()):
+                if len(grafo.Inteseccao()[c]) >= 2:
+                    com_interseccao_nos.append(c)
+
+        com_interseccao.append(com_interseccao_nos)
+        com_interseccao_nos = []
+
+    return com_interseccao
 
 
 def Gerando_Novo_Nos(par_de_cluster, capacidade, matrix, ferramentas, cluster, nos, chaves):
     tarefa_i = par_de_cluster[0]
     tarefa_j = par_de_cluster[1]
 
-    print('Tarefa i', tarefa_i)
-    print('Tarefa_j', tarefa_j)
+    # print('Tarefa i', tarefa_i)
+    # print('Tarefa_j', tarefa_j)
     grafo = Grafo(nos=nos, cluster=cluster, chaves=chaves)
     sem_interseccao = Sem_Intersseccao(nos=nos, cluster=cluster, chaves=chaves, par_de_cluster=par_de_cluster,
                                        grafo=grafo)
@@ -59,9 +71,9 @@ def Gerando_Novo_Nos(par_de_cluster, capacidade, matrix, ferramentas, cluster, n
     ferramentas_i = Funcoes_Reversa.ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [tarefa_i])
     ferramentas_j = Funcoes_Reversa.ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [tarefa_j])
 
-    print('Ferramentas i', ferramentas_i)
-
-    print('Ferramentas j', ferramentas_j)
+    # print('Ferramentas i', ferramentas_i)
+    #
+    # print('Ferramentas j', ferramentas_j)
 
     populariedade = Funcoes_Reversa.requerimentos_de_ferramentas(ferramentas=ferramentas, matrix=matrix)
     populariedade = numpy.argsort(populariedade)
@@ -72,11 +84,13 @@ def Gerando_Novo_Nos(par_de_cluster, capacidade, matrix, ferramentas, cluster, n
     # Ferramentas que estao em j porém nao estao em i
     diferencaj_i = Funcoes_Reversa.ferramentas_que_nao_estao_na_tarefa(ferramentas_j, tarefa_i, matrix, ferramentas)
 
-    novo_nos_j = Opcoes_de_Completar(diferencai_j, ferramentas_j, capacidade, populariedade, sem_interseccao[1],
-                                     len(nos))
+    if len(ferramentas_j) != capacidade:
+        novo_nos_j = Opcoes_de_Completar(diferencai_j, ferramentas_j, capacidade, populariedade, sem_interseccao[1],
+                                         len(nos))
 
-    novo_nos_i = Opcoes_de_Completar(diferencaj_i, ferramentas_i, capacidade, populariedade, sem_interseccao[0],
-                                     len(nos))
+    if len(ferramentas_i) != capacidade:
+        novo_nos_i = Opcoes_de_Completar(diferencaj_i, ferramentas_i, capacidade, populariedade, sem_interseccao[0],
+                                         len(nos))
 
     aux = []
     aux1 = []
@@ -139,15 +153,12 @@ def Novo_Nos(combinacao, aux, tamanho, tamanho_do_no):
 
 def Opcoes_de_Completar(diferenca, ferramentas, capacidade, populariedade, tamanho, tamanho_do_cluster):
     if len(diferenca) > capacidade - len(ferramentas):
-        print('entrei')
         combinacao = itertools.combinations(diferenca, capacidade - len(ferramentas))
         novo_nos = Novo_Nos(list(combinacao), ferramentas, tamanho, tamanho_do_cluster)
     else:
         if len(diferenca) == capacidade - len(ferramentas):
-            print('entrei1')
             novo_nos = ferramentas + diferenca
         else:
-            print('entrei2')
             aux = ferramentas + diferenca
             restantes = set(populariedade) - set(aux)
             combinacao = itertools.combinations(restantes, capacidade - len(aux))
@@ -157,109 +168,100 @@ def Opcoes_de_Completar(diferenca, ferramentas, capacidade, populariedade, taman
 
 
 def Completando_Clusters_Eliminando_Indiviais(pares_clusters, cluster, nos, chaves, matrix,
-                                              ferramentas, capacidade):
+                                              ferramentas, capacidade, tarefas, conjunto_de_nos_isolados,
+                                              conjunto_de_nos_nao_isolados):
     novos_nos = Gerando_Novo_Nos(par_de_cluster=pares_clusters, capacidade=capacidade,
                                  matrix=matrix, ferramentas=ferramentas, cluster=cluster,
                                  nos=nos, chaves=chaves)
 
-    ##Primeiro identificando os nos que nao fazendo interssecacao nos clusters em questao:
-    cluster_intersseccoes = []
-    indice_intesseccao = []
-    chave = len(chaves)
-    novas_chaves = []
+    # cluster_auxiliar
+    cluster_auxiliar = {}
+    for i in range(tarefas):
+        cluster_auxiliar[i] = []
+
+    cluster_intersseccao = []
+    k = len(chaves)
+    for p in range(len(novos_nos)):
+        for c in cluster_auxiliar:
+            if (set(Funcoes_Reversa.ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])) &
+                (set(novos_nos[p]))) == set(
+                Funcoes_Reversa.ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])):
+                if (Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]) not in cluster_auxiliar[c]):
+                    cluster_intersseccao.append(c)
+                    cluster_auxiliar[c].append(Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]))
+                    if Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]) not in list(chaves.keys()):
+                        nos[k] = novos_nos[p]
+                        chaves[Funcoes_Reversa.Calculando_a_Chave(novos_nos[p])] = []
+                        chaves[Funcoes_Reversa.Calculando_a_Chave(novos_nos[p])].append(k)
+                        k += 1
+
+        if len(cluster_intersseccao) >= 2:
+            for i in cluster_intersseccao:
+                aux = conjunto_de_nos_isolados[i]
+                if aux:
+                    if len(cluster[i]) > 1:
+                        remover = random.choice(aux)
+                        aux.remove(remover)
+                        del nos[chaves[remover][0]]
+                        del chaves[remover]
+                conjunto_de_nos_isolados[i] = aux
+
+        cluster_intersseccao = []
+
+    for i in range(len(conjunto_de_nos_nao_isolados)):
+        aux = conjunto_de_nos_nao_isolados[i]
+        if aux:
+            for j in aux:
+                if j not in cluster_auxiliar[i]:
+                    cluster_auxiliar[i].append(j)
+
+    for i in range(len(conjunto_de_nos_isolados)):
+        aux = conjunto_de_nos_isolados[i]
+        if aux:
+            for j in aux:
+                if j not in cluster_auxiliar[i]:
+                    cluster_auxiliar[i].append(j)
+
+    cluster = Funcoes_Reversa.Copia(cluster_auxiliar)
+
+    nos_final = {}
+    chaves_final = {}
+
+    k = 0
+
+    for i in nos:
+        nos_final[k] = nos[i]
+        chaves_final[Funcoes_Reversa.Calculando_a_Chave(nos[i])] = []
+        chaves_final[Funcoes_Reversa.Calculando_a_Chave(nos[i])].append(k)
+        k += 1
+
+    nos = Funcoes_Reversa.Copia(nos_final)
+    chaves = Funcoes_Reversa.Copia(chaves_final)
+
+    return nos, chaves, cluster
+
+
+def aumentando_a_quantidade_de_nos(pares_clusters, cluster, nos, chaves, matrix,
+                                   ferramentas, capacidade, tamanho_de_nos_antigo):
+    novos_nos = Gerando_Novo_Nos(par_de_cluster=pares_clusters, capacidade=capacidade,
+                                 matrix=matrix, ferramentas=ferramentas, cluster=cluster,
+                                 nos=nos, chaves=chaves)
+
+    k = len(chaves)
     for p in range(len(novos_nos)):
         for c in cluster:
             if (set(Funcoes_Reversa.ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])) &
                 (set(novos_nos[p]))) == set(
                 Funcoes_Reversa.ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])):
-                cluster_intersseccoes.append(c)
-
-        no_ja_presente = []
-        if len(cluster_intersseccoes) >= 2:
-            indice_intesseccao.append(p)
-            for k in cluster_intersseccoes:
-                if (Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]) not in cluster[k]):
-                    cluster[k].append(Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]))
-                    if Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]) not in list(chaves.keys()):
-                        nos[chave] = novos_nos[p]
-                        chaves[Funcoes_Reversa.Calculando_a_Chave(novos_nos[p])] = []
-                        chaves[Funcoes_Reversa.Calculando_a_Chave(novos_nos[p])].append(chave)
-                        novas_chaves.append(chave)
-                        chave += 1
-                else:
-                    no_ja_presente.append(k)
-
-            if no_ja_presente == []:
-                grafo = Grafo(nos=nos, cluster=cluster, chaves=chaves)
-
-                sem_interseccoes = Sem_Intersseccao(nos=nos, cluster=cluster, chaves=chaves,
-                                                    par_de_cluster=cluster_intersseccoes, grafo=grafo)
-
-                if numpy.count_nonzero(sem_interseccoes) == len(cluster_intersseccoes):
-                    nos_escolhidos = Escolhendo_No_Isolado(nos=nos, cluster=cluster, chaves=chaves,
-                                                           par_de_cluster=cluster_intersseccoes, grafo=grafo,
-                                                           novas_chaves=novas_chaves)
-                    q = 0
-                    for i in nos_escolhidos:
-                        deletar = Funcoes_Reversa.Calculando_a_Chave(nos[i])
-                        del chaves[deletar]
-                        del nos[i]
-                        lista = list(cluster.get(cluster_intersseccoes[q]))
-                        lista.remove(deletar)
-                        cluster[cluster_intersseccoes[q]] = []
-                        cluster[cluster_intersseccoes[q]] = lista
-                        q += 1
-
-
-                else:
-                    if numpy.count_nonzero(sem_interseccoes) > 0:
-                        indices = numpy.flatnonzero(sem_interseccoes)
-                        cluster_restantes = []
-                        for i in indices:
-                            cluster_restantes.append(cluster_intersseccoes[i])
-
-                        nos_escolhidos = Escolhendo_No_Isolado(nos=nos, cluster=cluster, chaves=chaves,
-                                                               par_de_cluster=cluster_restantes, grafo=grafo,
-                                                               novas_chaves=novas_chaves)
-                        q = 0
-                        for i in nos_escolhidos:
-                            deletar = Funcoes_Reversa.Calculando_a_Chave(nos[i])
-                            del chaves[deletar]
-                            del nos[i]
-                            lista = list(cluster.get(cluster_restantes[q]))
-                            lista.remove(deletar)
-                            cluster[cluster_restantes[q]] = []
-                            cluster[cluster_restantes[q]] = lista
-                            q += 1
-
-        else:
-            for k in cluster_intersseccoes:
-                if (Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]) not in cluster[k]):
-                    cluster[k].append(Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]))
-                    if Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]) not in list(chaves.keys()):
-                        nos[chave] = novos_nos[p]
-                        chaves[Funcoes_Reversa.Calculando_a_Chave(novos_nos[p])] = []
-                        chaves[Funcoes_Reversa.Calculando_a_Chave(novos_nos[p])].append(chave)
-                        novas_chaves.append(chave)
-                        chave += 1
-
-        cluster_intersseccoes = []
-
-        nos_finais = {}
-        chaves_finais = {}
-
-        n = 0
-
-        for i in nos:
-            nos_finais[n] = nos[i]
-            chaves_finais[Funcoes_Reversa.Calculando_a_Chave(nos[i])] = []
-            chaves_finais[Funcoes_Reversa.Calculando_a_Chave(nos[i])].append(n)
-            n += 1
-
-        nos = nos_finais
-        chaves = chaves_finais
+                if (Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]) not in cluster[c]):
+                    if len(nos) <= (int(tamanho_de_nos_antigo * 0.5) + tamanho_de_nos_antigo):
+                        cluster[c].append(Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]))
+                        if Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]) not in list(chaves.keys()):
+                            nos[k] = novos_nos[p]
+                            chaves[Funcoes_Reversa.Calculando_a_Chave(novos_nos[p])] = []
+                            chaves[Funcoes_Reversa.Calculando_a_Chave(novos_nos[p])].append(k)
+                            k += 1
 
     print(len(nos))
     print(len(chaves))
-
-    return nos_finais, chaves_finais, cluster
+    return nos, chaves, cluster
