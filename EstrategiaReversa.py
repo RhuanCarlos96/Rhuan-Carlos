@@ -30,7 +30,7 @@ def main():
     taxa_de_cruzamento = 0.7
     taxa_de_mutacao = 0.1
     tamanho_da_populacao = 150
-    taxa_de_crescimento = 0.2
+    taxa_de_crescimento = 0.4
     taxa_de_selecao = 0.97
     while j < 5:
         genetico = gene.Genetico(nos, cluster, chaves)
