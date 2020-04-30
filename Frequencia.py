@@ -82,7 +82,6 @@ class Frequencia(object):
 
         # Tupla do individuo com sua respectiva chave de individuo
         items = individuos_fitness.items()
-
         if self.__piores_fitness_nos == {}:
             # Definindo a metade dos individuos com os piores fitness
             # Individuos organizados por ordem decrescente

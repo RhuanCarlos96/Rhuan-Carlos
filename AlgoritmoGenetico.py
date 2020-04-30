@@ -308,7 +308,7 @@ def Substring(individo1, individuo2):
     return individuo_filho
 
 
-def Ranking_Linear(individuos_fitness):
+def Ranking_Linear(individuos_fitness,taxa_de_selecao):
     # Este método me garante mais diversidade do que o método de seleção por torneio
     organizados = {k: v for k, v in sorted(individuos_fitness.items(), key=lambda item: item[1])}
 
@@ -324,7 +324,7 @@ def Ranking_Linear(individuos_fitness):
 
     ranking = {k: v for k, v in sorted(ranking.items(), key=lambda item: item[1])}
 
-    zeta_negativo = 0.1
+    zeta_negativo = taxa_de_selecao
     sum0 = 0
     sum = []
     zeta_positivo = 2 - zeta_negativo
@@ -353,7 +353,7 @@ def Ranking_Linear(individuos_fitness):
     return selecionados
 
 
-def Ranking_Exponecial(individuos_fitness):
+def Ranking_Exponecial(individuos_fitness,taxa_de_selecao):
     # Este método me garante mais diversidade do que o método de seleção por torneio
     organizados = {k: v for k, v in sorted(individuos_fitness.items(), key=lambda item: item[1])}
 
@@ -369,7 +369,7 @@ def Ranking_Exponecial(individuos_fitness):
 
     ranking = {k: v for k, v in sorted(ranking.items(), key=lambda item: item[1])}
 
-    c = 0.97
+    c = taxa_de_selecao
     sum0 = 0
     sum = []
     indiviudos_j = []
@@ -463,14 +463,14 @@ class Genetico(object):
         self.__selecionados = []
         self.__individuos_filhos = {}
 
-    def Populacao_Inicial(self):
+    def Populacao_Inicial(self,tamanho_da_populacao):
         keys_cluster = self.__entrada.Cluster().keys()
         keys_cluster = list(keys_cluster)
 
         # Definindo os possiveis cromossomos dada a uma sequência de clusters
         aux = []
 
-        for i in range(150):
+        for i in range(tamanho_da_populacao):
             random.shuffle(keys_cluster)
 
             for i in keys_cluster:
@@ -486,6 +486,7 @@ class Genetico(object):
         for crommossomo in self.__cromossomo_cluster:
             self.__individuos_clusters[k] = crommossomo
             k += 1
+
 
 
     def Possiveis_Cromossomos_Inciais(self):
@@ -608,20 +609,20 @@ class Genetico(object):
 
         return menor, tempo
 
-    def Selecao(self):
+    def Selecao(self,taxa_de_selecao):
 
         # selecionados = Torneio(individuos_clusters=self.__individuos_clusters,
         #                        individuos_fitness=self.__individuos_fitness)
         #
         # print('Torneio', selecionados)
 
-        self.__selecionados = Ranking_Linear(individuos_fitness=self.__individuos_fitness)
-        #self.__selecionados = Ranking_Exponecial(individuos_fitness=self.__individuos_fitness)
+        #self.__selecionados = Ranking_Linear(individuos_fitness=self.__individuos_fitness)
+        self.__selecionados = Ranking_Exponecial(individuos_fitness=self.__individuos_fitness,taxa_de_selecao=taxa_de_selecao)
         # nao_selecionados = list(set(self.__individuos_clusters.keys()) - set(selecionados))
         # self.frequencia.Nao_selecionados(nao_selecionados, self.__individuos_nos, self.__individuos_fitness)
         # self.frequencia.Selecionados_Geracoes(set(selecionados), self.__individuos_nos, self.__individuos_fitness)
 
-    def CrossOver(self, probabilidade_crossover):
+    def CrossOver(self, taxa_de_cruzamento):
         self.__individuos_filhos = {}
         for o in range(len(self.__selecionados)):
             # Determinando o primeiro pai de forma aleatória dos individuos selecionados
@@ -640,7 +641,7 @@ class Genetico(object):
 
             sorteio = random.uniform(0, 1)
 
-            if sorteio < probabilidade_crossover:
+            if sorteio < taxa_de_cruzamento:
                 self.__individuos_filhos[o] = Substring(cromossomo1, cromossomo2)
 
             else:
@@ -649,11 +650,12 @@ class Genetico(object):
                 self.__individuos_filhos[o] = self.__individuos_clusters[random.choice(escolha)]
 
 
-    def Mutation_Swap(self, probabilidade_mutação):
+
+    def Mutation_Swap(self, taxa_de_mutação):
         individuos = list(self.__individuos_filhos.keys())
         for i in individuos:
             sorteio = random.uniform(0, 1)
-            if sorteio < probabilidade_mutação:
+            if sorteio < taxa_de_mutação:
                 cromossomo = self.__individuos_filhos[i]
                 posicao1 = int(random.uniform(0, 1) * (len(cromossomo) - 1))
 
@@ -670,6 +672,7 @@ class Genetico(object):
 
         self.__individuos_clusters = {}
         self.__individuos_clusters = self.__individuos_filhos
+
 
 
     def Get_Individuos_Clusters(self):

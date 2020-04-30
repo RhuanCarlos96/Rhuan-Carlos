@@ -242,7 +242,7 @@ def Completando_Clusters_Eliminando_Indiviais(pares_clusters, cluster, nos, chav
 
 
 def aumentando_a_quantidade_de_nos(pares_clusters, cluster, nos, chaves, matrix,
-                                   ferramentas, capacidade, tamanho_de_nos_antigo):
+                                   ferramentas, capacidade, tamanho_de_nos_antigo,taxa_de_crescimento):
     novos_nos = Gerando_Novo_Nos(par_de_cluster=pares_clusters, capacidade=capacidade,
                                  matrix=matrix, ferramentas=ferramentas, cluster=cluster,
                                  nos=nos, chaves=chaves)
@@ -254,7 +254,7 @@ def aumentando_a_quantidade_de_nos(pares_clusters, cluster, nos, chaves, matrix,
                 (set(novos_nos[p]))) == set(
                 Funcoes_Reversa.ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])):
                 if (Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]) not in cluster[c]):
-                    if len(nos) <= (int(tamanho_de_nos_antigo * 0.5) + tamanho_de_nos_antigo):
+                    if len(nos) <= (int(tamanho_de_nos_antigo * taxa_de_crescimento) + tamanho_de_nos_antigo):
                         cluster[c].append(Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]))
                         if Funcoes_Reversa.Calculando_a_Chave(novos_nos[p]) not in list(chaves.keys()):
                             nos[k] = novos_nos[p]

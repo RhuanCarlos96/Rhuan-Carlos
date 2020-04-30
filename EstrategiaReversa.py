@@ -27,21 +27,26 @@ def main():
     print('Executando')
     menor = []
     tempo = []
+    taxa_de_cruzamento = 0.7
+    taxa_de_mutacao = 0.1
+    tamanho_da_populacao = 150
+    taxa_de_crescimento = 0.5
+    taxa_de_selecao = 0.97
     while j < 5:
         genetico = gene.Genetico(nos, cluster, chaves)
 
         # Definindo a populacao inicial de clusters
-        genetico.Populacao_Inicial()
+        genetico.Populacao_Inicial(tamanho_da_populacao=tamanho_da_populacao)
 
         # Definindo os possiveis cromossomos clusters
 
         possiveis_cromossomos = genetico.Possiveis_Cromossomos_Inciais()
-        k = 0
         before = time.time()
         now = before
 
-        while now - before < 10 * 60:
-            if k == 0:
+        while now - before < 5 * 60:
+            print(now-before)
+            if now - before == 0:
                 genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
                 genetico.Individuos_Cluster()
                 genetico.Individuos_Nos()
@@ -52,10 +57,12 @@ def main():
                 genetico.Individuos_Nos()
 
             menor_troca, tempo_do_menor = genetico.Fitness(before)
+            genetico.Selecao(taxa_de_selecao=taxa_de_selecao)
+            genetico.CrossOver(taxa_de_cruzamento=taxa_de_cruzamento)
+            genetico.Mutation_Swap(taxa_de_mutação=taxa_de_mutacao)
             menor.append(menor_troca)
             tempo.append(round(tempo_do_menor, 2))
             now = time.time()
-            k += 1
 
         frequencia = genetico.GetFrequencia()
 
@@ -66,7 +73,7 @@ def main():
         nos, chaves, cluster = CompletandoNos.aumentando_a_quantidade_de_nos(
             pares_clusters=pares, cluster=cluster,
             nos=nos, chaves=chaves, matrix=matrix,
-            ferramentas=ferramentas, capacidade=capacidade,tamanho_de_nos_antigo=quantidade_de_nos)
+            ferramentas=ferramentas, capacidade=capacidade,tamanho_de_nos_antigo=quantidade_de_nos,taxa_de_crescimento=taxa_de_crescimento)
 
         j += 1
 
