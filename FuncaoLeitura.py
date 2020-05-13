@@ -6,7 +6,6 @@ def instancias(archive):
     primeira_linha = primeira_linha.rstrip("\n")
     primeira_linha = primeira_linha.split(" ")
     tam = len(primeira_linha)
-
     if (tam == 3):
         for i in range(tam):
             primeira_linha[i] = int(primeira_linha[i])
@@ -24,8 +23,8 @@ def instancias(archive):
             linha.pop(0)
             tam = len(linha)
 
-            for i in range(tam):
-                linha[i] = int(linha[i])
+            for j in range(tam):
+                linha[i] = int(linha[j])
 
             concatenado = np.concatenate((concatenado, linha))
 
@@ -33,8 +32,6 @@ def instancias(archive):
 
     else:
         n_tarefas = int(primeira_linha[0])
-
-
         segunda_linha = archive.readline()
         segunda_linha = segunda_linha.rstrip("\n")
         segunda_linha = segunda_linha.split(" ")
@@ -48,20 +45,25 @@ def instancias(archive):
         concatenado = np.array([])
 
         for i in range(n_ferramentas):
-
             linha = archive.readline()
             linha = linha.rstrip()
             linha = linha.split("  ")
             tam = len(linha)
+            if tam > 1:
 
-            for i in range(tam):
-                linha[i] = int(linha[i])
+                for j in range(tam):
+                    linha[j] = int(linha[j])
 
-            concatenado = np.concatenate((concatenado, linha))
+                concatenado = np.concatenate((concatenado, linha))
+
+            else:
+                aux = []
+                for j in linha[0]:
+                    if j != " ":
+                        aux.append(int(j))
+
+                concatenado = np.concatenate((concatenado, aux))
 
         matrix = np.reshape(concatenado, (n_ferramentas, n_tarefas))
 
     return n_tarefas, n_ferramentas, capacidade, matrix
-
-
-

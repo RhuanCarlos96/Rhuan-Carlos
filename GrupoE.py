@@ -7,7 +7,6 @@ import Verifcar
 
 
 def GrupoE(folder):
-    print('GrupoE')
     arquivo = "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Resultados\\GrupoE\\instancias_lidas_GrupoE.txt"
     grupo = "\\GrupoE\\"
     if os.stat(arquivo).st_size == 0:
