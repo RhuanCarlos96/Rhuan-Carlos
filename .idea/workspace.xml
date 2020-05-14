@@ -36,8 +36,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ed4099e8-a08a-4d26-8925-e1d468d03128" name="Default Changelist" comment="&quot;Atualizei a função de leitura de arquivos e o criei a função instÂncias que usarei para carregar o caminho dos arquivos em um arquivo e depois escolher aleatoriamente eles para usar no teste de parâmetros&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FuncaoLeitura.py" beforeDir="false" afterPath="$PROJECT_DIR$/FuncaoLeitura.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Funcoes_Reversa.py" beforeDir="false" afterPath="$PROJECT_DIR$/Funcoes_Reversa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Instancias.py" beforeDir="false" afterPath="$PROJECT_DIR$/Instancias.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reducao_de_Dominio_Reversa.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reducao_de_Dominio_Reversa.py" afterDir="false" />
     </list>
@@ -391,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589395804630</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="&quot;Funções com bugs consertados&quot;">
+      <created>1589417543086</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1589417543086</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,13 +436,18 @@
     <MESSAGE value="&quot;Atualizaram as funçoes Grupo&quot;" />
     <MESSAGE value="&quot;Atualizei as funçoes de realimentação que é capaz tanto de aumentar ou diminuir a quantidade de nos &quot;" />
     <MESSAGE value="&quot;Atualizei a função de leitura de arquivos e o criei a função instÂncias que usarei para carregar o caminho dos arquivos em um arquivo e depois escolher aleatoriamente eles para usar no teste de parâmetros&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Atualizei a função de leitura de arquivos e o criei a função instÂncias que usarei para carregar o caminho dos arquivos em um arquivo e depois escolher aleatoriamente eles para usar no teste de parâmetros&quot;" />
+    <MESSAGE value="&quot;Funções com bugs consertados&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;Funções com bugs consertados&quot;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="667" y="159" width="642" height="790" key="#EstrategiaReversa_(1)" timestamp="1581952139269">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="667" y="159" width="642" height="790" key="#EstrategiaReversa_(1)/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581952139269" />
+    <state x="275" y="5" key="#Plugins" timestamp="1589481847181">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="5" key="#Plugins/0.0.1366.728@0.0.1366.728" timestamp="1589481847181" />
     <state x="22" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588635550697">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -456,31 +466,31 @@
     </state>
     <state x="523" y="196" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1588451604276" />
     <state x="776" y="311" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581952423241" />
-    <state width="1345" height="164" key="GridCell.Tab.0.bottom" timestamp="1589414076744">
+    <state width="1345" height="227" key="GridCell.Tab.0.bottom" timestamp="1589485960188">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="164" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589414076744" />
+    <state width="1345" height="227" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589485960188" />
     <state width="1343" height="224" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
     <state width="1807" height="370" key="GridCell.Tab.0.bottom/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971666575" />
     <state width="905" height="321" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
-    <state width="1345" height="164" key="GridCell.Tab.0.center" timestamp="1589414076744">
+    <state width="1345" height="227" key="GridCell.Tab.0.center" timestamp="1589485960188">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="164" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589414076744" />
+    <state width="1345" height="227" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589485960188" />
     <state width="1343" height="224" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
     <state width="1807" height="370" key="GridCell.Tab.0.center/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971666575" />
     <state width="905" height="321" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
-    <state width="1345" height="164" key="GridCell.Tab.0.left" timestamp="1589414076734">
+    <state width="1345" height="227" key="GridCell.Tab.0.left" timestamp="1589485960188">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="164" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589414076734" />
+    <state width="1345" height="227" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589485960188" />
     <state width="1343" height="224" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
     <state width="1807" height="370" key="GridCell.Tab.0.left/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971666575" />
     <state width="905" height="321" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
-    <state width="1345" height="164" key="GridCell.Tab.0.right" timestamp="1589414076744">
+    <state width="1345" height="227" key="GridCell.Tab.0.right" timestamp="1589485960188">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="164" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589414076744" />
+    <state width="1345" height="227" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589485960188" />
     <state width="1343" height="224" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952866562" />
     <state width="1807" height="370" key="GridCell.Tab.0.right/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971666575" />
     <state width="905" height="321" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1580913528617" />
@@ -510,10 +520,10 @@
     <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1586382384630" />
     <state x="2055" y="38" key="SettingsEditor/67.27.1853.1053/1920.0.1366.768@1920.0.1366.768" timestamp="1581952762532" />
     <state x="317" y="36" key="SettingsEditor/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581952429611" />
-    <state x="275" y="97" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1589395812307">
+    <state x="275" y="97" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1589417547389">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589395812306" />
+    <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589417547389" />
     <state x="440" y="167" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1366.768@67.27.1853.1053" timestamp="1581971574738" />
     <state x="379" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1586962760935">
       <screen x="0" y="0" width="1366" height="728" />

@@ -1,30 +1,34 @@
-import Verifcar
 import os
-import FuncaoLeitura as opter
-import Reducao_de_Dominio_Reversa as reducao
-import numpy as np
-from Grafos import Grafos_Objeto
+import shutil
+import random
 
 
 # Abrindo arquivos para teste:
 
 def Lendo_Instancias():
-    with open(
-            "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Instances\\Yanasse\\Tabela4\\L23-10.txt",
-            'r') as f:
-        tarefas, ferramentas, capacidade, matrix = opter.instancias(
-            f)  # optendo todos os valores de instâncias recolhidas em um determinado arquivo
+    folder_path = \
+        ["C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Instances\\Catanzaro",
+         "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Instances\\Yanasse",
+         "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Instances\\Crama",
+         "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Instances\\Mecler",
+         ]
 
-    jobs = np.arange(0, tarefas)  # conjunto de tarefas
-    t = np.arange(0, ferramentas)  # conjunto de ferramentas
+    arquivos_para_instâncias = []
+    for folder in folder_path:
+        for root, dirs, files in os.walk(folder):
+            for name in files:
+                arquivos_para_instâncias.append(os.path.join(root, name))
 
-    nos, chaves, cluster, S = reducao.Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas,
-                                                         jobs, t)
+    faixa = list(range(0, len(arquivos_para_instâncias)))
+    escolhidos = []
+    while len(escolhidos) < int(len(arquivos_para_instâncias) * 0.05):
+        aux = random.choice(faixa)
 
-    grafo = Grafos_Objeto.Grafos(nos, cluster, chaves)
+        while aux in escolhidos:
+            aux = random.choice(faixa)
 
-    print(len(nos))
-    print(len(chaves))
+        escolhidos.append(aux)
 
-
-
+        for i in escolhidos:
+            shutil.copy(arquivos_para_instâncias[i],
+                        "C:\\Users\\Rhuan\\Desktop\\Teste_No_PC\\Teste_No_PC\\Instancias_para_ajustes")

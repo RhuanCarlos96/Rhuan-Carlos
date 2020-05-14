@@ -14,7 +14,7 @@ def Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas, jobs, t):
     chaves_dos_nos = {}
     P = []
     E = []
-
+    print('entrou')
     nos_do_cluster, chaves_dos_nos, cluster = revers.Uptade(ferramentas, matrix,
                                                             cluster,
                                                             Q, nos_do_cluster,
