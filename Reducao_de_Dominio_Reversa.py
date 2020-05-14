@@ -55,20 +55,19 @@ def Reducao_de_Dominio(matrix, tarefas, capacidade, ferramentas, jobs, t):
                             if len(combinacoes) < 100:
                                 for c in combinacoes:
                                     aux2 = list(c)
-                                    P.append(aux + aux2)
+                                    if aux + aux2 not in Q:
+                                        P.append(aux + aux2)
                             else:
                                 o = 0
                                 indice = list(range(0,len(combinacoes)))
                                 random.shuffle(indice)
                                 while o < 150 and o < len(combinacoes):
                                     aux2 = list(combinacoes[indice[o]])
-                                    P.append(aux + aux2)
-                                    o+=1
+                                    if aux + aux2 not in Q:
+                                        P.append(aux + aux2)
+                                        o+=1
 
-
-        len(P)
         if P:
-            print(len(P))
             nos_do_cluster, chaves_dos_nos, cluster = revers.Uptade(ferramentas, matrix,
                                                                     cluster,
                                                                     Q, nos_do_cluster,

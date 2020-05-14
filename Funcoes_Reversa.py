@@ -97,8 +97,6 @@ def CrucialJobs_EstrategiaReversa(matrix, tarefas, capacidade, ferramentas, jobs
             conjunto_de_T = conjunto_de_T.union(
                 set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [j_linha])))
 
-
-        # print('Tarefas Cruciais', s)
         return s
 
 
@@ -145,19 +143,14 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
     f_linha = [-1] * capacidade
     # Definindo o conjunto Ti / Tj , Tj / Ti , Ti e Tj e Ti U Tj, respectivamente :
     conjunto_diferenca_i_linha_menos_j_linha = set(ferramentas_ilinha) - set(ferramentas_jlinha)
-    print('Conjunto Ti/ Tj', conjunto_diferenca_i_linha_menos_j_linha)
     conjunto_diferenca_j_linha_menos_i_linha = set(ferramentas_jlinha) - set(ferramentas_ilinha)
-    print('Conjunto Tj/ Ti', conjunto_diferenca_j_linha_menos_i_linha)
     conjunto_interseccao = set(ferramentas_ilinha).intersection(set(ferramentas_jlinha))
-    print('Conjunto Ti e Tj', conjunto_interseccao)
     conjunto_uniao = set(ferramentas_ilinha).union(set(ferramentas_jlinha))
-    print('Conjunto Tj U Ti', conjunto_uniao)
 
     # Identificando os indice e a popularidade de cada ferramenta do conjunto de diferença
     # e preenchendo f_linha a partir dos slots das ferramentas menos populares de j'-i' com o
     # conjunto Fi' - Fj'
 
-    print('\n1º passo - Preenchendo os slots relativos as tarefas menos populares de Tj / Ti com Ti/Tj : ')
     if conjunto_diferenca_j_linha_menos_i_linha != {} and conjunto_diferenca_i_linha_menos_j_linha != {}:
         aux = []
         aux2 = []
@@ -165,9 +158,6 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
             if ferramentas_jlinha[i] in conjunto_diferenca_j_linha_menos_i_linha:
                 aux.append(i)
                 aux2.append(requerimentos_de_ferramentas(ferramentas, matrix)[ferramentas_jlinha[i]])
-
-        print('\nPopulariedade de Tj/Ti : ', aux2)
-        print('Slots : ', aux, '\n')
 
         aux2 = np.argsort(aux2)
         aux3 = []
@@ -185,10 +175,7 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
             if f_linha[i] == -1:
                 aux.append(i)
 
-    print(' 1º - Z :', f_linha)
-
     # Preenchendo com o conjunto interseccao de i' e j'
-    print('\n2º passo - Adicionando a Z o conjunto intersecção de Ti e Tj :')
     if conjunto_interseccao:
         k = 0
         aux = []
@@ -200,13 +187,10 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
             if k < len(aux):
                 f_linha[aux[k]] = i
                 k += 1
-    print('2º- Z : ',f_linha)
     # Preenchendo o restante do no com conjunto de ferramentas com maior interssecacao com a uniao de f_i e f_j.
     tarefas_restantes = list(tarefas_restantes)
     maior_inteseccao = []
 
-    print(
-         '\n3º passo - Preencnhendo os no com as ferramentas das ferramentas restantes com maior intersecção com Ti U Tj')
     for i in tarefas_restantes:
         f = set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [i]))
         maior_inteseccao.append(len(f.intersection(conjunto_uniao)))
@@ -219,7 +203,7 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
         if f_linha[i] == -1:
             aux.append(i)
 
-    #Conferindo se todos os elementos de i estão no vetor Z
+    # Conferindo se todos os elementos de i estão no vetor Z
     if aux:
         conferindo = set(conjunto_diferenca_i_linha_menos_j_linha) - set(f_linha)
         if conferindo:
@@ -227,14 +211,12 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
             for i in conferindo:
                 if p < len(aux) and i not in f_linha:
                     f_linha[aux[p]] = i
-                    p+=1
+                    p += 1
 
             aux = []
             for i in range(len(f_linha)):
                 if f_linha[i] == -1:
                     aux.append(i)
-
-
 
     k = 0
     if aux:
@@ -262,7 +244,6 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
                         aux.append(i)
             k += 1
 
-    print('\n 3º passo - Z : ', f_linha)
     # Complentando os nos quando houver necessidade
     if aux:
         aux2 = []
@@ -296,8 +277,6 @@ def Preechendo_Nos(matrix, ferramentas, ferramentas_ilinha, ferramentas_jlinha, 
                     indices.append(aux[k])
                     k += 1
 
-    print('\n Ulimo - Z : ', set(f_linha))
-
     return f_linha
 
 
@@ -323,11 +302,6 @@ def FirstNodes(S, matrix, tarefas, capacidade, ferramentas):
     # Completando i_linha com j_linha:
     ferramentas_ilinha = ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [i_linha])
     ferramentas_jlinha = ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [j_linha])
-
-    print('\n')
-    print('Tarefa i*', i_linha, ' : ', ferramentas_ilinha)
-    print('Tarefa j*', j_linha, ' : ', ferramentas_jlinha)
-    print('\n')
 
     tarefas_restantes = set(S) - set(Tarefas_Maior_Distancia)
     # Preenchendo f_ilinha
@@ -407,6 +381,16 @@ def FillNode(matrix, ferramentas, capacidade, tarefas, S):
         Z, i_linha, j_linha = FirstNodes(S, matrix, tarefas, capacidade, ferramentas)
 
         X = RemJobs(S, [i_linha, j_linha])
+
+    Z_aux = []
+    for i in Z:
+        i.sort()
+        aux = i
+        Z_aux.append(aux)
+
+    Z = Copia(Z_aux)
+    del Z_aux
+
     while X:
         d_asterisco = -3
         j_asterisco = -3
@@ -424,7 +408,9 @@ def FillNode(matrix, ferramentas, capacidade, tarefas, S):
         L_linha = FillNodes(matrix, ferramentas, j_asterisco, L_asterisco, capacidade)
 
         X = X - set([j_asterisco])
-        Z.append(L_linha)
+        L_linha.sort()
+        if L_linha not in Z:
+            Z.append(L_linha)
 
     Q = Copia(Z)
     return Z, Q
@@ -450,7 +436,6 @@ def Uptade(ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, tar
     if cluster == {}:
         chaves = 0
         # Definindo os nos em ordem crescente de aparecimento.
-
         for q in Q:
             chaves_dos_nos[Calculando_a_Chave(q)] = []
 
@@ -491,7 +476,6 @@ def Uptade(ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, tar
                     LimD = int((len(P) - len(Q)) / cluster_cheios)
                     Distribuição_Media_Cluster = int(LimD / len(cluster))
 
-                print('Distribuição_Media_Cluster', Distribuição_Media_Cluster)
                 random.shuffle(indice)
                 indice = list(range(0, len(P)))
                 chave = len(nos_do_clusters)
@@ -507,7 +491,8 @@ def Uptade(ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, tar
                     if len(cluster_intersseccoes) >= 2:
                         indice_intesseccao.append(p)
                         for k in cluster_intersseccoes:
-                            if (Calculando_a_Chave(P[p]) not in cluster[k]) and len(cluster[k])<Distribuição_Media_Cluster:
+                            if (Calculando_a_Chave(P[p]) not in cluster[k]) and len(
+                                    cluster[k]) < Distribuição_Media_Cluster:
                                 cluster[k].append(Calculando_a_Chave(P[p]))
                                 if Calculando_a_Chave(P[p]) not in list(chaves_dos_nos.keys()):
                                     nos_do_clusters[chave] = P[p]
@@ -525,7 +510,8 @@ def Uptade(ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, tar
                         if (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])) &
                             (set(P[p]))) == (
                                 set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c]))):
-                            if (Calculando_a_Chave(P[p]) not in cluster[c]) and len(cluster[c]) < Distribuição_Media_Cluster:
+                            if (Calculando_a_Chave(P[p]) not in cluster[c]) and len(
+                                    cluster[c]) < Distribuição_Media_Cluster:
                                 cluster[c].append(Calculando_a_Chave(P[p]))
                                 if Calculando_a_Chave(P[p]) not in list(chaves_dos_nos.keys()):
                                     nos_do_clusters[chave] = P[p]
@@ -533,16 +519,11 @@ def Uptade(ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, tar
                                     chaves_dos_nos[Calculando_a_Chave(P[p])].append(chave)
                                     chave += 1
             else:
-                cluster_vazios = 0
-                for i in cluster:
-                    if cluster[i] == []:
-                        cluster_vazios += 1
-
                 indice = list(range(0, len(P)))
                 chave = len(nos_do_clusters)
                 indice_intesseccao = []
                 cluster_intersseccoes = []
-                print(cluster_vazios)
+
                 for p in range(len(P)):
                     for c in cluster:
                         if (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [c])) &
@@ -553,16 +534,13 @@ def Uptade(ferramentas, matrix, cluster, Q, nos_do_clusters, chaves_dos_nos, tar
                     if len(cluster_intersseccoes) >= 2:
                         indice_intesseccao.append(p)
                         for k in cluster_intersseccoes:
-                            if (set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [k])) &
-                                (set(P[p]))) == (
-                                    set(ferramentas_da_tarefas_do_conjunto_s(matrix, ferramentas, [k]))):
-                                if (Calculando_a_Chave(P[p]) not in cluster[k]):
-                                    cluster[k].append(Calculando_a_Chave(P[p]))
-                                    if Calculando_a_Chave(P[p]) not in list(chaves_dos_nos.keys()):
-                                        nos_do_clusters[chave] = P[p]
-                                        chaves_dos_nos[Calculando_a_Chave(P[p])] = []
-                                        chaves_dos_nos[Calculando_a_Chave(P[p])].append(chave)
-                                        chave += 1
+                            if (Calculando_a_Chave(P[p]) not in cluster[k]):
+                                cluster[k].append(Calculando_a_Chave(P[p]))
+                                if Calculando_a_Chave(P[p]) not in list(chaves_dos_nos.keys()):
+                                    nos_do_clusters[chave] = P[p]
+                                    chaves_dos_nos[Calculando_a_Chave(P[p])] = []
+                                    chaves_dos_nos[Calculando_a_Chave(P[p])].append(chave)
+                                    chave += 1
 
                     cluster_intersseccoes = []
 

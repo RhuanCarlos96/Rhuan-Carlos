@@ -20,13 +20,23 @@ def instancias(archive):
             linha = archive.readline()
             linha = linha.rstrip()
             linha = linha.split(" ")
-            linha.pop(0)
+            if linha[0] == '':
+                linha.pop(0)
+
             tam = len(linha)
+            if '' not in linha:
+                for j in range(tam):
+                    linha[j] = int(linha[j])
 
-            for j in range(tam):
-                linha[i] = int(linha[j])
+                concatenado = np.concatenate((concatenado, linha))
 
-            concatenado = np.concatenate((concatenado, linha))
+            else:
+                aux = []
+                for j in range(tam):
+                    if linha[j] != '':
+                        aux.append(int(linha[j]))
+
+                concatenado = np.concatenate((concatenado, aux))
 
         matrix = np.reshape(concatenado, (n_ferramentas, n_tarefas))
 
