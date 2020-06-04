@@ -42,16 +42,16 @@ class Grafos(object):
     # Definindo os clusters que fazem intersecção, de acordo com os nos presentes entre os clusters
     def Inteseccao(self):
         interseccao = {}
-        for i in range(len(self.__chaves)):
-            if list(self.__chaves.keys())[i] not in interseccao:
-                interseccao[list(self.__chaves.keys())[i]] = []
-                for j in range(len(self.__cluster)):
-                    if list(self.__chaves.keys())[i] in self.__cluster[j]:
-                        interseccao[list(self.__chaves.keys())[i]].append(j)
+        for i in self.__chaves:
+            if i not in list(interseccao.keys()):
+                interseccao[i] = []
+                for j in list(self.__cluster.keys()):
+                    if i in self.__cluster[j]:
+                        interseccao[i].append(j)
             else:
-                for j in range(len(self.__cluster)):
-                    if list(self.__chaves.keys())[i] in self.__cluster[j]:
-                        interseccao[list(self.__chaves.keys())[i]].append(j)
+                for j in list(self.__cluster.keys()):
+                    if i in self.__cluster[j]:
+                        interseccao[i].append(j)
 
         return interseccao
 

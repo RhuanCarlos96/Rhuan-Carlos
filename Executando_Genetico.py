@@ -48,23 +48,19 @@ def Runnig_Genetic_with_Realimentation(nos, chaves, cluster, matrix, capacidade,
     j = 0
     menor = []
     tempo = []
-    while j < 3:
+    while j < 5:
         genetico = gene.Genetico(nos, cluster, chaves)
 
         # Definindo a populacao inicial de clusters
-        genetico.Populacao_Inicial()
+        genetico.Populacao_Inicial(tamanho_da_populacao=200)
 
         # Definindo os possiveis cromossomos clusters
-
         possiveis_cromossomos = genetico.Possiveis_Cromossomos_Inciais()
-        k = 0
         before = time.time()
         now = before
-        menor = []
-        tempo = []
 
-        while now - before < 3 :
-            if k == 0:
+        while now - before < 6*60:
+            if now - before == 0:
                 genetico.Tratando_os_Cromossomos(prossiveis_cromossomos_nos=possiveis_cromossomos)
                 genetico.Individuos_Cluster()
                 genetico.Individuos_Nos()
@@ -75,10 +71,12 @@ def Runnig_Genetic_with_Realimentation(nos, chaves, cluster, matrix, capacidade,
                 genetico.Individuos_Nos()
 
             menor_troca, tempo_do_menor = genetico.Fitness(before)
+            genetico.Selecao(taxa_de_selecao=0.95)
+            genetico.CrossOver(taxa_de_cruzamento=0.75)
+            genetico.Mutation_Swap(taxa_de_mutação=0.1)
             menor.append(menor_troca)
-            tempo.append(tempo_do_menor)
+            tempo.append(round(tempo_do_menor, 2))
             now = time.time()
-            k += 1
 
         frequencia = genetico.GetFrequencia()
 
@@ -86,10 +84,22 @@ def Runnig_Genetic_with_Realimentation(nos, chaves, cluster, matrix, capacidade,
                                            capacidade,
                                            ferramentas, pares_ja_uilizados)
 
-        nos, chaves, cluster = CompletandoNos.Completando_Clusters_Eliminando_Indiviais(
-            pares_clusters=pares, cluster=cluster,
-            nos=nos, chaves=chaves, matrix=matrix,
-            ferramentas=ferramentas, capacidade=capacidade)
+
+        pares_ja_uilizados = pares
+
+        conjunto_de_nos_isolados = CompletandoNos.nos_isolados(cluster=cluster, grafo=genetico.GetGrafo())
+
+        conjunto_de_nos_nao_isolados = CompletandoNos.nos_nao_isolados(cluster=cluster,grafo=genetico.GetGrafo())
+
+        nos, chaves, cluster = CompletandoNos.Completando_Clusters_Eliminando_Indiviais(pares_clusters=pares,
+                                                                                        cluster=cluster,
+                                                                                        nos=nos, chaves=chaves,
+                                                                                        matrix=matrix,
+                                                                                        ferramentas=ferramentas,
+                                                                                        capacidade=capacidade,
+                                                                                        tarefas=len(cluster),
+                                                                                        conjunto_de_nos_isolados=conjunto_de_nos_isolados,
+                                                                                        conjunto_de_nos_nao_isolados=conjunto_de_nos_nao_isolados)
 
         j += 1
 

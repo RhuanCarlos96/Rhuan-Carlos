@@ -1,25 +1,24 @@
-import Executando_Estrategia_Reversa
+import Reducao_de_Dominio_Reversa
 import Executando_Genetico
-import numpy
+import numpy as np
 import statistics
 
 
 def Execucao(tarefas, ferramentas, matrix, capacidade):
-    tamanho, nos, chaves, cluster = Executando_Estrategia_Reversa.Running_Estrategia_Reversa(tarefas, ferramentas,
-                                                                                             matrix, capacidade)
-
+    nos, chaves, cluster, S = Reducao_de_Dominio_Reversa.Reducao_de_Dominio(matrix, tarefas, capacidade,
+                                                                            ferramentas, np.arange(0, tarefas),
+                                                                            np.arange(0, ferramentas))
     melhor_solucao = []
     melhor_tempo = []
-
-    for i in range(2):
-        menor, tempo = Executando_Genetico.Runnig_Genetic_with_Realimentation(nos=nos, cluster=cluster, chaves=chaves,matrix=matrix,capacidade=capacidade,ferramentas=ferramentas)
+    for i in range(3):
+        menor, tempo = Executando_Genetico.Runnig_Genetic_with_Realimentation(nos, chaves, cluster, matrix, capacidade, ferramentas)
         melhor_solucao.append(menor)
         melhor_tempo.append(tempo)
 
-    organizado = numpy.argsort(melhor_solucao)
+    organizado = np.argsort(melhor_solucao)
 
-    return tamanho, melhor_solucao[organizado[0]], round(melhor_tempo[organizado[0]],2), round(statistics.mean(
-        melhor_solucao), 3), round(statistics.pstdev(melhor_solucao), 3), round(statistics.mean(melhor_tempo), 3)
+    return melhor_solucao[organizado[0]], round(melhor_tempo[organizado[0]], 2), round(statistics.mean(
+        melhor_solucao), 2), round(statistics.pstdev(melhor_solucao), 2), round(statistics.mean(melhor_tempo), 2)
 
     # while now - antes <= 1 * 60:
     #
